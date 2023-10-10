@@ -1,0 +1,142 @@
+* {
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+	border-radius: 5px;
+}
+
+/* Video [112] ***************************************** */
+
+/* * {
+  border-radius: 5px;
+}
+body {
+  background-color: #eee;
+}
+ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  margin: auto;
+  background-color: #ddd;
+  padding: 10px;
+}
+ul li {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+li[data-color="red"] {
+  background-color: red;
+}
+li[data-color="green"] {
+  background-color: green;
+}
+li[data-color="blue"] {
+  background-color: blue;
+}
+li[data-color="black"] {
+  background-color: black;
+}
+li.active,
+li:hover {
+  opacity: 1;
+}
+.apply {
+  width: 400px;
+  height: 200px;
+  margin: 20px auto auto;
+  transition: 0.3s;
+} */
+
+/* Challenge [114] ***************************************** */
+
+div {
+	background-color: #eee;
+	width: 400px;
+	margin: auto auto 20px;
+	padding: 20px;
+}
+.entry form {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+.entry form input[type="text"] {
+	border: none;
+	padding: 10px;
+	flex-basis: 75%;
+}
+.entry form input[type="submit"] {
+	border: none;
+	background-color: rgb(253, 92, 33);
+	color: white;
+	padding: 10px;
+	cursor: pointer;
+}
+.entry form input:focus-visible {
+	outline: none;
+	border: 1px rgb(253, 92, 33) solid;
+}
+.tasks {
+	display: flex;
+	flex-wrap: wrap;
+}
+.tasks .task {
+	background-color: white;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.tasks .task span {
+	background-color: red;
+	padding: 5px 10px;
+	color: white;
+	display: block;
+	cursor: pointer;
+}
+
+/* Assignments [111--114]******************************************************* */
+
+/* Assignment 1 ***************************************** */
+
+/* * {
+  font-family: "Open Sans";
+  color: red;
+  font-size: 16px;
+} */
+
+/* Assignment 2 ***************************************** */
+
+/* form {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 300px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 20px;
+}
+form div {
+  margin-bottom: 20px;
+	width: 100%;
+}
+form div:not(:last-child) {
+	margin-bottom: 20px;
+	width: 100%;
+  padding-bottom: 20px;
+  border-bottom: white 5px solid;
+}
+label {
+	text-transform: capitalize;
+	margin-bottom: 10px;
+  display: block;
+  cursor: pointer;
+}
+form input,
+form select {
+	display: block;
+  width: 100%;
+} */

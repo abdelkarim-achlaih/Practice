@@ -1,0 +1,291 @@
+body {
+	font-family: calibri;
+	/* font-weight: bold; */
+	/* padding: 0;
+  margin: 0; */
+}
+* {
+	box-sizing: border-box;
+}
+
+/* -- Assignments [42--45]******************************************************* */
+
+/* Assignment 1 */
+
+/* .parent {
+  text-align: center;
+  background-color: #f2f2f4;
+  width: 400px;
+  height: 200px;
+  margin: 40px auto;
+  padding: 20px;
+  transition: .5s;
+}
+.child {
+  background-color: #dededc;
+  width: 80%;
+  margin: 20px auto;
+  transition: .5s .5s;
+  padding: 20px;
+}
+.parent:hover {
+  margin-top: -20px;
+}
+.parent:hover .child {
+  margin-top: 40px;
+} */
+
+/* Assignment 2 */
+
+/* div {
+  background-color: #eeeeee !important;
+  color: transparent !important;
+  text-align: center !important;
+  border: none !important;
+  position: relative !important;
+  width: 600px;
+  height: 60px;
+  font-size: 0.1px !important;
+  box-sizing: border-box !important;
+  margin: auto;
+  padding: 0 !important;
+}
+div::before {
+  content: "Elzero";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-size: 20px !important;
+  font-weight: bold;
+} */
+
+/* Assignment 3 */
+
+/* :root {
+  --mainColor: #009688;
+  --mainPadding: 10px;
+}
+
+div {
+  color: var(--mainColor, red);
+  border: var(--mainColor, black) 2px solid;
+  width: 800px;
+  padding: 10px;
+  margin: 20px auto;
+} */
+
+/* -- Assignments [46--53]******************************************************* */
+
+/* Assignment 1 */
+
+/* div {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border-left: #03a9f4 solid 4px;
+  border-right: #ff5722 solid 4px;
+  color: #ff5722;
+  background-color: #eeeeee;
+} */
+
+/* Assignment 2 */
+
+/* .parent {
+  width: 600px;
+  height: 300px;
+  margin: auto;
+  display: flex;
+  background-color: #eeeeee;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 5px;
+  align-content: space-between;
+}
+.parent div {
+  background-color: #f44336;
+  color: white;
+  padding: 5px;
+  flex-basis: calc(98% / 3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+/* Assignment 3 */
+
+/* .parent {
+  width: 600px;
+  height: 300px;
+  margin: auto;
+  padding: 5px;
+  background-color: #eeeeee;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.parent div {
+  background-color: #607d8b;
+  color: white;
+  flex-basis: calc(98% / 3);
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.one {
+  order: 6;
+  align-self: flex-end;
+}
+.two {
+  order: 5;
+}
+.three {
+  order: 2;
+  align-self: flex-start;
+}
+.four {
+  order: 3;
+}
+.five {
+  order: 4;
+}
+.six {
+  order: 1;
+} */
+
+/* Assignment 4 */
+
+/* .parent {
+  width: 600px;
+  height: 300px;
+  margin: auto;
+  padding: 5px;
+  background-color: #eeeeee;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.parent div {
+  background-color: #009688;
+  color: white;
+  padding: 5px;
+  flex-basis: calc(98% / 3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.one, .three {
+  align-self: flex-end;
+}
+.two {
+  width: calc(100% / 2);
+} */
+
+/* Assignment 5 */
+
+/* .parent {
+  width: 600px;
+  height: 300px;
+  margin: auto;
+  padding: 5px;
+  background-color: #eeeeee;
+  display: flex;
+  justify-content: space-between;
+}
+.parent div {
+  color: white;
+  padding: 5px;
+  height: 50%;
+  flex-basis: calc(70% / 4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.one {
+  order: 2;
+  align-self: flex-start;
+  background-color: #ff9800;
+}
+.two {
+  order: 3;
+  align-self: flex-end;
+  background-color: #8bc34a;
+}
+.three {
+  order: 4;
+  align-self: flex-start;
+  background-color: #795548;
+}
+.four {
+  order: 1;
+  align-self: flex-end;
+  background-color: #673ab7;
+} */
+
+/* Assignment 6 */
+
+body {
+	margin: 0;
+}
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+:root {
+	--mainColor: #dddddd;
+	--gap: 10px;
+}
+.page {
+	background-color: #eeeeee;
+	padding: var(--gap);
+}
+.page * {
+	padding: var(--gap);
+}
+.page .header {
+	display: flex;
+	padding: 0;
+	margin-bottom: var(--gap);
+}
+.page .header .logo {
+	background-color: var(--mainColor);
+	margin-right: var(--gap);
+}
+.page .header .links {
+	background-color: var(--mainColor);
+	flex-grow: 1;
+	display: flex;
+	justify-content: flex-end;
+}
+.page .header .links li {
+	margin-right: var(--gap);
+	padding: 0;
+}
+.page .main-area {
+	display: flex;
+	padding: 0;
+	margin-bottom: var(--gap);
+}
+.page .main-area .content {
+	height: 400px;
+	background-color: var(--mainColor);
+	flex-grow: 1;
+	margin-right: var(--gap);
+}
+.page .main-area .sidebar {
+	flex-basis: 300px;
+	background-color: var(--mainColor);
+}
+.page .footer {
+	display: flex;
+	justify-content: space-between;
+	background-color: var(--mainColor);
+	padding: 0;
+}

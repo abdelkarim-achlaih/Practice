@@ -1,0 +1,489 @@
+* {
+	font-family: Arial, Tahoma;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+/* ******************* Centering Elements Horizontally And Vertically */
+
+/* Already Done */
+
+/* ******************* Moving To Right Text Effect On Hover */
+
+/* body {
+	background-color: #333;
+}
+a {
+	display: block;
+	text-decoration: none;
+	color: #8bc34a;
+	border: 4px solid #8bc34a;
+	padding: 10px 30px;
+	width: fit-content;
+	margin: auto;
+	font-size: 60px;
+	position: relative;
+	overflow: hidden;
+}
+a span {
+	display: block;
+	transition: 0.3s;
+	transform: translateX(-150%);
+}
+a::after {
+	content: attr(data-name);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	transition: 0.3s;
+}
+a:hover span {
+	transform: translateX(0);
+}
+a:hover::after {
+	transform: translate(100%, -50%);
+} */
+
+/* ******************* Text Fill Effect On Hover */
+
+/* h2 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke: black 3px;
+  position: relative;
+}
+h2::after {
+  content: attr(data-name);
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-text-fill-color: #ff5722;
+  width: 0;
+  overflow: hidden;
+  transition: 0.3s;
+}
+h2:hover::after {
+  width: 100%;
+} */
+
+/* ******************* Create Tooltip In All Directions */
+
+/* button {
+	padding: 10px 20px;
+	font-size: 20px;
+	border: none;
+	cursor: pointer;
+	position: relative;
+}
+button span {
+	position: absolute;
+	transform: translateX(-50%);
+	text-align: center;
+	font-size: 13px;
+	padding: 5px 0;
+	width: 150px;
+	color: white;
+	background-color: #333;
+	display: none;
+	transition: 0.5s;
+}
+button[data-position="top"] span {
+	top: -40px;
+	left: 50%;
+}
+button[data-position="bottom"] span {
+	bottom: -40px;
+	left: 50%;
+}
+button span::after {
+	content: "";
+	position: absolute;
+	transform: translateX(-50%);
+	border: 10px solid black;
+}
+button[data-position="top"] span::after {
+	border-color: #333 transparent transparent;
+	top: 100%;
+	left: 50%;
+}
+button[data-position="bottom"] span::after {
+	border-color: transparent transparent #333;
+	bottom: 100%;
+	left: 50%;
+}
+button:hover span {
+	display: block;
+} */
+
+/* ******************* Create Ribbon Without Images */
+
+/* .product {
+	background-color: #eee;
+	border-radius: 5px;
+	width: 300px;
+	padding: 20px 0;
+	text-align: center;
+}
+.product h2 {
+	background-color: #009688;
+	padding: 10px;
+	color: white;
+	width: calc(100% + 40px);
+	transform: translateX(-20px);
+	position: relative;
+}
+.product h2::before,
+.product h2::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  width: 20px;
+  height: 20px;
+}
+.product h2::before {
+  left: 0;
+  background-image: linear-gradient(45deg, white 50%, #005c54 50%);
+}
+.product h2::after {
+  right: 0;
+  background-image: linear-gradient(315deg, white 50%, #005c54 50%);;
+}
+.product p {
+	padding: 20px;
+	line-height: 1.8;
+	font-size: 13px;
+} */
+
+/* ******************* Fill Element Background From Other Element */
+
+/* .product {
+	border-radius: 5px;
+	width: 300px;
+	padding: 20px 0;
+	text-align: center;
+	box-shadow: 0 0 10px #ddd;
+  overflow: hidden;
+  transition: 0.5s;
+}
+.product .number {
+	background-color: red;
+	padding: 20px;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	border-radius: 50%;
+	margin: auto;
+  transition: 0.5s;
+	position: relative;
+}
+.product .number::after {
+  content: "";
+	position: absolute;
+	top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-color: red;
+  transition: 0.5s;
+  width: 0;
+  height: 0;
+  z-index: -1;
+}
+.product:hover {
+  color: white;
+}
+.product:hover .number::after {
+  width: 1400%;
+  height: 1400%;
+}
+.product:hover .number {
+  box-shadow: 0 0 0 300px red;
+}
+.product h2 {
+	padding: 10px;
+	width: calc(100% + 40px);
+	transform: translateX(-20px);
+	position: relative;
+	font-size: 18px;
+}
+.product p {
+	padding: 20px;
+	line-height: 1.8;
+	font-size: 13px;
+} */
+
+/* ******************* Customize Radio Input */
+
+/* form {
+	background-color: #f9f9f9;
+	padding: 20px;
+	width: 400px;
+}
+form div:not(:last-child) {
+	margin-bottom: 20px;
+}
+form div input[type="radio"] {
+	appearance: none;
+}
+form div label {
+	text-transform: capitalize;
+	position: relative;
+	padding-left: 30px;
+	transition: 0.5s;
+  cursor: pointer;
+}
+form div label::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -10px;
+	transform: translateY(-50%);
+	width: 20px;
+	height: 20px;
+	border: 1px solid #0075ff;
+}
+form div label::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -10px;
+	width: 15px;
+	height: 15px;
+	transform: translate(3.5px, -50%);
+	background-color: #0075ff;
+	opacity: 0;
+	transition: 0.5s;
+}
+form div input[type="radio"]:checked + label {
+	color: #0075ff;
+}
+form div input[type="radio"]:not(:checked):hover + label::after {
+	opacity: 0.5;
+}
+form div input[type="radio"]:not(:checked):hover + label {
+  color: #0075ff;
+}
+form div input[type="radio"]:checked + label::after {
+	opacity: 1;
+} */
+
+/* ******************* Animated Wavy Background */
+/* body {
+	display: block;
+}
+.page {
+	position: relative;
+	z-index: 100;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	overflow: hidden;
+}
+.page::before {
+	position: absolute;
+	width: 100%;
+	height: 50%;
+	content: "";
+	top: 86%;
+	left: 0;
+	background-color: palevioletred;
+	z-index: -1;
+	border-radius: 84% 91%;
+	animation: animate-bg alternate-reverse infinite 5s;
+}
+@keyframes animate-bg {
+	from {
+		top: 86%;
+		transform: rotate(10deg) scale(2.5);
+	}
+	to {
+		top: 82%;
+		transform: rotate(0) scale(2.5);
+	}
+}
+.page .card {
+	position: relative;
+	z-index: 2;
+	padding: 20px;
+	border-radius: 10px;
+	text-align: center;
+	background-color: white;
+}
+.page .card .big {
+	height: 400px;
+	width: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: palevioletred;
+	color: white;
+	font-size: 60px;
+	border-radius: 10px;
+	margin-bottom: 20px;
+}
+.page .card h3 {
+	margin-bottom: 20px;
+}
+.page .card p {
+} */
+
+/* ******************* Burger Icon Transform Effects */
+/* .holder {
+	cursor: pointer;
+}
+.holder span {
+	display: block;
+	width: 115px;
+	height: 20px;
+	background-color: black;
+	transition: 0.5s;
+	transform-origin: 0;
+}
+.holder span:not(:last-child) {
+	margin-bottom: 20px;
+}
+
+.holder:hover span:nth-child(1) {
+	background-color: red;
+	transform: rotate(45deg);
+}
+.holder:hover span:nth-child(2) {
+	opacity: 0;
+}
+.holder:hover span:nth-child(3) {
+	background-color: red;
+	transform: rotate(-45deg);
+} */
+
+/* ******************* Mix Blend Loading */
+/* body {
+	background-color: black;
+}
+div {
+	color: white;
+}
+div span {
+	text-transform: uppercase;
+	font-size: 60px;
+	letter-spacing: 10px;
+	position: relative;
+	padding: 15px 0;
+}
+div span::before {
+	mix-blend-mode: difference;
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100px;
+	height: 100%;
+	background-color: white;
+	animation: move 2s infinite alternate-reverse linear;
+}
+@keyframes move {
+	from {
+		left: calc(100% - 100px);
+	}
+	to {
+		left: 0;
+	}
+} */
+
+/* ******************* Multiple Dotted Loader */
+
+/* .spin {
+	position: relative;
+}
+.spin div {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+}
+.c-1 {
+	width: 200px;
+	height: 200px;
+	border: 5px green solid;
+	border-top-style: dotted;
+	border-bottom-style: dotted;
+	animation: 3s animate-left infinite linear;
+}
+.c-2 {
+	width: 300px;
+	height: 300px;
+	border: 5px blue solid;
+	border-top-style: dotted;
+	border-right-style: dotted;
+	animation: 3s animate-right infinite linear;
+}
+@keyframes animate-left {
+	0% {
+		transform: translate(-50%, -50%) rotate(0);
+	}
+	100% {
+		transform: translate(-50%, -50%) rotate(-360deg);
+	}
+}
+@keyframes animate-right {
+	0% {
+		transform: translate(-50%, -50%) rotate(0);
+	}
+	100% {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+} */
+
+/* ******************* Typewriter Effects With Pure CSS */
+/* body {
+	background-color: #434343;
+}
+p {
+	color: white;
+	padding: 10px;
+	font-size: 60px;
+	position: relative;
+	white-space: nowrap;
+	overflow: hidden;
+	animation: expand 3s steps(28) 2s both;
+}
+P::after {
+	content: "";
+	position: absolute;
+	right: 5px;
+	top: 10%;
+	height: 80%;
+	width: 3px;
+	background-color: #eee;
+	animation: appear 0.2s infinite ease-in-out alternate;
+}
+@keyframes appear {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes expand {
+	0% {
+		width: 0;
+	}
+	100% {
+		width: 874px;
+	}
+} */

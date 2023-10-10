@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+}
+form {
+  width: 200px;
+  margin: auto;
+}
+form input, form select, form select option {
+  width: 100%;
+  background-color: #eee;
+  display: block;
+  margin-bottom: 20px;
+  outline: none;
+  border: none;
+  padding: 15px;
+}
+form input:focus, form select:focus {
+  outline: 2px solid black;
+}
+form input[type="submit"] {
+  background-color: #009486;
+  color: white;
+}
+
+.results-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  row-gap: 20px;
+}
+.results-div > .box {
+  flex-basis: calc(90% / 3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fc5620;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  height: 50px;
+}

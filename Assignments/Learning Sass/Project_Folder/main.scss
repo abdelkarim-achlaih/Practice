@@ -1,0 +1,8 @@
+@use "./Helpers/functions" as *;
+@use "./Helpers/vars" as *;
+@use "./Layout/header" as *;
+@use "./Layout/footer" as *;
+
+header {
+	@include color($color);
+}

@@ -1,0 +1,303 @@
+* {
+	font-family: "Ubuntu", sans-serif;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+html {
+	scroll-behavior: smooth;
+}
+ul {
+	list-style: none;
+}
+body {
+	display: flex;
+	justify-content: center;
+	/* align-items: center;
+	height: 100vh; */
+}
+
+/* ******************* Scroll To Top */
+
+/* .scroll {
+	height: 4000px;
+}
+.hero {
+	background-color: blueviolet;
+	height: 100vh;
+}
+.btn {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	animation: apde linear 0.5s infinite;
+	cursor: pointer;
+	transition: 0.3s;
+}
+img {
+	width: 50px;
+}
+@keyframes apde {
+	from {
+		bottom: 20px;
+	}
+	to {
+		bottom: 40px;
+	}
+} */
+
+/* ******************* Create Page Scroll Progress */
+/* .container {
+	height: 5000px;
+}
+.scroll {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 10px;
+	background-color: brown;
+} */
+
+/* ******************* Generate Random Serial Number */
+/* .container {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	padding: 50px;
+}
+.serial {
+	background-color: #eee;
+	border-radius: 5px;
+	padding: 10px 20px;
+	width: fit-content;
+	margin-bottom: 50px;
+}
+.generate {
+	background-color: tomato;
+	padding: 5px 10px;
+	border-radius: 5px;
+	color: white;
+	width: fit-content;
+	cursor: pointer;
+	user-select: none;
+} */
+
+/* ******************* Count Input Characters And Fill Borders */
+
+/* form {
+	width: 400px;
+	margin: auto;
+	position: relative;
+}
+input {
+	margin-top: 50px;
+	display: block;
+	border: none;
+	background-color: #eee;
+	padding: 10px 20px;
+	width: 100%;
+}
+.fill {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 3px;
+	background-color: blueviolet;
+	transition: 0.5s;
+}
+input:focus {
+	border: none;
+	outline: none;
+}
+.left {
+	position: absolute;
+	bottom: -50px;
+	right: 0;
+	font-size: 13px;
+}
+.left span {
+	color: tomato;
+	font-weight: bold;
+} */
+
+/* ******************* Create Tabs */
+/* body {
+	background-color: slategray;
+}
+.tabs {
+	background-color: white;
+	width: 600px;
+	padding: 20px;
+}
+h2 {
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+ul {
+	display: flex;
+}
+li {
+	background-color: #eee;
+	color: #777;
+	padding: 10px 20px;
+	user-select: none;
+	cursor: pointer;
+	transition: 0.3s;
+	border-radius: 5px;
+}
+li.active,
+li:hover {
+	color: white;
+	background-color: rgb(245, 146, 146);
+}
+.tab {
+	border-radius: 3px;
+	position: relative;
+	top: -5px;
+	padding: 30px;
+	display: none;
+	background-color: rgb(245, 146, 146);
+} */
+
+/* ******************* Full Screen Navigation */
+
+/* .navigation {
+	height: 100vh;
+	padding: 60px;
+	background-color: white;
+	position: relative;
+	transition: 0.3s;
+}
+ul {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	gap: 60px;
+	position: relative;
+	top: -1000px;
+	transition: 0.3s;
+}
+a {
+	color: white;
+	text-decoration: none;
+	padding: 20px;
+	border-bottom: 1px solid white;
+	transition: 0.3s;
+}
+li:hover a {
+	color: firebrick;
+	border-color: firebrick;
+}
+.toogler {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	transition: 0.3s;
+	cursor: pointer;
+	user-select: none;
+}
+.toogler span {
+	background-color: black;
+	display: block;
+	width: 60px;
+	height: 3px;
+	transition: 0.3s;
+}
+.close {
+	color: white;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	border: 1px solid white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 30px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	transition: 0.3s;
+	cursor: pointer;
+	user-select: none;
+	display: none;
+}
+.close:hover {
+	color: firebrick;
+	border-color: firebrick;
+}
+.toogler:hover span {
+	background-color: firebrick;
+} */
+
+/* ******************* Create Image Slider */
+.slider {
+	margin-top: 100px;
+	width: 400px;
+	border-radius: 10px;
+}
+.slider .images {
+	border-radius: 10px;
+}
+.slider .images .img-holder {
+	display: none;
+	position: relative;
+}
+.slider .images .img-holder.active {
+	display: block;
+}
+.slider .images .img-holder img {
+	border-radius: 10px;
+	max-width: 100%;
+}
+.slider .images .img-holder::after {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	content: "Slide #" attr(data-number);
+	z-index: 1;
+	color: white;
+	background-color: deepskyblue;
+	border-radius: 10px;
+	padding: 10px;
+}
+.tooglers {
+	display: flex;
+	justify-content: space-between;
+}
+ul {
+	flex: 1;
+	display: flex;
+	justify-content: space-around;
+}
+ul li {
+	cursor: pointer;
+	user-select: none;
+	padding: 10px;
+	border-radius: 10px;
+	color: deepskyblue;
+	transition: 0.5s;
+}
+ul li.active,
+ul li:hover {
+	background-color: deepskyblue;
+	color: white;
+}
+button {
+	color: white;
+	border: none;
+	background-color: deepskyblue;
+	padding: 10px;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: 0.5s;
+}
+button:hover {
+	background-color: rgb(0, 142, 189);
+}

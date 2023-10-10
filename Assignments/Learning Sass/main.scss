@@ -1,0 +1,408 @@
+//Assignments [01--06]
+
+//Assignment 01
+
+// .content {
+// 	> {
+// 		.box {
+// 			padding: 15px;
+// 			> .title {
+// 				font-size: 18px;
+// 			}
+// 		}
+// 	}
+// 	.cat {
+// 		padding: 15px;
+// 	}
+// 	&.premium {
+// 		::before {
+// 			content: "Premium Box";
+// 		}
+// 		::after {
+// 			background-color: #eee;
+// 		}
+// 	}
+// }
+
+//Assignment 02
+
+// .class {
+// 	> .child {
+// 		padding: 10px;
+// 	}
+// }
+
+// .class > {
+// 	.child {
+// 		padding: 10px;
+// 	}
+// }
+
+// .class {
+// 	> {
+// 		.child {
+// 			padding: 10px;
+// 		}
+// 	}
+// }
+
+//Assignment 03
+
+// .class {
+// 	font: {
+// 		weight: bold;
+// 		size: 20px;
+// 	}
+// }
+
+//Assignment 04
+
+// .parent {
+// 	& + .sibling {
+// 		margin: auto {
+// 			top: 10px;
+// 		}
+// 		& ~ .last {
+// 			padding: 10px;
+// 		}
+// 	}
+// }
+
+// /*! the result is :*/
+
+// .parent + .sibling {
+// 	margin: auto;
+// 	margin-top: 10px;
+// }
+// .parent + .sibling ~ .last {
+// 	padding: 10px;
+// }
+
+//Assignment 05
+
+// .widget {
+// 	background-color: white;
+// 	padding: 20px;
+// }
+// .main-border {
+// 	border: 1px solid #ccc;
+// }
+// .my-class {
+// 	@extend .widget;
+// 	@extend .main-border;
+// 	font-weight: bold;
+// 	margin: 20px auto;
+// }
+
+// Assignment 06
+
+// %widget {
+// 	background-color: white;
+// 	padding: 20px;
+// }
+// %main-border {
+// 	border: 1px solid #ccc;
+// }
+// .my-class {
+// 	font-weight: bold;
+// 	margin: 20px auto;
+// }
+
+// .my-class {
+// 	@extend %widget;
+// 	@extend %main-border;
+// }
+
+// Assignment 07
+
+// .box {
+// 	h2,
+// 	p {
+// 		font-size: 20px;
+// 	}
+// }
+// @media (max-width: 757px) {
+// 	.box {
+// 		h2,
+// 		p {
+// 			font-size: 16px;
+// 			span {
+// 				font-weight: bold;
+// 			}
+// 		}
+// 	}
+// }
+
+// Assignment 08
+
+// The Code
+// Do Not Edit Here
+// $red: #e91e63;
+// $green: #009688;
+
+// $link-color: $green;
+// $link-hover: $red;
+
+// Do Not Edit Here
+// .box a {
+// 	color: $link-color;
+// 	&:hover {
+// 		color: $link-hover;
+// 	}
+// }
+
+// Assignment 09
+
+//See Structure in "Project_folder"
+
+// Assignment 10
+
+// $class1: "box";
+// $class2: "holder";
+// $class3: "content";
+
+// .#{$class1} {
+// 	font-size: 20px;
+// }
+// .#{$class1}-#{$class2} {
+// 	font-size: 20px;
+// }
+// .#{$class1}-#{$class2}-#{$class3} {
+// 	font-size: 20px;
+// }
+
+//*******************************************************************************************************************************
+
+//Assignments [07--10]
+
+//Assignment 01
+
+// $main: "school";
+// $child: "box";
+// $language: "en"; // English
+// $gap: 20px;
+
+// .#{$main} {
+// 	padding: $gap;
+// 	direction: if($language == "en", ltr, rtl);
+// 	margin-left: $gap;
+// 	.#{$main}-#{$child} {
+// 		padding: $gap / 2;
+// 	}
+// 	&:hover .#{$main}-#{$child} {
+// 		background-color: #eee;
+// 	}
+// }
+
+//Assignment 02
+
+// SASS Code
+// $main-color: red;
+// $alt-color: blue;
+
+// /* Theme Version: 1.0 */
+// /* Website Theme Main Color Is: #{$main-color} */
+// /* Website Theme Alternate Color Is: #{$alt-color} */
+
+//Assignment 03
+
+// $number: 10;
+// $number: 8;
+// $number: 52;
+
+// .class {
+// 	@if $number > 8 {
+// 		color: blue;
+// 	} @else if $number > 5 {
+// 		color: green;
+// 	} @else {
+// 		color: red;
+// 	}
+// }
+
+//Assignment 04
+
+// $number: 10;
+// $color: red;
+// $theme: light;
+
+// @if $number > 5 and $color == red and $theme != dark {
+// 	.class {
+// 		color: $color;
+// 	}
+// }
+
+//Assignment 05
+
+// SASS Code
+// $number: 10;
+
+// // Output
+// .box {
+// 	@if $number != 8 {
+// 		background-color: #eee;
+// 		@if $number != 9 {
+// 			text-align: center;
+// 		}
+// 	}
+// }
+
+//*******************************************************************************************************************************
+
+//Assignments [11--15]
+
+//Assignment 01
+
+// @mixin arrow($dir) {
+// 	content: "";
+// 	position: absolute;
+// 	border: 20px solid transparent;
+// 	@if $dir == "top" {
+// 		left: 50%;
+// 		transform: translateX(-50%);
+// 		top: -40px;
+// 		border-bottom-color: red;
+// 	} @else if $dir == "right" {
+// 		top: 50%;
+// 		transform: translateY(-50%);
+// 		right: -40px;
+// 		border-left-color: red;
+// 	} @else if $dir == "bottom" {
+// 		left: 50%;
+// 		transform: translateX(-50%);
+// 		bottom: -40px;
+// 		border-top-color: red;
+// 	} @else {
+// 		top: 50%;
+// 		transform: translateY(-50%);
+// 		left: -40px;
+// 		border-right-color: red;
+// 	}
+// }
+
+// .element {
+// 	&:before {
+// 		@include arrow("top");
+// 	}
+// }
+
+//Assignment 02
+
+// @for $i from 1 through 16 {
+// 	.col-#{$i} {
+// 		width: percentage($i / 16);
+// 	}
+// }
+
+//Assignment 03
+
+// $names: "books" 20px red 18, "games" 30px green 18, "dvds" 20px blue;
+
+// @each $name, $pad, $color, $size in $names {
+// 	.#{$name} {
+// 		padding: $pad;
+// 		font-size: #{if($size, $size, 16)}px;
+// 		border-bottom: 2px solid $color;
+// 		color: #444;
+// 	}
+// }
+
+//Assignment 04
+
+// $init: 1;
+
+// @while $init < 6 {
+// 	.circle-#{$init * 100} {
+// 		width: #{$init * 100}px;
+// 		height: #{$init * 100}px;
+// 		border-radius: #{$init * 100 / 2}px;
+// 	}
+// 	$init: $init + 1;
+// }
+
+//Assignment 05
+
+// @for $i from 1 to 6 {
+// 	.circle-#{$i * 100} {
+// 		width: #{$i * 100}px;
+// 		height: #{$i * 100}px;
+// 		border-radius: #{$i * 100 / 2}px;
+// 	}
+// }
+
+//Assignment 06
+
+// @mixin placeholder() {
+// 	&.placeholder {
+// 		@content;
+// 	}
+// 	&:-moz-placeholder {
+// 		@content;
+// 	}
+// 	&::-moz-placeholder {
+// 		@content;
+// 	}
+// 	&:-ms-input-placeholder {
+// 		@content;
+// 	}
+// 	&::-webkit-input-placeholder {
+// 		@content;
+// 	}
+// }
+
+// textarea {
+// 	@include placeholder {
+// 		color: #777;
+// 	}
+// }
+
+//Assignment 07
+
+// @mixin flex-center($width: 400px) {
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// 	width: $width;
+// }
+
+// .box-one {
+// 	@include flex-center(400px);
+// }
+// .box-two {
+// 	@include flex-center;
+// }
+
+//*******************************************************************************************************************************
+
+//Assignments [16--19]
+
+//Assignment 01
+
+// $num: 2;
+// $start: 100;
+
+// @function double($size) {
+// 	@return $size * $num;
+// }
+
+// @for $i from 1 to 6 {
+// 	.box-#{$start} {
+// 		width: #{$start}px;
+// 		height: double($start) px;
+// 	}
+// 	$start: double($start);
+// }
+
+//Assignment 02
+
+// @function get-total($nums...) {
+// 	$start: 0;
+// 	@each $num in $nums {
+// 		$start: $start + $num;
+// 	}
+// 	@return $start;
+// }
+// .box {
+// 	top: get-total(100, 50, 20);
+// 	right: get-total(100, 50);
+// }

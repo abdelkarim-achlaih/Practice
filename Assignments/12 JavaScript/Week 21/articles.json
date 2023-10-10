@@ -1,0 +1,37 @@
+[
+	{
+		"id": 1,
+		"author": "Abdelkarim",
+		"category": "Sport",
+		"title": "Hello world",
+		"content": "Article Number 1 Body"
+	},
+	{
+		"id": 2,
+		"author": "Zohir Sheikh",
+		"category": "Sport",
+		"title": "Hello world",
+		"content": "Article Number 2 Body"
+	},
+	{
+		"id": 3,
+		"author": "Abderrahim",
+		"category": "Sport",
+		"title": "Hello world",
+		"content": "Article Number 3 Body"
+	},
+	{
+		"id": 4,
+		"author": "Hamid",
+		"category": "Sport",
+		"title": "Hello world",
+		"content": "Article Number 4 Body"
+	},
+	{
+		"id": 5,
+		"author": "Walid",
+		"category": "Sport",
+		"title": "Hello world",
+		"content": "Article Number 5 Body"
+	}
+]
