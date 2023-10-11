@@ -52,26 +52,40 @@ let context = canvas.getContext("2d");
 
 // ********************** Drawing Multiple Things **********************
 
+// context.beginPath();
+// context.moveTo(160, 130);
+// context.lineTo(75, 200);
+// context.lineTo(150, 275);
+// context.lineTo(250, 230);
+// context.closePath();
+
+// context.lineWidth = 5;
+// context.strokeStyle = "#333333";
+// context.fillStyle = "#FFCC00";
+
+// context.fill();
+// context.stroke();
+
+// context.beginPath();
+// context.moveTo(50, 50);
+// context.lineTo(450, 300);
+// context.closePath();
+
+// context.lineWidth = 45;
+// context.strokeStyle = "steelblue";
+
+// context.stroke();
+
+// ********************** Drawing Rectangles (and Squares) **********************
+
 context.beginPath();
-context.moveTo(160, 130);
-context.lineTo(75, 200);
-context.lineTo(150, 275);
-context.lineTo(250, 230);
+context.rect(20, 20, 200, 150);
 context.closePath();
 
-context.lineWidth = 5;
-context.strokeStyle = "#333333";
-context.fillStyle = "#FFCC00";
+context.lineWidth = 10;
+context.strokeStyle = "#666666";
 
+context.stroke();
+
+context.fillStyle = "#51DCFF";
 context.fill();
-context.stroke();
-
-context.beginPath();
-context.moveTo(50, 50);
-context.lineTo(450, 300);
-context.closePath();
-
-context.lineWidth = 45;
-context.strokeStyle = "steelblue";
-
-context.stroke();
