@@ -2,6 +2,7 @@ let canvas = document.getElementById("our-canvas");
 
 let context = canvas.getContext("2d");
 
+// ------------------------------------------------------------ Elzero Web School
 // Videos [01 -- 06]
 
 // let gradient = context.createLinearGradient(0, 0, 200, 0);
@@ -16,3 +17,20 @@ let context = canvas.getContext("2d");
 // context.strokeText("hello", 100, 170);
 
 // Videos [06 -- 10]
+
+// --------------------------------------------------------------------------- Kirupa -----------------------
+
+// ********************** Drawing Basics / Lines **********************
+
+context.moveTo(160, 130);
+context.lineTo(75, 200);
+context.lineTo(150, 275);
+context.lineTo(250, 230);
+context.closePath();
+
+context.lineWidth = 5;
+context.strokeStyle = "#333333";
+context.fillStyle = "#FFCC00";
+
+context.fill();
+context.stroke();
