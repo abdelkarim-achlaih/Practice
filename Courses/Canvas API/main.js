@@ -37,15 +37,41 @@ let context = canvas.getContext("2d");
 
 // ********************** Drawing Curves **********************
 
-context.moveTo(50, 130);
+// context.moveTo(50, 130);
 // context.quadraticCurveTo(200, 400, 490, 100);
-context.bezierCurveTo(300, 50, 200, 400, 490, 100);
-context.lineTo(490, 300);
-context.lineTo(50, 300);
+// context.bezierCurveTo(300, 50, 200, 400, 490, 100);
+// context.lineTo(490, 300);
+// context.lineTo(50, 300);
+// context.closePath();
+
+// context.lineWidth = 15;
+// context.strokeStyle = "#FFCC00";
+// context.fillStyle = "#FFDE58";
+// context.stroke();
+// context.fill();
+
+// ********************** Drawing Multiple Things **********************
+
+context.beginPath();
+context.moveTo(160, 130);
+context.lineTo(75, 200);
+context.lineTo(150, 275);
+context.lineTo(250, 230);
 context.closePath();
 
-context.lineWidth = 15;
-context.strokeStyle = "#FFCC00";
-context.fillStyle = "#FFDE58";
-context.stroke();
+context.lineWidth = 5;
+context.strokeStyle = "#333333";
+context.fillStyle = "#FFCC00";
+
 context.fill();
+context.stroke();
+
+context.beginPath();
+context.moveTo(50, 50);
+context.lineTo(450, 300);
+context.closePath();
+
+context.lineWidth = 45;
+context.strokeStyle = "steelblue";
+
+context.stroke();
