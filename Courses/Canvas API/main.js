@@ -78,14 +78,40 @@ let context = canvas.getContext("2d");
 
 // ********************** Drawing Rectangles (and Squares) **********************
 
+// context.beginPath();
+// context.rect(20, 20, 200, 150);
+// context.closePath();
+
+// context.lineWidth = 10;
+// context.strokeStyle = "#666666";
+
+// context.stroke();
+
+// context.fillStyle = "#51DCFF";
+// context.fill();
+
+// ********************** Drawing Triangles **********************
+
 context.beginPath();
-context.rect(20, 20, 200, 150);
+context.moveTo(100, 100);
+context.lineTo(100, 300);
+context.lineTo(300, 300);
+context.closePath();
+
+// Equilateral Triangles
+
+let height = 200 * Math.cos(Math.PI / 6);
+
+context.beginPath();
+context.moveTo(100, 300);
+context.lineTo(300, 300);
+context.lineTo(200, 300 - height);
 context.closePath();
 
 context.lineWidth = 10;
 context.strokeStyle = "#666666";
-
 context.stroke();
 
-context.fillStyle = "#51DCFF";
+// the fill color
+context.fillStyle = "#FFCC00";
 context.fill();
