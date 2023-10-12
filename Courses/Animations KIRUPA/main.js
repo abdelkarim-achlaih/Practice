@@ -43,4 +43,3 @@ circle.animate(
 		iterations: Infinity,
 	}
 );
-circle.animate([],)

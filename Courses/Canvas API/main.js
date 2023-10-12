@@ -130,31 +130,40 @@ let context = canvas.getContext("2d");
 
 // ********************** Working with Colors -- Gradients **********************
 
-context.beginPath();
-context.rect(75, 100, 250, 150);
+// context.beginPath();
+// context.rect(75, 100, 250, 150);
 
-let linGradient = context.createLinearGradient(75, 0, 325, 0);
+// let linGradient = context.createLinearGradient(75, 0, 325, 0);
 
-linGradient.addColorStop(0.1, "#DDDDDD");
-linGradient.addColorStop(0.75, "#2D7BEC");
-linGradient.addColorStop(0.9, "#31FFFF");
+// linGradient.addColorStop(0.1, "#DDDDDD");
+// linGradient.addColorStop(0.75, "#2D7BEC");
+// linGradient.addColorStop(0.9, "#31FFFF");
 
-context.fillStyle = linGradient;
-context.fill();
+// context.fillStyle = linGradient;
+// context.fill();
 
-context.lineWidth = 5;
-context.strokeStyle = "#535353";
-context.stroke();
+// context.lineWidth = 5;
+// context.strokeStyle = "#535353";
+// context.stroke();
 
-let radGradient = context.createRadialGradient(150, 175, 0, 150, 175, 100);
+// let radGradient = context.createRadialGradient(150, 175, 0, 150, 175, 100);
 
-radGradient.addColorStop(0, "#FFCC00");
-radGradient.addColorStop(0.5, "#B4CB02");
-radGradient.addColorStop(1, "red");
+// radGradient.addColorStop(0, "#FFCC00");
+// radGradient.addColorStop(0.5, "#B4CB02");
+// radGradient.addColorStop(1, "red");
 
-context.fillStyle = radGradient;
-context.fill();
+// context.fillStyle = radGradient;
+// context.fill();
 
-context.lineWidth = 5;
-context.strokeStyle = "#535353";
-context.stroke();
+// context.lineWidth = 5;
+// context.strokeStyle = "#535353";
+// context.stroke();
+
+// ********************** Drawing Text **********************
+
+context.font = "bold 96px Helvetica, Arial, sans-serif";
+context.textBaseline = "alphabetic"; // Top, hanging, middle, [alphabetic], ideographic, and bottom
+context.fillStyle = "steelblue";
+context.fillText("Canvas!", 40, 125);
+context.strokeStyle = "#173b79";
+context.strokeText("Canvas!", 40, 275);
