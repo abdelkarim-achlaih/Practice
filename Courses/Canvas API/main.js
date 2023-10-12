@@ -161,9 +161,20 @@ let context = canvas.getContext("2d");
 
 // ********************** Drawing Text **********************
 
-context.font = "bold 96px Helvetica, Arial, sans-serif";
-context.textBaseline = "alphabetic"; // Top, hanging, middle, [alphabetic], ideographic, and bottom
-context.fillStyle = "steelblue";
-context.fillText("Canvas!", 40, 125);
-context.strokeStyle = "#173b79";
-context.strokeText("Canvas!", 40, 275);
+// context.font = "bold 96px Helvetica, Arial, sans-serif";
+// context.textBaseline = "alphabetic"; // Top, hanging, middle, [alphabetic], ideographic, and bottom
+// context.fillStyle = "steelblue";
+// context.fillText("Canvas!", 40, 125);
+// context.strokeStyle = "#173b79";
+// context.strokeText("Canvas!", 40, 275);
+
+// ********************** Drawing Images **********************
+
+var myImage = new Image();
+myImage.src = "images/orange.svg";
+
+myImage.addEventListener("load", loadImage, false);
+
+function loadImage(e) {
+	context.drawImage(myImage, 0, 0, 150, 150);
+}
