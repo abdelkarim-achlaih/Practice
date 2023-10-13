@@ -170,11 +170,98 @@ let context = canvas.getContext("2d");
 
 // ********************** Drawing Images **********************
 
-var myImage = new Image();
-myImage.src = "images/orange.svg";
+// let myImage = new Image();
+// myImage.src = "images/orange.svg";
 
-myImage.addEventListener("load", loadImage, false);
+// myImage.addEventListener("load", loadImage, false);
 
-function loadImage(e) {
-	context.drawImage(myImage, 0, 0, 150, 150);
+// function loadImage(e) {
+// 	context.drawImage(myImage, 0, 0, 150, 150);
+// }
+
+// ********************** From Pixels to Objects **********************
+
+// Make the code more reusable with functions
+
+// function draw(xPos, yPos, radius, color) {
+// 	context.beginPath();
+
+// 	context.arc(xPos, yPos, radius, 0, 2 * Math.PI, true);
+// 	context.closePath();
+
+// 	context.fillStyle = color;
+// 	context.fill();
+// }
+
+// function drawCircle() {
+// 	draw(200, 150, 75, "#51D6FF");
+// }
+// drawCircle();
+
+// Make the code more reusable with classses and objects
+
+class Circle {
+	constructor(xPos, yPos, radius, color) {
+		this.radius = radius;
+		this.xPos = xPos;
+		this.yPos = yPos;
+		this.color = color;
+	}
+	static clearAll(canvas, context) {
+		context.clearRect(0, 0, canvas.width, canvas.height);
+	}
+	setPosition(xPos, yPos) {
+		this.xPos = xPos;
+		this.yPos = yPos;
+	}
+
+	setRadius(radius) {
+		this.radius = radius;
+	}
+
+	setColor(color) {
+		this.color = color;
+	}
+	draw() {
+		context.beginPath();
+
+		context.arc(this.xPos, this.yPos, this.radius, 0, 2 * Math.PI, true);
+		context.closePath();
+
+		context.fillStyle = this.color;
+		context.fill();
+	}
+}
+// function drawCircle() {
+// 	let blueCircle = new Circle(200, 150, 75, "#51D6FF");
+// 	blueCircle.draw();
+
+// 	Circle.clearAll(canvas, context);
+// 	blueCircle.setPosition(50, 50);
+// 	blueCircle.draw();
+// }
+// drawCircle();
+let circles = [];
+function drawCircle() {
+	for (let i = 0; i < 40; i++) {
+		let r = Math.round(15 + Math.random() * 150);
+		let xPos = Math.round(Math.random() * canvas.width);
+		let yPos = Math.round(Math.random() * canvas.height);
+
+		let newCircle = new Circle(xPos, yPos, r, "rgba(41, 170, 255, .1)");
+		newCircle.draw();
+		circles.push(newCircle); //keeping track of these objects for access and modification later.
+	}
+}
+
+drawCircle();
+
+canvas.addEventListener("click", changeColor, false);
+
+function changeColor(e) {
+	Circle.clearAll(canvas, context);
+	circles.forEach((circle) => {
+		circle.setColor("rgba(251, 80, 18, .3)");
+		circle.draw();
+	});
 }
