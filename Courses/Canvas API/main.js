@@ -268,32 +268,104 @@ let context = canvas.getContext("2d");
 
 // ********************** Creating Animations on the Canvas **********************
 
+// let canvasWidth = canvas.width;
+// let canvasHeight = canvas.height;
+// let xPos = -500;
+// function drawCircle() {
+// 	context.clearRect(0, 0, canvasWidth, canvasHeight);
+
+// 	// color in the background
+// 	context.fillStyle = "#F8F8F8";
+// 	context.fillRect(0, 0, canvasWidth, canvasHeight);
+
+// 	// draw the circle
+// 	context.beginPath();
+
+// 	let radius = 175;
+// 	context.arc(xPos, 225, radius, 0, Math.PI * 2, false);
+// 	context.closePath();
+
+// 	context.fillStyle = "#FFCC00";
+// 	context.fill();
+
+// 	context.lineWidth = 10;
+// 	context.strokeStyle = "#DCB001";
+// 	context.stroke();
+
+// 	xPos > 1000 ? (xPos = -500) : (xPos += 5);
+
+// 	requestAnimationFrame(drawCircle);
+// }
+// drawCircle();
+
+// ********************** Animating Many Things on the Canvas **********************
 let canvasWidth = canvas.width;
 let canvasHeight = canvas.height;
-let xPos = -500;
-function drawCircle() {
-	context.clearRect(0, 0, canvasWidth, canvasHeight);
 
-	// color in the background
-	context.fillStyle = "#F8F8F8";
-	context.fillRect(0, 0, canvasWidth, canvasHeight);
+class Circle {
+	constructor(x, y, radius) {
+		this.x = x;
+		this.y = y;
+		this.radius = radius;
+		this.counter = 0;
+		this.radiusAnim = 100;
+		this.opacity = 0.05 + Math.random() * 0.5;
+		this.speed = 0.1 + Math.random() * 2;
+		Math.floor(Math.random() * 2) === 0 ? (this.sign = -1) : (this.sign = 1);
+	}
 
-	// draw the circle
-	context.beginPath();
+	static clearAll(canvas, context) {
+		context.clearRect(0, 0, canvas.width, canvas.height);
+	}
 
-	let radius = 175;
-	context.arc(xPos, 225, radius, 0, Math.PI * 2, false);
-	context.closePath();
+	update() {
+		this.counter += this.speed * this.sign;
 
-	context.fillStyle = "#FFCC00";
-	context.fill();
+		let angle = this.counter / this.radius;
 
-	context.lineWidth = 10;
-	context.strokeStyle = "#DCB001";
-	context.stroke();
+		context.beginPath();
 
-	xPos > 1000 ? (xPos = -500) : (xPos += 5);
+		context.arc(
+			this.x + this.radiusAnim * Math.sin(angle),
+			this.y + this.radiusAnim * (1 - Math.cos(angle)),
+			this.radius,
+			0,
+			2 * Math.PI,
+			false
+		);
 
-	requestAnimationFrame(drawCircle);
+		context.closePath();
+
+		context.fillStyle = `rgba(185, 211, 238, ${this.opacity})`;
+		context.fill();
+	}
 }
-drawCircle();
+
+let maxRadius = 100;
+let circlesNum = 100;
+let circles = [];
+
+function setupCircles() {
+	for (let i = 0; i < circlesNum; i++) {
+		let xPosi = Math.random() * canvasWidth;
+		let yPosi = Math.random() * canvasHeight;
+		let radius = Math.random() * maxRadius;
+
+		let newCircle = new Circle(xPosi, yPosi, radius);
+
+		circles.push(newCircle);
+	}
+	draw();
+}
+
+setupCircles();
+
+function draw() {
+	Circle.clearAll(canvas, context);
+
+	circles.forEach((circle) => {
+		circle.update();
+	});
+
+	requestAnimationFrame(draw);
+}
