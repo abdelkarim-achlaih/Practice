@@ -299,73 +299,104 @@ let context = canvas.getContext("2d");
 // drawCircle();
 
 // ********************** Animating Many Things on the Canvas **********************
-let canvasWidth = canvas.width;
-let canvasHeight = canvas.height;
 
-class Circle {
-	constructor(x, y, radius) {
-		this.x = x;
-		this.y = y;
-		this.radius = radius;
-		this.counter = 0;
-		this.radiusAnim = 100;
-		this.opacity = 0.05 + Math.random() * 0.5;
-		this.speed = 0.1 + Math.random() * 2;
-		Math.floor(Math.random() * 2) === 0 ? (this.sign = -1) : (this.sign = 1);
-	}
+// let canvasWidth = canvas.width;
+// let canvasHeight = canvas.height;
 
-	static clearAll(canvas, context) {
-		context.clearRect(0, 0, canvas.width, canvas.height);
-	}
+// class Circle {
+// 	constructor(x, y, radius) {
+// 		this.x = x;
+// 		this.y = y;
+// 		this.radius = radius;
+// 		this.counter = 0;
+// 		this.radiusAnim = 100;
+// 		this.opacity = 0.05 + Math.random() * 0.5;
+// 		this.speed = 0.1 + Math.random() * 2;
+// 		Math.floor(Math.random() * 2) === 0 ? (this.sign = -1) : (this.sign = 1);
+// 	}
 
-	update() {
-		this.counter += this.speed * this.sign;
+// 	static clearAll(canvas, context) {
+// 		context.clearRect(0, 0, canvas.width, canvas.height);
+// 	}
 
-		let angle = this.counter / this.radius;
+// 	update() {
+// 		this.counter += this.speed * this.sign;
 
-		context.beginPath();
+// 		let angle = this.counter / this.radius;
 
-		context.arc(
-			this.x + this.radiusAnim * Math.sin(angle),
-			this.y + this.radiusAnim * (1 - Math.cos(angle)),
-			this.radius,
-			0,
-			2 * Math.PI,
-			false
-		);
+// 		context.beginPath();
 
-		context.closePath();
+// 		context.arc(
+// 			this.x + this.radiusAnim * Math.sin(angle),
+// 			this.y + this.radiusAnim * (1 - Math.cos(angle)),
+// 			this.radius,
+// 			0,
+// 			2 * Math.PI,
+// 			false
+// 		);
 
-		context.fillStyle = `rgba(185, 211, 238, ${this.opacity})`;
-		context.fill();
-	}
-}
+// 		context.closePath();
 
-let maxRadius = 100;
-let circlesNum = 100;
-let circles = [];
+// 		context.fillStyle = `rgba(185, 211, 238, ${this.opacity})`;
+// 		context.fill();
+// 	}
+// }
 
-function setupCircles() {
-	for (let i = 0; i < circlesNum; i++) {
-		let xPosi = Math.random() * canvasWidth;
-		let yPosi = Math.random() * canvasHeight;
-		let radius = Math.random() * maxRadius;
+// let maxRadius = 100;
+// let circlesNum = 100;
+// let circles = [];
 
-		let newCircle = new Circle(xPosi, yPosi, radius);
+// function setupCircles() {
+// 	for (let i = 0; i < circlesNum; i++) {
+// 		let xPosi = Math.random() * canvasWidth;
+// 		let yPosi = Math.random() * canvasHeight;
+// 		let radius = Math.random() * maxRadius;
 
-		circles.push(newCircle);
-	}
-	draw();
-}
+// 		let newCircle = new Circle(xPosi, yPosi, radius);
 
-setupCircles();
+// 		circles.push(newCircle);
+// 	}
+// 	draw();
+// }
+
+// setupCircles();
+
+// function draw() {
+// 	Circle.clearAll(canvas, context);
+
+// 	circles.forEach((circle) => {
+// 		circle.update();
+// 	});
+
+// 	requestAnimationFrame(draw);
+// }
+
+// ********************** Ensuring our Canvas Visuals Look Good on Retina/High-DPI Screens **********************
+
+// get current size of the canvas
+let rect = canvas.getBoundingClientRect();
+
+// increase the actual size of our canvas
+canvas.width = rect.width * devicePixelRatio;
+canvas.height = rect.height * devicePixelRatio;
+
+// // // ensure all drawing operations are scaled
+context.scale(devicePixelRatio, devicePixelRatio);
+
+// // scale everything down using CSS
+canvas.style.width = rect.width + "px";
+canvas.style.height = rect.height + "px";
 
 function draw() {
-	Circle.clearAll(canvas, context);
+	// draw the colored region
+	context.beginPath();
+	context.arc(200, 200, 93, 0, 2 * Math.PI, true);
+	context.fillStyle = "#E2FFC6";
+	context.fill();
 
-	circles.forEach((circle) => {
-		circle.update();
-	});
-
-	requestAnimationFrame(draw);
+	// draw the stroke
+	context.lineWidth = 20;
+	context.strokeStyle = "#66CC01";
+	context.stroke();
 }
+draw();
