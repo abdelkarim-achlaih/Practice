@@ -200,68 +200,100 @@ let context = canvas.getContext("2d");
 
 // Make the code more reusable with classses and objects
 
-class Circle {
-	constructor(xPos, yPos, radius, color) {
-		this.radius = radius;
-		this.xPos = xPos;
-		this.yPos = yPos;
-		this.color = color;
-	}
-	static clearAll(canvas, context) {
-		context.clearRect(0, 0, canvas.width, canvas.height);
-	}
-	setPosition(xPos, yPos) {
-		this.xPos = xPos;
-		this.yPos = yPos;
-	}
+// class Circle {
+// 	constructor(xPos, yPos, radius, color) {
+// 		this.radius = radius;
+// 		this.xPos = xPos;
+// 		this.yPos = yPos;
+// 		this.color = color;
+// 	}
+// 	static clearAll(canvas, context) {
+// 		context.clearRect(0, 0, canvas.width, canvas.height);
+// 	}
+// 	setPosition(xPos, yPos) {
+// 		this.xPos = xPos;
+// 		this.yPos = yPos;
+// 	}
 
-	setRadius(radius) {
-		this.radius = radius;
-	}
+// 	setRadius(radius) {
+// 		this.radius = radius;
+// 	}
 
-	setColor(color) {
-		this.color = color;
-	}
-	draw() {
-		context.beginPath();
+// 	setColor(color) {
+// 		this.color = color;
+// 	}
+// 	draw() {
+// 		context.beginPath();
 
-		context.arc(this.xPos, this.yPos, this.radius, 0, 2 * Math.PI, true);
-		context.closePath();
+// 		context.arc(this.xPos, this.yPos, this.radius, 0, 2 * Math.PI, true);
+// 		context.closePath();
 
-		context.fillStyle = this.color;
-		context.fill();
-	}
-}
-// function drawCircle() {
-// 	let blueCircle = new Circle(200, 150, 75, "#51D6FF");
-// 	blueCircle.draw();
-
-// 	Circle.clearAll(canvas, context);
-// 	blueCircle.setPosition(50, 50);
-// 	blueCircle.draw();
+// 		context.fillStyle = this.color;
+// 		context.fill();
+// 	}
 // }
+// // function drawCircle() {
+// // 	let blueCircle = new Circle(200, 150, 75, "#51D6FF");
+// // 	blueCircle.draw();
+
+// // 	Circle.clearAll(canvas, context);
+// // 	blueCircle.setPosition(50, 50);
+// // 	blueCircle.draw();
+// // }
+// // drawCircle();
+// let circles = [];
+// function drawCircle() {
+// 	for (let i = 0; i < 40; i++) {
+// 		let r = Math.round(15 + Math.random() * 150);
+// 		let xPos = Math.round(Math.random() * canvas.width);
+// 		let yPos = Math.round(Math.random() * canvas.height);
+
+// 		let newCircle = new Circle(xPos, yPos, r, "rgba(41, 170, 255, .1)");
+// 		newCircle.draw();
+// 		circles.push(newCircle); //keeping track of these objects for access and modification later.
+// 	}
+// }
+
 // drawCircle();
-let circles = [];
+
+// canvas.addEventListener("click", changeColor, false);
+
+// function changeColor(e) {
+// 	Circle.clearAll(canvas, context);
+// 	circles.forEach((circle) => {
+// 		circle.setColor("rgba(251, 80, 18, .3)");
+// 		circle.draw();
+// 	});
+// }
+
+// ********************** Creating Animations on the Canvas **********************
+
+let canvasWidth = canvas.width;
+let canvasHeight = canvas.height;
+let xPos = -500;
 function drawCircle() {
-	for (let i = 0; i < 40; i++) {
-		let r = Math.round(15 + Math.random() * 150);
-		let xPos = Math.round(Math.random() * canvas.width);
-		let yPos = Math.round(Math.random() * canvas.height);
+	context.clearRect(0, 0, canvasWidth, canvasHeight);
 
-		let newCircle = new Circle(xPos, yPos, r, "rgba(41, 170, 255, .1)");
-		newCircle.draw();
-		circles.push(newCircle); //keeping track of these objects for access and modification later.
-	}
+	// color in the background
+	context.fillStyle = "#F8F8F8";
+	context.fillRect(0, 0, canvasWidth, canvasHeight);
+
+	// draw the circle
+	context.beginPath();
+
+	let radius = 175;
+	context.arc(xPos, 225, radius, 0, Math.PI * 2, false);
+	context.closePath();
+
+	context.fillStyle = "#FFCC00";
+	context.fill();
+
+	context.lineWidth = 10;
+	context.strokeStyle = "#DCB001";
+	context.stroke();
+
+	xPos > 1000 ? (xPos = -500) : (xPos += 5);
+
+	requestAnimationFrame(drawCircle);
 }
-
 drawCircle();
-
-canvas.addEventListener("click", changeColor, false);
-
-function changeColor(e) {
-	Circle.clearAll(canvas, context);
-	circles.forEach((circle) => {
-		circle.setColor("rgba(251, 80, 18, .3)");
-		circle.draw();
-	});
-}
