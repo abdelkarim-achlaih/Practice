@@ -374,29 +374,81 @@ let context = canvas.getContext("2d");
 // ********************** Ensuring our Canvas Visuals Look Good on Retina/High-DPI Screens **********************
 
 // get current size of the canvas
-let rect = canvas.getBoundingClientRect();
+// let rect = canvas.getBoundingClientRect();
 
-// increase the actual size of our canvas
-canvas.width = rect.width * devicePixelRatio;
-canvas.height = rect.height * devicePixelRatio;
+// // increase the actual size of our canvas
+// canvas.width = rect.width * devicePixelRatio;
+// canvas.height = rect.height * devicePixelRatio;
 
-// // // ensure all drawing operations are scaled
-context.scale(devicePixelRatio, devicePixelRatio);
+// // // // ensure all drawing operations are scaled
+// context.scale(devicePixelRatio, devicePixelRatio);
 
-// // scale everything down using CSS
-canvas.style.width = rect.width + "px";
-canvas.style.height = rect.height + "px";
+// // // scale everything down using CSS
+// canvas.style.width = rect.width + "px";
+// canvas.style.height = rect.height + "px";
 
-function draw() {
-	// draw the colored region
+// function draw() {
+// 	// draw the colored region
+// 	context.beginPath();
+// 	context.arc(200, 200, 93, 0, 2 * Math.PI, true);
+// 	context.fillStyle = "#E2FFC6";
+// 	context.fill();
+
+// 	// draw the stroke
+// 	context.lineWidth = 20;
+// 	context.strokeStyle = "#66CC01";
+// 	context.stroke();
+// }
+// draw();
+
+// ********************** Creating Motion Trails **********************
+let xPos = -50;
+let yPos = 150;
+
+function drawCircle(xPos, yPos, opacity) {
 	context.beginPath();
-	context.arc(200, 200, 93, 0, 2 * Math.PI, true);
-	context.fillStyle = "#E2FFC6";
+	context.arc(xPos, yPos, 50, 0, 2 * Math.PI, true);
+	context.closePath();
+	context.fillStyle = `rgba(204, 102, 153, ${opacity})`;
 	context.fill();
-
-	// draw the stroke
-	context.lineWidth = 20;
-	context.strokeStyle = "#66CC01";
-	context.stroke();
 }
-draw();
+
+let options = {
+	spacer: 10,
+	density: 10,
+};
+
+let counter = options.spacer;
+let oldPositions = [];
+
+function update() {
+	context.clearRect(0, 0, canvas.width, canvas.height);
+
+	drawCircle(xPos, yPos, 1);
+
+	if (counter === options.spacer) {
+		oldPositions.push({ xPos, yPos });
+		counter = 0;
+	}
+
+	counter++;
+
+	if (oldPositions.length > options.density) {
+		oldPositions.shift();
+	}
+
+	oldPositions.forEach((pos, index) => {
+		drawCircle(pos.xPos, pos.yPos, (index + 1) / (2 * options.density));
+	});
+
+	xPos > 600 ? (xPos = -100) : (xPos += 3);
+}
+
+function animateCircle() {
+	setTimeout(() => {
+		update();
+		requestAnimationFrame(animateCircle);
+	}, 10);
+}
+
+animateCircle();
