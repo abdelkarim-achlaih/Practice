@@ -480,18 +480,22 @@ let context = canvas.getContext("2d");
 // ********************** Working with the Mouse **********************
 
 canvas.addEventListener("mousemove", mouseMoving, false);
-
+let xPos = 0;
+let yPos = 0;
 function mouseMoving(e) {
+	xPos = e.clientX - getDimensions(canvas).x;
+	yPos = e.clientY - getDimensions(canvas).y;
+}
+function draw() {
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	context.beginPath();
-	let xPos = e.clientX - getDimensions(canvas).x;
-	let yPos = e.clientY - getDimensions(canvas).y;
 	context.arc(xPos, yPos, 50, 0, 2 * Math.PI, true);
 	context.closePath();
 	context.fillStyle = "red";
 	context.fill();
+	requestAnimationFrame(draw);
 }
-
+draw();
 function getDimensions(node) {
 	return {
 		x: node.getBoundingClientRect().left,
