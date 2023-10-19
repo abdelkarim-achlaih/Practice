@@ -477,35 +477,24 @@ let context = canvas.getContext("2d");
 // 	requestAnimationFrame(loadImage);
 // }
 
+// ********************** Working with the Mouse **********************
+
 canvas.addEventListener("mousemove", mouseMoving, false);
-let dimensionsDiv = document.querySelector(".dimensions");
+
 function mouseMoving(e) {
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	context.beginPath();
-	context.arc(
-		e.clientX - getDimensions(canvas).x,
-		e.clientY - getDimensions(canvas).y,
-		50,
-		0,
-		2 * Math.PI,
-		true
-	);
+	let xPos = e.clientX - getDimensions(canvas).x;
+	let yPos = e.clientY - getDimensions(canvas).y;
+	context.arc(xPos, yPos, 50, 0, 2 * Math.PI, true);
 	context.closePath();
 	context.fillStyle = "red";
 	context.fill();
-	dimensionsDiv.innerHTML = `
-  ${getDimensions(canvas).x + e.clientX} 
-  ${getDimensions(canvas).y + e.clientY}`;
 }
 
 function getDimensions(node) {
-	let totalHeight = 0;
-	let totalWidth = 0;
-	while (node.parentElement.tagName !== "BODY") {
-		totalWidth += parseFloat(node.parentElement.style.paddingLeft);
-		totalHeight += parseFloat(node.parentElement.style.paddingTop);
-		node = node.parentElement;
-	}
-	let dimensions = { x: totalWidth, y: totalHeight };
-	return dimensions;
+	return {
+		x: node.getBoundingClientRect().left,
+		y: node.getBoundingClientRect().top,
+	};
 }
