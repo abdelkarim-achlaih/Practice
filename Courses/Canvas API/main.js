@@ -456,23 +456,56 @@ let context = canvas.getContext("2d");
 
 // ********************** Creating Sprite Animations **********************
 
-let sheet = new Image();
-sheet.src = "images/sprites_final.png";
-sheet.addEventListener("load", loadImage, false);
+// let sheet = new Image();
+// sheet.src = "images/sprites_final.png";
+// sheet.addEventListener("load", loadImage, false);
 
-let startX = 0;
-let totalFrames = 24;
-let frames = 0;
+// let startX = 0;
+// let totalFrames = 24;
+// let frames = 0;
 
-function loadImage(e) {
-	context.clearRect(120, 25, 300, 300);
-	context.drawImage(sheet, startX, 0, 300, 300, 120, 25, 300, 300);
-	startX += 301;
-	frames++;
-	if (frames == totalFrames) {
-		startX = 0;
-		frames = 0;
-	} else {
+// function loadImage(e) {
+// 	context.clearRect(120, 25, 300, 300);
+// 	context.drawImage(sheet, startX, 0, 300, 300, 120, 25, 300, 300);
+// 	startX += 301;
+// 	frames++;
+// 	if (frames == totalFrames) {
+// 		startX = 0;
+// 		frames = 0;
+// 	} else {
+// 	}
+// 	requestAnimationFrame(loadImage);
+// }
+
+canvas.addEventListener("mousemove", mouseMoving, false);
+let dimensionsDiv = document.querySelector(".dimensions");
+function mouseMoving(e) {
+	context.clearRect(0, 0, canvas.width, canvas.height);
+	context.beginPath();
+	context.arc(
+		e.clientX - getDimensions(canvas).x,
+		e.clientY - getDimensions(canvas).y,
+		50,
+		0,
+		2 * Math.PI,
+		true
+	);
+	context.closePath();
+	context.fillStyle = "red";
+	context.fill();
+	dimensionsDiv.innerHTML = `
+  ${getDimensions(canvas).x + e.clientX} 
+  ${getDimensions(canvas).y + e.clientY}`;
+}
+
+function getDimensions(node) {
+	let totalHeight = 0;
+	let totalWidth = 0;
+	while (node.parentElement.tagName !== "BODY") {
+		totalWidth += parseFloat(node.parentElement.style.paddingLeft);
+		totalHeight += parseFloat(node.parentElement.style.paddingTop);
+		node = node.parentElement;
 	}
-	requestAnimationFrame(loadImage);
+	let dimensions = { x: totalWidth, y: totalHeight };
+	return dimensions;
 }
