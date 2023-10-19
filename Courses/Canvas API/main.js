@@ -402,53 +402,77 @@ let context = canvas.getContext("2d");
 // draw();
 
 // ********************** Creating Motion Trails **********************
-let xPos = -50;
-let yPos = 150;
 
-function drawCircle(xPos, yPos, opacity) {
-	context.beginPath();
-	context.arc(xPos, yPos, 50, 0, 2 * Math.PI, true);
-	context.closePath();
-	context.fillStyle = `rgba(204, 102, 153, ${opacity})`;
-	context.fill();
-}
+// let xPos = -50;
+// let yPos = 150;
 
-let options = {
-	spacer: 10,
-	density: 10,
-};
+// function drawCircle(xPos, yPos, opacity) {
+// 	context.beginPath();
+// 	context.arc(xPos, yPos, 50, 0, 2 * Math.PI, true);
+// 	context.closePath();
+// 	context.fillStyle = `rgba(204, 102, 153, ${opacity})`;
+// 	context.fill();
+// }
 
-let counter = options.spacer;
-let oldPositions = [];
+// let options = {
+// 	spacer: 10,
+// 	density: 10,
+// };
 
-function update() {
-	context.clearRect(0, 0, canvas.width, canvas.height);
+// let counter = options.spacer;
+// let oldPositions = [];
 
-	drawCircle(xPos, yPos, 1);
+// function update() {
+// 	context.clearRect(0, 0, canvas.width, canvas.height);
 
-	if (counter === options.spacer) {
-		oldPositions.push({ xPos, yPos });
-		counter = 0;
+// 	drawCircle(xPos, yPos, 1);
+
+// 	if (counter === options.spacer) {
+// 		oldPositions.push({ xPos, yPos });
+// 		counter = 0;
+// 	}
+
+// 	counter++;
+
+// 	if (oldPositions.length > options.density) {
+// 		oldPositions.shift();
+// 	}
+
+// 	oldPositions.forEach((pos, index) => {
+// 		drawCircle(pos.xPos, pos.yPos, (index + 1) / (2 * options.density));
+// 	});
+
+// 	xPos > 600 ? (xPos = -100) : (xPos += 3);
+// }
+
+// function animateCircle() {
+// 	setTimeout(() => {
+// 		update();
+// 		requestAnimationFrame(animateCircle);
+// 	}, 10);
+// }
+
+// animateCircle();
+
+// ********************** Creating Sprite Animations **********************
+
+let sheet = new Image();
+sheet.src = "images/sprites_final.png";
+sheet.addEventListener("load", loadImage, false);
+
+let startX = 0;
+let totalFrames = 24;
+let frames = 0;
+
+function loadImage(e) {
+	context.clearRect(120, 25, 300, 300);
+	context.drawImage(sheet, startX, 0, 300, 300, 120, 25, 300, 300);
+	startX += 301;
+	frames++;
+	if (frames == totalFrames) {
+		startX = 0;
+		frames = 0;
+	} else {
 	}
-
-	counter++;
-
-	if (oldPositions.length > options.density) {
-		oldPositions.shift();
-	}
-
-	oldPositions.forEach((pos, index) => {
-		drawCircle(pos.xPos, pos.yPos, (index + 1) / (2 * options.density));
-	});
-
-	xPos > 600 ? (xPos = -100) : (xPos += 3);
+	requestAnimationFrame(loadImage);
 }
-
-function animateCircle() {
-	setTimeout(() => {
-		update();
-		requestAnimationFrame(animateCircle);
-	}, 10);
-}
-
-animateCircle();
