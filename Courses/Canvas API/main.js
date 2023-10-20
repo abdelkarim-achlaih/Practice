@@ -477,26 +477,72 @@ let context = canvas.getContext("2d");
 // 	requestAnimationFrame(loadImage);
 // }
 
-// ********************** Working with the Mouse **********************
+// ********************** Working with the Mouse + Follw the mouse cursor **********************
+
+// canvas.addEventListener("mousemove", mouseMoving, false);
+// let xPos = 0;
+// let yPos = 0;
+// function mouseMoving(e) {
+// 	xPos = e.clientX - getDimensions(canvas).x;
+// 	yPos = e.clientY - getDimensions(canvas).y;
+// }
+// function draw() {
+// 	context.clearRect(0, 0, canvas.width, canvas.height);
+// 	context.beginPath();
+// 	context.arc(xPos, yPos, 50, 0, 2 * Math.PI, true);
+// 	context.closePath();
+// 	context.fillStyle = "red";
+// 	context.fill();
+// 	requestAnimationFrame(draw);
+// }
+// draw();
+// function getDimensions(node) {
+// 	return {
+// 		x: node.getBoundingClientRect().left,
+// 		y: node.getBoundingClientRect().top,
+// 	};
+// }
+
+// ********************** Mouse Follow with Ease **********************
 
 canvas.addEventListener("mousemove", mouseMoving, false);
-let xPos = 0;
-let yPos = 0;
+
+let position = {
+	x: 0,
+	y: 0,
+};
+let mouse = {
+	x: 0,
+	y: 0,
+};
+let distance = {
+	x: 0,
+	y: 0,
+};
+
 function mouseMoving(e) {
-	xPos = e.clientX - getDimensions(canvas).x;
-	yPos = e.clientY - getDimensions(canvas).y;
+	mouse.x = e.clientX - getPosition(canvas).x;
+	mouse.y = e.clientY - getPosition(canvas).y;
 }
+
 function draw() {
+	distance.x = mouse.x - position.x;
+	distance.y = mouse.y - position.y;
+	position.x += distance.x / 10;
+	position.y += distance.y / 10;
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	context.beginPath();
-	context.arc(xPos, yPos, 50, 0, 2 * Math.PI, true);
+	context.arc(position.x, position.y, 50, 0, 2 * Math.PI, true);
 	context.closePath();
 	context.fillStyle = "red";
 	context.fill();
+	console.log(distance);
 	requestAnimationFrame(draw);
 }
+
 draw();
-function getDimensions(node) {
+
+function getPosition(node) {
 	return {
 		x: node.getBoundingClientRect().left,
 		y: node.getBoundingClientRect().top,
