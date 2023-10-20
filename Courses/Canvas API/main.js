@@ -505,46 +505,78 @@ let context = canvas.getContext("2d");
 
 // ********************** Mouse Follow with Ease **********************
 
-canvas.addEventListener("mousemove", mouseMoving, false);
+// canvas.addEventListener("mousemove", mouseMoving, false);
 
-let position = {
-	x: 0,
-	y: 0,
-};
-let mouse = {
-	x: 0,
-	y: 0,
-};
-let distance = {
-	x: 0,
-	y: 0,
-};
+// let position = {
+// 	x: 0,
+// 	y: 0,
+// };
+// let mouse = {
+// 	x: 0,
+// 	y: 0,
+// };
+// let distance = {
+// 	x: 0,
+// 	y: 0,
+// };
 
-function mouseMoving(e) {
-	mouse.x = e.clientX - getPosition(canvas).x;
-	mouse.y = e.clientY - getPosition(canvas).y;
+// function mouseMoving(e) {
+// 	mouse.x = e.clientX - getPosition(canvas).x;
+// 	mouse.y = e.clientY - getPosition(canvas).y;
+// }
+
+// function draw() {
+// 	distance.x = mouse.x - position.x;
+// 	distance.y = mouse.y - position.y;
+// 	position.x += distance.x / 10;
+// 	position.y += distance.y / 10;
+// 	context.clearRect(0, 0, canvas.width, canvas.height);
+// 	context.beginPath();
+// 	context.arc(position.x, position.y, 50, 0, 2 * Math.PI, true);
+// 	context.closePath();
+// 	context.fillStyle = "red";
+// 	context.fill();
+// 	console.log(distance);
+// 	requestAnimationFrame(draw);
+// }
+
+// draw();
+
+// function getPosition(node) {
+// 	return {
+// 		x: node.getBoundingClientRect().left,
+// 		y: node.getBoundingClientRect().top,
+// 	};
+// }
+
+// ********************** Working With the Keyboard **********************
+// ********************** Moving Shapes Using the Keyboard **********************
+
+window.addEventListener("keydown", keysPressed, false);
+window.addEventListener("keyup", keysReleased, false);
+
+var keys = [];
+
+function keysPressed(e) {
+	// store an entry for every key pressed
+	keys[e.keyCode] = true;
+	console.log(keys);
+
+	// Ctrl + Shift + 5
+	if (keys[17] && keys[16] && keys[53]) {
+		console.log(`ctrl shift 5`);
+	}
+
+	// Ctrl + f
+	if (keys[17] && keys[70]) {
+		console.log(`ctrl f`);
+
+		// prevent default browser behavior
+		e.preventDefault();
+	}
 }
 
-function draw() {
-	distance.x = mouse.x - position.x;
-	distance.y = mouse.y - position.y;
-	position.x += distance.x / 10;
-	position.y += distance.y / 10;
-	context.clearRect(0, 0, canvas.width, canvas.height);
-	context.beginPath();
-	context.arc(position.x, position.y, 50, 0, 2 * Math.PI, true);
-	context.closePath();
-	context.fillStyle = "red";
-	context.fill();
-	console.log(distance);
-	requestAnimationFrame(draw);
-}
-
-draw();
-
-function getPosition(node) {
-	return {
-		x: node.getBoundingClientRect().left,
-		y: node.getBoundingClientRect().top,
-	};
+function keysReleased(e) {
+	// mark keys that were released
+	keys[e.keyCode] = false;
 }
