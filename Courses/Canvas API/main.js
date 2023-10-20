@@ -550,33 +550,107 @@ let context = canvas.getContext("2d");
 // }
 
 // ********************** Working With the Keyboard **********************
+
+// window.addEventListener("keydown", keysPressed, false);
+// window.addEventListener("keyup", keysReleased, false);
+
+// var keys = [];
+
+// function keysPressed(e) {
+// 	// store an entry for every key pressed
+// 	keys[e.keyCode] = true;
+// 	console.log(keys);
+
+// 	// Ctrl + Shift + 5
+// 	if (keys[17] && keys[16] && keys[53]) {
+// 		console.log(`ctrl shift 5`);
+// 	}
+
+// 	// Ctrl + f
+// 	if (keys[17] && keys[70]) {
+// 		console.log(`ctrl f`);
+
+// 		// prevent default browser behavior
+// 		e.preventDefault();
+// 	}
+// }
+
+// function keysReleased(e) {
+// 	// mark keys that were released
+// 	keys[e.keyCode] = false;
+// }
+
 // ********************** Moving Shapes Using the Keyboard **********************
 
+// window.addEventListener("keydown", moveSomething, false);
 window.addEventListener("keydown", keysPressed, false);
 window.addEventListener("keyup", keysReleased, false);
-
-var keys = [];
-
-function keysPressed(e) {
-	// store an entry for every key pressed
-	keys[e.keyCode] = true;
-	console.log(keys);
-
-	// Ctrl + Shift + 5
-	if (keys[17] && keys[16] && keys[53]) {
-		console.log(`ctrl shift 5`);
-	}
-
-	// Ctrl + f
-	if (keys[17] && keys[70]) {
-		console.log(`ctrl f`);
-
-		// prevent default browser behavior
-		e.preventDefault();
-	}
-}
-
+let x = 0;
+let y = 0;
+let keys = [];
 function keysReleased(e) {
 	// mark keys that were released
 	keys[e.keyCode] = false;
 }
+function keysPressed(e) {
+	// switch (e.keyCode) {
+	// 	case 37:
+	// 		// left key pressed+
+	// 		x -= 2;
+	// 		break;
+	// 	case 38:
+	// 		// up key pressed
+	// 		y -= 2;
+	// 		break;
+	// 	case 39:
+	// 		x += 2;
+	// 		// right key pressed
+	// 		break;
+	// 	case 40:
+	// 		y += 2;
+	// 		// down key pressed
+	// 		break;
+	// }
+	keys[e.keyCode] = true;
+
+	// left
+	if (keys[37]) {
+		x -= 2;
+	}
+
+	// right
+	if (keys[39]) {
+		x += 2;
+	}
+
+	// down
+	if (keys[38]) {
+		y -= 2;
+	}
+
+	// up
+	if (keys[40]) {
+		y += 2;
+	}
+	e.preventDefault();
+	drawTriangle();
+}
+function drawTriangle() {
+	// the triangle
+	context.clearRect(0, 0, canvas.width, canvas.height);
+	context.beginPath();
+	context.moveTo(200 + x, 100 + y);
+	context.lineTo(170 + x, 150 + y);
+	context.lineTo(230 + x, 150 + y);
+	context.closePath();
+
+	// the outline
+	context.lineWidth = 10;
+	context.strokeStyle = "rgba(102, 102, 102, 1)";
+	context.stroke();
+
+	// the fill color
+	context.fillStyle = "rgba(255, 204, 0, 1)";
+	context.fill();
+}
+drawTriangle();
