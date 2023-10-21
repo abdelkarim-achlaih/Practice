@@ -25,21 +25,77 @@
 
 // ------------------------------------------- Web Animations and the Animate Method ------------------------
 
-let circle = document.querySelector("#circle");
-circle.animate(
-	[
-		{
-			opacity: ".5",
-			transform: "translate3d(100px, -800px, 0) scale(3, 3)",
-		},
-		{
-			opacity: "1.0",
-			transform: "translate3d(100px, 600px, 0) scale(.5, .5)",
-		},
-	],
-	{
-		direction: "normal",
-		duration: 1000,
-		iterations: Infinity,
+// let circle = document.querySelector("#circle");
+// circle.animate(
+// 	[
+// 		{
+// 			opacity: ".5",
+// 			transform: "translate3d(100px, -800px, 0) scale(3, 3)",
+// 		},
+// 		{
+// 			opacity: "1.0",
+// 			transform: "translate3d(100px, 600px, 0) scale(.5, .5)",
+// 		},
+// 	],
+// 	{
+// 		direction: "normal",
+// 		duration: 1000,
+// 		iterations: Infinity,
+// 	}
+// );
+
+// ------------------------------------------- Ensuring Consistent Animation Speeds ------------------------
+
+// Fixing the Frame Rate to a Consistent Value : 
+/* On higher refresh rate devices, our visual updates are artificially slowed down to meet our target rate */
+
+let fps = 60;
+
+let interval = Math.floor(1000 / fps);
+let previousTime = startTime;
+
+let currentTime = 0;
+let deltaTime = 0;
+
+function animationLoop(timestamp) {
+	currentTime = timestamp;
+	deltaTime = currentTime - previousTime;
+
+	if (deltaTime > interval) {
+		previousTime = currentTime - (deltaTime % interval);
+
+		// add your visual updates-related code
 	}
-);
+
+	requestAnimationFrame(animationLoop);
+}
+requestAnimationFrame(animationLoop);
+
+// Using a Delta Time Multiplier
+
+/* 	We take advantage of higher refresh rate devices by letting our requestAnimationFrame run at whatever native speed it needs to run at. 
+		We make our visual updates at exactly this same native speed. By using a delta time multiplier, 
+		we account for the variation between our target frame rate and the actual device frame rate. 
+		This accounting allows us to speed up or slow down the rate that we are changing the values (CSS Vlues) that feed into our final animation. */
+
+// set the expected frame rate
+let fps = 60;
+let previousTime = performance.now();
+
+let frame_interval = 1000 / fps; // Our desired time between each frame update, determined by the target frame rate we want to achieve - usually 60fps.
+let delta_time_multiplier = 1;
+let delta_time = 0;
+
+function animationLoop(currentTime) {
+	delta_time = currentTime - previousTime; //The elapsed time between each requestAnimationFrame call (native one)
+	delta_time_multiplier = delta_time / frame_interval; //the amount we adjust our rate of change by
+
+	rateOfChange -= 5 * delta_time_multiplier; // rateOfChange (aka left/right/opacity...) All of our animations have some code that changes a value by an amount at every frame tick.
+
+	previousTime = currentTime;
+
+	// add your visual update code
+
+	requestAnimationFrame(animationLoop);
+}
+requestAnimationFrame(animationLoop);
