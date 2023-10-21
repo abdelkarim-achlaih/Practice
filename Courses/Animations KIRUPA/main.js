@@ -46,7 +46,7 @@
 
 // ------------------------------------------- Ensuring Consistent Animation Speeds ------------------------
 
-// Fixing the Frame Rate to a Consistent Value : 
+// Fixing the Frame Rate to a Consistent Value :
 /* On higher refresh rate devices, our visual updates are artificially slowed down to meet our target rate */
 
 // let fps = 60;
@@ -77,7 +77,7 @@
 		We make our visual updates at exactly this same native speed. By using a delta time multiplier, 
 		we account for the variation between our target frame rate and the actual device frame rate. 
 		This accounting allows us to speed up or slow down the rate that we are changing the values (CSS Vlues) that feed into our final animation. */
-		
+
 // set the expected frame rate
 // let fps = 60;
 // let previousTime = performance.now();
@@ -100,25 +100,36 @@
 // }
 // requestAnimationFrame(animationLoop);
 
-
 // ------------------------------------------- Scroll Activated Animations ------------------------
 
 // JavaScript Scroll Event Throttling
 
-let isScrolling = false;
+// let isScrolling = false;
 
-window.addEventListener("scroll", throttleScroll, false);
+// window.addEventListener("scroll", throttleScroll, false);
 
-function throttleScroll(e) {
-	if (isScrolling == false) {
-		window.requestAnimationFrame(function () {
-			dealWithScrolling(e);
-			isScrolling = false;
-		});
-	}
-	isScrolling = true;
-}
+// function throttleScroll(e) {
+// 	if (isScrolling == false) {
+// 		window.requestAnimationFrame(function () {
+// 			dealWithScrolling(e);
+// 			isScrolling = false;
+// 		});
+// 	}
+// 	isScrolling = true;
+// }
 
-function dealWithScrolling(e) {
-	// do epic stuff
-}
+// function dealWithScrolling(e) {
+// 	// do epic stuff
+// }
+
+//
+let list = document.querySelectorAll("ul li");
+const options = { threshold: 0.5 };
+const observer = new IntersectionObserver((entries) => {
+	entries.forEach((entry) => {
+		entry.target.classList.toggle("show", entry.isIntersecting);
+	});
+}, options);
+list.forEach((li) => {
+	observer.observe(li);
+});
