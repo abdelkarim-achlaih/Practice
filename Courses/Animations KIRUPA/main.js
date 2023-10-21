@@ -122,7 +122,8 @@
 // 	// do epic stuff
 // }
 
-//
+// Learn Intersection Observer
+
 let list = document.querySelectorAll("ul li");
 const options = { threshold: 0.5 };
 const observer = new IntersectionObserver((entries) => {
