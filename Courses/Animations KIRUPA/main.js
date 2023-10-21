@@ -49,27 +49,27 @@
 // Fixing the Frame Rate to a Consistent Value : 
 /* On higher refresh rate devices, our visual updates are artificially slowed down to meet our target rate */
 
-let fps = 60;
+// let fps = 60;
 
-let interval = Math.floor(1000 / fps);
-let previousTime = startTime;
+// let interval = Math.floor(1000 / fps);
+// let previousTime = startTime;
 
-let currentTime = 0;
-let deltaTime = 0;
+// let currentTime = 0;
+// let deltaTime = 0;
 
-function animationLoop(timestamp) {
-	currentTime = timestamp;
-	deltaTime = currentTime - previousTime;
+// function animationLoop(timestamp) {
+// 	currentTime = timestamp;
+// 	deltaTime = currentTime - previousTime;
 
-	if (deltaTime > interval) {
-		previousTime = currentTime - (deltaTime % interval);
+// 	if (deltaTime > interval) {
+// 		previousTime = currentTime - (deltaTime % interval);
 
-		// add your visual updates-related code
-	}
+// 		// add your visual updates-related code
+// 	}
 
-	requestAnimationFrame(animationLoop);
-}
-requestAnimationFrame(animationLoop);
+// 	requestAnimationFrame(animationLoop);
+// }
+// requestAnimationFrame(animationLoop);
 
 // Using a Delta Time Multiplier
 
@@ -77,25 +77,48 @@ requestAnimationFrame(animationLoop);
 		We make our visual updates at exactly this same native speed. By using a delta time multiplier, 
 		we account for the variation between our target frame rate and the actual device frame rate. 
 		This accounting allows us to speed up or slow down the rate that we are changing the values (CSS Vlues) that feed into our final animation. */
-
+		
 // set the expected frame rate
-let fps = 60;
-let previousTime = performance.now();
+// let fps = 60;
+// let previousTime = performance.now();
 
-let frame_interval = 1000 / fps; // Our desired time between each frame update, determined by the target frame rate we want to achieve - usually 60fps.
-let delta_time_multiplier = 1;
-let delta_time = 0;
+// let frame_interval = 1000 / fps; // Our desired time between each frame update, determined by the target frame rate we want to achieve - usually 60fps.
+// let delta_time_multiplier = 1;
+// let delta_time = 0;
 
-function animationLoop(currentTime) {
-	delta_time = currentTime - previousTime; //The elapsed time between each requestAnimationFrame call (native one)
-	delta_time_multiplier = delta_time / frame_interval; //the amount we adjust our rate of change by
+// function animationLoop(currentTime) {
+// 	delta_time = currentTime - previousTime; //The elapsed time between each requestAnimationFrame call (native one)
+// 	delta_time_multiplier = delta_time / frame_interval; //the amount we adjust our rate of change by
 
-	rateOfChange -= 5 * delta_time_multiplier; // rateOfChange (aka left/right/opacity...) All of our animations have some code that changes a value by an amount at every frame tick.
+// 	rateOfChange -= 5 * delta_time_multiplier; // rateOfChange (aka left/right/opacity...) All of our animations have some code that changes a value by an amount at every frame tick.
 
-	previousTime = currentTime;
+// 	previousTime = currentTime;
 
-	// add your visual update code
+// 	// add your visual update code
 
-	requestAnimationFrame(animationLoop);
+// 	requestAnimationFrame(animationLoop);
+// }
+// requestAnimationFrame(animationLoop);
+
+
+// ------------------------------------------- Scroll Activated Animations ------------------------
+
+// JavaScript Scroll Event Throttling
+
+let isScrolling = false;
+
+window.addEventListener("scroll", throttleScroll, false);
+
+function throttleScroll(e) {
+	if (isScrolling == false) {
+		window.requestAnimationFrame(function () {
+			dealWithScrolling(e);
+			isScrolling = false;
+		});
+	}
+	isScrolling = true;
 }
-requestAnimationFrame(animationLoop);
+
+function dealWithScrolling(e) {
+	// do epic stuff
+}
