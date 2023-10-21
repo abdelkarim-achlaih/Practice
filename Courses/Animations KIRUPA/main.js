@@ -124,13 +124,38 @@
 
 // Learn Intersection Observer
 
-let list = document.querySelectorAll("ul li");
-const options = { threshold: 0.5 };
-const observer = new IntersectionObserver((entries) => {
-	entries.forEach((entry) => {
-		entry.target.classList.toggle("show", entry.isIntersecting);
-	});
-}, options);
-list.forEach((li) => {
-	observer.observe(li);
-});
+// let list = document.querySelectorAll("ul li");
+// const options = { threshold: 0.5 };
+// const observer = new IntersectionObserver((entries) => {
+// 	entries.forEach((entry) => {
+// 		entry.target.classList.toggle("show", entry.isIntersecting);
+// 	});
+// }, options);
+// list.forEach((li) => {
+// 	observer.observe(li);
+// });
+
+// ------------------------------------------- Smooth Parallax Scrolling ------------------------
+
+let bigYellowCircle = document.querySelector("#bigYellowCircle");
+let blueSquare = document.querySelector("#blueSquare");
+let greenPentagon = document.querySelector("#greenPentagon");
+
+function setTranslate(xPos, yPos, el) {
+	el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+}
+
+window.addEventListener("load", scrollLoop, false);
+
+let xScrollPosition;
+let yScrollPosition;
+
+function scrollLoop() {
+	xScrollPosition = window.scrollX;
+	yScrollPosition = window.scrollY;
+	setTranslate(0, yScrollPosition * -0.2, bigYellowCircle);
+	setTranslate(0, yScrollPosition * -1.5, blueSquare);
+	setTranslate(0, yScrollPosition * 0.5, greenPentagon);
+
+	requestAnimationFrame(scrollLoop);
+}
