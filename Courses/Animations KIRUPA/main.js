@@ -162,19 +162,41 @@
 
 // ------------------------------------------- Introduction to Easing in JavaScript ------------------------
 
-let circle = document.querySelector("#circle");
+// let circle = document.querySelector("#circle");
 
-let angle = 0;
+// let angle = 0;
 
-function moveThing() {
-	angle += 0.05;
+// function moveThing() {
+// 	angle += 0.05;
 
-	xPos = 125 + 100 * Math.cos(angle);
-	yPos = 5 + 100 * Math.sin(angle);
+// 	xPos = 125 + 100 * Math.cos(angle);
+// 	yPos = 5 + 100 * Math.sin(angle);
 
-	circle.style.left = xPos + "px";
-	circle.style.top = yPos + "px";
+// 	circle.style.left = xPos + "px";
+// 	circle.style.top = yPos + "px";
 
-	requestAnimationFrame(moveThing);
+// 	requestAnimationFrame(moveThing);
+// }
+// moveThing();
+
+// ------------------------------------------- Animating with Robert Penner's Easing Functions ------------------------
+
+let text = document.querySelector(".text");
+let currentValue,
+	currentIteration = 0,
+	startValue = 16,
+	changeInValue = 112, // final value - start value
+	totalIterations = 300; // fps * duration (60 * 5)`
+
+function animate() {
+	currentValue = easeOutCubic(
+		currentIteration,
+		startValue,
+		changeInValue,
+		totalIterations
+	);
+	text.style.fontSize = `${currentValue}px`;
+	currentIteration++;
+	if (currentIteration < totalIterations) requestAnimationFrame(animate);
 }
-moveThing();
+animate();
