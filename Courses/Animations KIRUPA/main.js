@@ -181,22 +181,65 @@
 
 // ------------------------------------------- Animating with Robert Penner's Easing Functions ------------------------
 
-let text = document.querySelector(".text");
-let currentValue,
-	currentIteration = 0,
-	startValue = 16,
-	changeInValue = 112, // final value - start value
-	totalIterations = 300; // fps * duration (60 * 5)`
+// let text = document.querySelector(".text");
+// let currentValue,
+// 	currentIteration = 0,
+// 	startValue = 16,
+// 	changeInValue = 112, // final value - start value
+// 	totalIterations = 300; // fps * duration (60 * 5)`
 
-function animate() {
-	currentValue = easeOutCubic(
-		currentIteration,
-		startValue,
-		changeInValue,
-		totalIterations
-	);
-	text.style.fontSize = `${currentValue}px`;
-	currentIteration++;
-	if (currentIteration < totalIterations) requestAnimationFrame(animate);
+// function animate() {
+// 	currentValue = easeOutCubic(
+// 		currentIteration,
+// 		startValue,
+// 		changeInValue,
+// 		totalIterations
+// 	);
+// 	text.style.fontSize = `${currentValue}px`;
+// 	currentIteration++;
+// 	if (currentIteration < totalIterations) requestAnimationFrame(animate);
+// }
+// animate();
+
+// ------------------------------------------- Animated Scroll to Top with Easing ------------------------
+
+let stat = false;
+let upBtn = document.getElementById("floatie");
+upBtn.addEventListener("click", goUp, false);
+window.addEventListener(
+	"mousewheel",
+	(e) => {
+		stat = false;
+	},
+	false
+);
+
+function goUp(e) {
+	if (scrollPosition() > 0) {
+		stat = true;
+		setupAnimation(scrollPosition());
+	}
 }
-animate();
+function scrollPosition() {
+	return window.scrollY;
+}
+function setupAnimation(startValue) {
+	let currentIteration = 0,
+		totalIterations = 60 * 2,
+		currentValue;
+	animate();
+	function animate() {
+		currentValue = startValue;
+		currentValue = easeInQuad(
+			currentIteration,
+			startValue,
+			-startValue,
+			totalIterations
+		);
+		window.scrollTo(0, currentValue);
+		currentIteration++;
+		if (currentIteration <= totalIterations && stat) {
+			requestAnimationFrame(animate);
+		}
+	}
+}

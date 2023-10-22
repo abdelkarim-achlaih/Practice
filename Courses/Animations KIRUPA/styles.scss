@@ -133,6 +133,33 @@ h1 {
 }
 
 .text {
-  font-size: 16px;
+  font-size: 30px;
   color: #a24a5f;
+  min-height: 300vh;
+}
+
+#floatie {
+  position: fixed;
+  bottom: 0px;
+  right: 53px;
+  background-color: #FFFF00;
+  width: 50px;
+  height: 50px;
+  border: 2px #FF9900 solid;
+  font-weight: bold;
+  font-size: 48px;
+  text-align: center;
+  padding-top: 10px;
+  border-radius: 4px;
+  transition: transform .2s cubic-bezier(.59, -0.54, .72, 1.59);
+  transform: translate(0px, 10px);
+  box-shadow: 0 0 10px 0 #666;
+  user-select: none;
+}
+
+#floatie:hover {
+  background-color: #CCFF33;
+  border-color: #669900;
+  cursor: pointer;
+  transform: translate(0px, 4px);
 }
