@@ -137,25 +137,44 @@
 
 // ------------------------------------------- Smooth Parallax Scrolling ------------------------
 
-let bigYellowCircle = document.querySelector("#bigYellowCircle");
-let blueSquare = document.querySelector("#blueSquare");
-let greenPentagon = document.querySelector("#greenPentagon");
+// let bigYellowCircle = document.querySelector("#bigYellowCircle");
+// let blueSquare = document.querySelector("#blueSquare");
+// let greenPentagon = document.querySelector("#greenPentagon");
 
-function setTranslate(xPos, yPos, el) {
-	el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+// function setTranslate(xPos, yPos, el) {
+// 	el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+// }
+
+// window.addEventListener("load", scrollLoop, false);
+
+// let xScrollPosition;
+// let yScrollPosition;
+
+// function scrollLoop() {
+// 	xScrollPosition = window.scrollX;
+// 	yScrollPosition = window.scrollY;
+// 	setTranslate(0, yScrollPosition * -0.2, bigYellowCircle);
+// 	setTranslate(0, yScrollPosition * -1.5, blueSquare);
+// 	setTranslate(0, yScrollPosition * 0.5, greenPentagon);
+
+// 	requestAnimationFrame(scrollLoop);
+// }
+
+// ------------------------------------------- Introduction to Easing in JavaScript ------------------------
+
+let circle = document.querySelector("#circle");
+
+let angle = 0;
+
+function moveThing() {
+	angle += 0.05;
+
+	xPos = 125 + 100 * Math.cos(angle);
+	yPos = 5 + 100 * Math.sin(angle);
+
+	circle.style.left = xPos + "px";
+	circle.style.top = yPos + "px";
+
+	requestAnimationFrame(moveThing);
 }
-
-window.addEventListener("load", scrollLoop, false);
-
-let xScrollPosition;
-let yScrollPosition;
-
-function scrollLoop() {
-	xScrollPosition = window.scrollX;
-	yScrollPosition = window.scrollY;
-	setTranslate(0, yScrollPosition * -0.2, bigYellowCircle);
-	setTranslate(0, yScrollPosition * -1.5, blueSquare);
-	setTranslate(0, yScrollPosition * 0.5, greenPentagon);
-
-	requestAnimationFrame(scrollLoop);
-}
+moveThing();
