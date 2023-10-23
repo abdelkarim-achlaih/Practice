@@ -203,43 +203,90 @@
 
 // ------------------------------------------- Animated Scroll to Top with Easing ------------------------
 
-let stat = false;
-let upBtn = document.getElementById("floatie");
-upBtn.addEventListener("click", goUp, false);
-window.addEventListener(
-	"mousewheel",
-	(e) => {
-		stat = false;
-	},
-	false
-);
+// let stat = false;
+// let upBtn = document.getElementById("floatie");
+// upBtn.addEventListener("click", goUp, false);
+// window.addEventListener(
+// 	"mousewheel",
+// 	(e) => {
+// 		stat = false;
+// 	},
+// 	false
+// );
 
-function goUp(e) {
-	if (scrollPosition() > 0) {
-		stat = true;
-		setupAnimation(scrollPosition());
-	}
-}
-function scrollPosition() {
-	return window.scrollY;
-}
-function setupAnimation(startValue) {
-	let currentIteration = 0,
-		totalIterations = 60 * 2,
-		currentValue;
-	animate();
-	function animate() {
-		currentValue = startValue;
-		currentValue = easeInQuad(
-			currentIteration,
-			startValue,
-			-startValue,
-			totalIterations
-		);
-		window.scrollTo(0, currentValue);
-		currentIteration++;
-		if (currentIteration <= totalIterations && stat) {
-			requestAnimationFrame(animate);
-		}
-	}
+// function goUp(e) {
+// 	if (scrollPosition() > 0) {
+// 		stat = true;
+// 		setupAnimation(scrollPosition());
+// 	}
+// }
+// function scrollPosition() {
+// 	return window.scrollY;
+// }
+// function setupAnimation(startValue) {
+// 	let currentIteration = 0,
+// 		totalIterations = 60 * 2,
+// 		currentValue;
+// 	animate();
+// 	function animate() {
+// 		currentValue = startValue;
+// 		currentValue = easeInQuad(
+// 			currentIteration,
+// 			startValue,
+// 			-startValue,
+// 			totalIterations
+// 		);
+// 		window.scrollTo(0, currentValue);
+// 		currentIteration++;
+// 		if (currentIteration <= totalIterations && stat) {
+// 			requestAnimationFrame(animate);
+// 		}
+// 	}
+// }
+
+// ------------------------------------------- Animating Many Elements Using the Animate Method ------------------------
+
+let circles = document.querySelectorAll(".main-container .circle");
+let options = {
+	easing: "ease-in-out",
+	duration: 1,
+	iterations: 1,
+};
+
+circles.forEach((circle) => {
+	animateCircle(circle);
+});
+function animateCircle(circle) {
+	options.duration = 1000 + Math.random() * 3000;
+	let animObj = circle.animate(
+		[
+			{
+				opacity: 0,
+				transform: `translate3d(${550 * Math.random()}px, ${
+					350 * Math.random()
+				}px, 0px)`,
+			},
+			{
+				opacity: 1,
+				transform: `translate3d(${550 * Math.random()}px, ${
+					350 * Math.random()
+				}px, 0px)`,
+			},
+			{
+				opacity: 0,
+				transform: `translate3d(${550 * Math.random()}px, ${
+					350 * Math.random()
+				}px, 0px)`,
+			},
+		],
+		options
+	);
+	animObj.addEventListener(
+		"finish",
+		(e) => {
+			animateCircle(circle);
+			console.log(circle);
+		},
+		false
+	);
 }
