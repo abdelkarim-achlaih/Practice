@@ -300,8 +300,27 @@ checkBox.addEventListener("click", toggleAnimation, false);
 
 function toggleAnimation(e) {
 	if (checkBox.checked === true) {
-		circle.style.animation = "none";
+		window.sessionStorage.setItem("toggleAnimation", false);
+		setState("paused");
 	} else {
-		circle.style.animation = "";
+		window.sessionStorage.setItem("toggleAnimation", true);
+		setState("running");
 	}
+}
+
+console.log(window.sessionStorage.getItem("toggleAnimation"));
+if (window.sessionStorage.getItem("toggleAnimation") === null) {
+	setState("running");
+	checkBox.checked = false;
+} else {
+	if (window.sessionStorage.getItem("toggleAnimation") === "true") {
+		setState("running");
+		checkBox.checked = false;
+	} else {
+		setState("paused");
+		checkBox.checked = true;
+	}
+}
+function setState(state) {
+	circle.style.setProperty("animation-play-state", state);
 }
