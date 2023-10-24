@@ -1,15 +1,49 @@
 .circle {
-  width: 25px;
-  height: 25px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   background-color: none;
   border: #FFF 10px solid;
-  display: "inline-block";
-  position: absolute;
+  animation: animate-circle 1s infinite ease-in-out;
 }
 
+@keyframes animate-circle {
+  0% {
+    opacity: 0;
+    transform: translate3d(0px, 40px, 0px);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(0px, 100px, 0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0px, 40px, 0px);
+  }
+}
 .main-container {
   background-color: #CC6666;
-  width: 550px;
-  height: 350px;
+  width: 600px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+form {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: -moz-fit-content;
+  width: fit-content;
+}
+form label {
+  color: white;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: pointer;
 }/*# sourceMappingURL=styles.css.map */

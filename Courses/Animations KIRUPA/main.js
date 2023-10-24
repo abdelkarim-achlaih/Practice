@@ -246,47 +246,62 @@
 
 // ------------------------------------------- Animating Many Elements Using the Animate Method ------------------------
 
-let circles = document.querySelectorAll(".main-container .circle");
-let options = {
-	easing: "ease-in-out",
-	duration: 1,
-	iterations: 1,
-};
+// let circles = document.querySelectorAll(".main-container .circle");
+// let options = {
+// 	easing: "ease-in-out",
+// 	duration: 1,
+// 	iterations: 1,
+// };
 
-circles.forEach((circle) => {
-	animateCircle(circle);
-});
-function animateCircle(circle) {
-	options.duration = 1000 + Math.random() * 3000;
-	let animObj = circle.animate(
-		[
-			{
-				opacity: 0,
-				transform: `translate3d(${550 * Math.random()}px, ${
-					350 * Math.random()
-				}px, 0px)`,
-			},
-			{
-				opacity: 1,
-				transform: `translate3d(${550 * Math.random()}px, ${
-					350 * Math.random()
-				}px, 0px)`,
-			},
-			{
-				opacity: 0,
-				transform: `translate3d(${550 * Math.random()}px, ${
-					350 * Math.random()
-				}px, 0px)`,
-			},
-		],
-		options
-	);
-	animObj.addEventListener(
-		"finish",
-		(e) => {
-			animateCircle(circle);
-			console.log(circle);
-		},
-		false
-	);
+// circles.forEach((circle) => {
+// 	animateCircle(circle);
+// });
+// function animateCircle(circle) {
+// 	options.duration = 1000 + Math.random() * 3000;
+// 	let animObj = circle.animate(
+// 		[
+// 			{
+// 				opacity: 0,
+// 				transform: `translate3d(${550 * Math.random()}px, ${
+// 					350 * Math.random()
+// 				}px, 0px)`,
+// 			},
+// 			{
+// 				opacity: 1,
+// 				transform: `translate3d(${550 * Math.random()}px, ${
+// 					350 * Math.random()
+// 				}px, 0px)`,
+// 			},
+// 			{
+// 				opacity: 0,
+// 				transform: `translate3d(${550 * Math.random()}px, ${
+// 					350 * Math.random()
+// 				}px, 0px)`,
+// 			},
+// 		],
+// 		options
+// 	);
+// 	animObj.addEventListener(
+// 		"finish",
+// 		(e) => {
+// 			animateCircle(circle);
+// 			console.log(circle);
+// 		},
+// 		false
+// 	);
+// }
+
+// ------------------------------------------- Toggling Animations On and Off ------------------------
+let circle = document.querySelector(".circle");
+
+let checkBox = document.getElementById("animate");
+
+checkBox.addEventListener("click", toggleAnimation, false);
+
+function toggleAnimation(e) {
+	if (checkBox.checked === true) {
+		circle.style.animation = "none";
+	} else {
+		circle.style.animation = "";
+	}
 }
