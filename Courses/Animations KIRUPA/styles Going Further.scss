@@ -1,0 +1,218 @@
+// // ------------------------------------------- Creating Animations in JavaScript ------------------------
+
+// body {
+//   background-color: #FFF;
+//   margin: 30px;
+//   margin-top: 10px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   flex-direction: column;
+// }
+
+// #contentContainer {
+//   width: 550px;
+//   height: 550px;
+//   border: 5px black solid;
+//   overflow: hidden;
+//   background-color: #DFF2FF;
+//   display: flex;
+//   align-items: center;
+// }
+
+// #circle {
+//   width: 200px;
+//   height: 200px;
+//   background-color: #20A6FF;
+//   border-radius: 50%;
+//   position: relative;
+// }
+
+// #move {
+//   background-color: gold;
+//   margin-top: 20px;
+//   font-size: 16px;
+//   font-weight: bold;
+//   border: 5px solid #333;
+//   outline: none;
+// }
+
+// #move:hover {
+//   background-color: coral;
+// }
+
+// #move:active {
+//   background-color: yellowgreen;
+// }
+
+// ul {
+//   margin: 0;
+//   padding: 0;
+//   background-color: #eee;
+
+//   li {
+//     min-height: 100vh;
+//     background-color: #777;
+//     color: white;
+//     text-align: center;
+//     margin-bottom: 50px;
+//     transform: translate3d(-100px, 0, 0);
+//     transition: 1s transform ease-in-out;
+
+//     &.show {
+//       transform: translate3d(0, 0, 0);
+
+//     }
+//   }
+// }
+// body {
+//   background-color: #EEE;
+// }
+
+// #content {
+//   padding: 50px;
+//   margin: 40px;
+//   background-color: rgba(255, 255, 255, .48);
+//   text-align: center;
+// }
+
+// #content p {
+//   font-family: Helvetica, sans-serif;
+//   font-size: 28px;
+//   line-height: 40px;
+//   color: #111;
+// }
+
+// h1 {
+//   text-transform: capitalize;
+//   font-family: sans-serif;
+//   font-size: 40px;
+//   padding: 10px;
+//   margin: 40px;
+//   background-color: rgba(20, 20, 20, .8);
+//   color: #FFF;
+// }
+
+// #bigYellowCircle {
+//   background-image: url("https://www.kirupa.com/images/yellow_circle.svg");
+//   background-repeat: no-repeat;
+//   background-position: center center;
+//   background-size: 90%;
+//   position: fixed;
+//   top: 0;
+//   width: 100vw;
+//   height: 100vw;
+//   z-index: -1;
+//   opacity: .75;
+// }
+
+// #blueSquare {
+//   background-image: url("https://www.kirupa.com/images/blue_square.svg");
+//   background-repeat: no-repeat;
+//   background-position: 97% bottom;
+//   background-size: 10%;
+//   position: fixed;
+//   top: 0;
+//   width: 100vw;
+//   height: 100vw;
+//   z-index: -2;
+//   opacity: .75;
+// }
+
+// #greenPentagon {
+//   background-image: url("https://www.kirupa.com/images/green_pentagon.svg");
+//   background-repeat: no-repeat;
+//   background-position: 5% top;
+//   background-size: 50%;
+//   position: fixed;
+//   top: 0;
+//   width: 100vw;
+//   height: 100vw;
+//   z-index: -3;
+//   opacity: .75;
+// }
+
+// .text {
+//   font-size: 30px;
+//   color: #a24a5f;
+//   min-height: 300vh;
+// }
+
+// #floatie {
+//   position: fixed;
+//   bottom: 0px;
+//   right: 53px;
+//   background-color: #FFFF00;
+//   width: 50px;
+//   height: 50px;
+//   border: 2px #FF9900 solid;
+//   font-weight: bold;
+//   font-size: 48px;
+//   text-align: center;
+//   padding-top: 10px;
+//   border-radius: 4px;
+//   transition: transform .2s cubic-bezier(.59, -0.54, .72, 1.59);
+//   transform: translate(0px, 10px);
+//   box-shadow: 0 0 10px 0 #666;
+//   user-select: none;
+// }
+
+// #floatie:hover {
+//   background-color: #CCFF33;
+//   border-color: #669900;
+//   cursor: pointer;
+//   transform: translate(0px, 4px);
+// }
+
+.circle {
+  --duration: 1;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-color: none;
+  border: #FFF 10px solid;
+  animation: animate-circle 2s infinite ease-in-out;
+  animation-play-state: running;
+}
+
+@keyframes animate-circle {
+  0% {
+    opacity: 0;
+    transform: translate3d(0px, 40px, 0px)
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate3d(0px, 100px, 0px)
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(0px, 40px, 0px)
+  }
+}
+
+.main-container {
+  background-color: #CC6666;
+  width: 600px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+form {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+
+  label {
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+    user-select: none;
+    cursor: pointer;
+  }
+}
