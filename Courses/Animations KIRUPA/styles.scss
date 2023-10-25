@@ -1,14 +1,66 @@
-.box {
-  width: 200px;
-  height: 200px;
-  border-radius: 10px;
-  background-color: #f75590;
+// .box {
+//   width: 200px;
+//   height: 200px;
+//   border-radius: 10px;
+//   background-color: #f75590;
 
-  will-change: filter;
+//   will-change: filter;
 
-  transition: filter .2s ease-out;
+//   transition: filter .2s ease-out;
+// }
+
+// .box:hover {
+//   filter: drop-shadow(0px 0px 50px #333); // Drop Shadow Filter is Better than box-shadow for Animations
+// }
+
+.main {
+  height: 330px;
+  width: 330px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.box:hover {
-  filter: drop-shadow(0px 0px 50px #333); // Drop Shadow Filter is Better than box-shadow for Animations
+.picture-container {
+  border: 1px solid #CCCCCC;
+  height: 150px;
+  margin: 5px;
+  overflow: hidden;
+  width: 150px;
+
+  img {
+    position: relative;
+    top: 0px;
+    animation-duration: .3s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+  }
+
+  img.slideIn {
+    animation-name: inKeyframes;
+
+  }
+
+  img.slideOut {
+    animation-name: outKeyframes;
+  }
+}
+
+@keyframes inKeyframes {
+  70% {
+    top: -170px;
+  }
+
+  100% {
+    top: -150px;
+  }
+}
+
+@keyframes outKeyframes {
+  70% {
+    top: 20px;
+  }
+
+  100% {
+    top: 0px;
+  }
 }
