@@ -1,44 +1,35 @@
 .main {
-  height: 330px;
-  width: 330px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.picture-container {
-  border: 1px solid #CCCCCC;
-  height: 150px;
-  margin: 5px;
-  overflow: hidden;
-  width: 150px;
-}
-.picture-container img {
   position: relative;
-  top: 0px;
-  animation-duration: 0.3s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
+  border: 1px solid red;
+  width: 250px;
+  height: 250px;
+  margin-left: 30px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
-.picture-container img.slideIn {
-  animation-name: inKeyframes;
+.main img {
+  width: 30px;
+  grid-column: 1;
+  grid-row: 1;
 }
-.picture-container img.slideOut {
-  animation-name: outKeyframes;
+.main .smiley {
+  position: relative;
+}
+.main .item {
+  animation: rotate 5s linear infinite;
+  border: 1px solid red;
+}
+.main .item:nth-child(2) {
+  transform: translate3d(0, -75px, 0);
+  transform-origin: 50% calc(50% + 75px);
 }
 
-@keyframes inKeyframes {
-  70% {
-    top: -170px;
+@keyframes rotate {
+  0% {
+    transform: translate3d(0, -75px, 0) rotate(0);
   }
   100% {
-    top: -150px;
-  }
-}
-@keyframes outKeyframes {
-  70% {
-    top: 20px;
-  }
-  100% {
-    top: 0px;
+    transform: translate3d(0, -75px, 0) rotate(360deg);
   }
 }/*# sourceMappingURL=styles.css.map */
