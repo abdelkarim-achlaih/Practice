@@ -9,12 +9,12 @@ picContainers.forEach((container) => {
 	container.addEventListener("mouseout", hoverOff, false);
 });
 function hoverOn(e) {
+	e.target.style.top = getComputedStyle(e.target).top;
 	e.target.classList.remove("slideOut");
 	e.target.classList.add("slideIn");
-	e.target.style.top = "0";
 }
 function hoverOff(e) {
+	e.target.style.top = getComputedStyle(e.target).top;
 	e.target.classList.remove("slideIn");
 	e.target.classList.add("slideOut");
-	e.target.style.top = "-150px";
 }
