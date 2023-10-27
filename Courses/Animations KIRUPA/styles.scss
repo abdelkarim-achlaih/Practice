@@ -63,57 +63,118 @@
 //     top: 0px;
 //   }
 // }
+// ------------------------------------------- Animating Items Around a Point ------------------------
 
-.main {
-  width: 250px;
-  height: 250px;
-  margin-left: 30px;
-  display: grid;
-  justify-content: center;
-  align-items: center;
+// .main {
+//   width: 250px;
+//   height: 250px;
+//   margin-left: 30px;
+//   display: grid;
+//   justify-content: center;
+//   align-items: center;
 
-  .item,
-  .smiley {
-    width: 30px;
-    grid-column: 1;
-    grid-row: 1;
-  }
+//   .item,
+//   .smiley {
+//     width: 30px;
+//     grid-column: 1;
+//     grid-row: 1;
+//   }
 
-  .smiley {
-    position: relative;
+//   .smiley {
+//     position: relative;
+//   }
+
+//   .item {
+//     animation: rotateAround 6s linear infinite;
+
+//     @for $i from 1 through 7 {
+//       &:nth-of-type(#{$i}) {
+//         animation-delay: -#{$i}s;
+//       }
+//     }
+
+//     img {
+//       animation: rotate 2s linear infinite;
+//     }
+//   }
+// }
+
+// @keyframes rotateAround {
+//   0% {
+//     transform: rotate(0) translateX(80px);
+//   }
+
+//   100% {
+//     transform: rotate(360deg) translateX(80px);
+//   }
+// }
+
+// @keyframes rotate {
+//   0% {
+//     transform: rotate(0);
+//   }
+
+//   100% {
+//     transform: rotate(360deg);
+//   }
+// }
+
+// ------------------------------------------- Sliding / Scrolling Animation with Infinite Items ------------------------
+
+.item-group {
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  border: #EEE solid 1px;
+
+  overflow: hidden;
+  display: inline-block;
+
+  @for $i from 1 through 4 {
+    &:nth-of-type(#{$i}) {
+      background-color: rgb(random(255), random(255), random(255));
+
+      .item {
+        animation-duration: #{0.5 + random()}s;
+        animation-delay: #{0.5 + random()}s;
+      }
+    }
   }
 
   .item {
-    animation: rotateAround 6s linear infinite;
+    margin-top: 0px;
+    user-select: none;
+    animation: slide ease-in-out infinite;
 
-    @for $i from 1 through 7 {
-      &:nth-of-type(#{$i}) {
-        animation-delay: -#{$i}s;
-      }
-    }
 
-    img {
-      animation: rotate 2s linear infinite;
+    p {
+      font-family: sans-serif;
+      font-weight: bold;
+      font-size: 48px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      height: 100px;
+
+      padding: 0;
+      margin: 0;
     }
   }
 }
 
-@keyframes rotateAround {
+@keyframes slide {
   0% {
-    transform: rotate(0) translateX(80px);
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-50%);
   }
 
   100% {
-    transform: rotate(360deg) translateX(80px);
-  }
-}
+    transform: translateY(-50%);
 
-@keyframes rotate {
-  0% {
-    transform: rotate(0);
-  }
-
-  100% {
-    transform: rotate(360deg);
   }
 }
