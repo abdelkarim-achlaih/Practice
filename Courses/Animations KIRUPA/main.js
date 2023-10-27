@@ -23,32 +23,48 @@
 
 // ------------------------------------------- Sliding / Scrolling Animation with Infinite Items ------------------------
 
-let container = document.querySelector(".container");
-let items = document.querySelectorAll(".item");
+// let container = document.querySelector(".container");
+// let items = document.querySelectorAll(".item");
 
-items.forEach((item) => {
-	item.data = {
-		one: getRandomNumber(0, 10),
-		two: getRandomNumber(0, 10),
-	};
-	setContent(item);
-});
+// items.forEach((item) => {
+// 	item.data = {
+// 		one: getRandomNumber(0, 10),
+// 		two: getRandomNumber(0, 10),
+// 	};
+// 	setContent(item);
+// });
 
-container.addEventListener("animationiteration", updateAndGenerate, false);
+// container.addEventListener("animationiteration", updateAndGenerate, false);
 
-function updateAndGenerate(e) {
-	e.target.data = {
-		one: e.target.data.two,
-		two: getRandomNumber(0, 10),
-	};
+// function updateAndGenerate(e) {
+// 	e.target.data = {
+// 		one: e.target.data.two,
+// 		two: getRandomNumber(0, 10),
+// 	};
 
-	setContent(e.target);
+// 	setContent(e.target);
+// }
+
+// function getRandomNumber(n, m) {
+// 	return Math.floor(Math.random() * (m - n + 1)) + n;
+// }
+// function setContent(item) {
+// 	item.children[0].innerHTML = item.data.one;
+// 	item.children[1].innerHTML = item.data.two;
+// }
+
+// ------------------------------------------- Looping a CSS Transition ------------------------
+
+let circle = document.querySelector(".circle");
+circle.addEventListener("mouseover", toggleClassesOnSetup, false);
+circle.addEventListener("transitionend", toggleClassesOnEnd, false);
+function toggleClassesOnSetup(e) {
+	circle.classList.toggle("state-one");
+	circle.classList.toggle("state-two");
 }
-
-function getRandomNumber(n, m) {
-	return Math.floor(Math.random() * (m - n + 1)) + n;
-}
-function setContent(item) {
-	item.children[0].innerHTML = item.data.one;
-	item.children[1].innerHTML = item.data.two;
+function toggleClassesOnEnd(e) {
+	if (e.propertyName === "opacity") {
+		circle.classList.toggle("state-one");
+		circle.classList.toggle("state-two");
+	}
 }

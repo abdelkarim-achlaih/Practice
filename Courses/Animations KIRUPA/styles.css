@@ -1,66 +1,39 @@
-.item-group {
-  width: 100px;
-  height: 100px;
-  margin: 5px;
-  border: #EEE solid 1px;
+body {
+  background-color: #FFF;
+  margin: 30px;
+  margin-top: 10px;
+}
+body .box {
+  width: 550px;
+  height: 350px;
+  border: 5px black solid;
   overflow: hidden;
-  display: inline-block;
+  background-color: #F2F2F2;
+  margin: auto auto;
+  background-image: url("//www.kirupa.com/images/gray_background.png");
 }
-.item-group:nth-of-type(1) {
-  background-color: rgb(190, 20, 145);
+body .box .content-container {
+  position: relative;
 }
-.item-group:nth-of-type(1) .item {
-  animation-duration: 0.7046737886s;
-  animation-delay: 1.355048076s;
+body .box .content-container .circle {
+  background-color: #2693FF;
+  border-radius: 75px 75px 75px 75px;
+  height: 150px;
+  margin: 100px auto auto;
+  width: 150px;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
-.item-group:nth-of-type(2) {
-  background-color: rgb(190, 95, 204);
+body .box .content-container .circle.state-one {
+  opacity: 1;
+  transform: scale(1, 1);
 }
-.item-group:nth-of-type(2) .item {
-  animation-duration: 1.0979111763s;
-  animation-delay: 1.3495198679s;
-}
-.item-group:nth-of-type(3) {
-  background-color: rgb(171, 18, 103);
-}
-.item-group:nth-of-type(3) .item {
-  animation-duration: 0.8834261398s;
-  animation-delay: 0.6124235761s;
-}
-.item-group:nth-of-type(4) {
-  background-color: rgb(59, 166, 244);
-}
-.item-group:nth-of-type(4) .item {
-  animation-duration: 0.7426532248s;
-  animation-delay: 1.4771159741s;
-}
-.item-group .item {
-  margin-top: 0px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-  animation: slide ease-in-out infinite;
-}
-.item-group .item p {
-  font-family: sans-serif;
-  font-weight: bold;
-  font-size: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-  padding: 0;
-  margin: 0;
+body .box .content-container .circle.state-two {
+  opacity: 0.5;
+  transform: scale(1.9, 1.9);
 }
 
-@keyframes slide {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-50%);
-  }
-  100% {
-    transform: translateY(-50%);
-  }
+p {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: medium;
+  color: #006699;
 }/*# sourceMappingURL=styles.css.map */

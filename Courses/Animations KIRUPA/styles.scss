@@ -121,60 +121,107 @@
 
 // ------------------------------------------- Sliding / Scrolling Animation with Infinite Items ------------------------
 
-.item-group {
-  width: 100px;
-  height: 100px;
-  margin: 5px;
-  border: #EEE solid 1px;
+// .item-group {
+//   width: 100px;
+//   height: 100px;
+//   margin: 5px;
+//   border: #EEE solid 1px;
 
-  overflow: hidden;
-  display: inline-block;
+//   overflow: hidden;
+//   display: inline-block;
 
-  @for $i from 1 through 4 {
-    &:nth-of-type(#{$i}) {
-      background-color: rgb(random(255), random(255), random(255));
+//   @for $i from 1 through 4 {
+//     &:nth-of-type(#{$i}) {
+//       background-color: rgb(random(255), random(255), random(255));
 
-      .item {
-        animation-duration: #{0.5 + random()}s;
-        animation-delay: #{0.5 + random()}s;
+//       .item {
+//         animation-duration: #{0.5 + random()}s;
+//         animation-delay: #{0.5 + random()}s;
+//       }
+//     }
+//   }
+
+//   .item {
+//     margin-top: 0px;
+//     user-select: none;
+//     animation: slide ease-in-out infinite;
+
+
+//     p {
+//       font-family: sans-serif;
+//       font-weight: bold;
+//       font-size: 48px;
+
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+
+//       height: 100px;
+
+//       padding: 0;
+//       margin: 0;
+//     }
+//   }
+// }
+
+// @keyframes slide {
+//   0% {
+//     transform: translateY(0);
+//   }
+
+//   50% {
+//     transform: translateY(-50%);
+//   }
+
+//   100% {
+//     transform: translateY(-50%);
+
+//   }
+// }
+
+// ------------------------------------------- Looping a CSS Transition ------------------------
+
+body {
+  background-color: #FFF;
+  margin: 30px;
+  margin-top: 10px;
+
+  .box {
+    width: 550px;
+    height: 350px;
+    border: 5px black solid;
+    overflow: hidden;
+    background-color: #F2F2F2;
+    margin: auto auto;
+    background-image: url('//www.kirupa.com/images/gray_background.png');
+
+    .content-container {
+      position: relative;
+
+      .circle {
+        background-color: #2693FF;
+        border-radius: 75px 75px 75px 75px;
+        height: 150px;
+        margin: 100px auto auto;
+        width: 150px;
+        transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+
+        &.state-one {
+          opacity: 1;
+          transform: scale(1, 1);
+        }
+
+        &.state-two {
+          opacity: .5;
+          transform: scale(1.9, 1.9);
+        }
       }
-    }
-  }
-
-  .item {
-    margin-top: 0px;
-    user-select: none;
-    animation: slide ease-in-out infinite;
-
-
-    p {
-      font-family: sans-serif;
-      font-weight: bold;
-      font-size: 48px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      height: 100px;
-
-      padding: 0;
-      margin: 0;
     }
   }
 }
 
-@keyframes slide {
-  0% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-50%);
-  }
-
-  100% {
-    transform: translateY(-50%);
-
-  }
+p {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: medium;
+  color: #006699;
 }
