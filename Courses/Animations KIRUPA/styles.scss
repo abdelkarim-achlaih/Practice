@@ -65,8 +65,6 @@
 // }
 
 .main {
-  position: relative;
-  border: 1px solid red;
   width: 250px;
   height: 250px;
   margin-left: 30px;
@@ -74,7 +72,8 @@
   justify-content: center;
   align-items: center;
 
-  img {
+  .item,
+  .smiley {
     width: 30px;
     grid-column: 1;
     grid-row: 1;
@@ -85,22 +84,36 @@
   }
 
   .item {
-    animation: rotate 5s linear infinite;
-    border: 1px solid red;
+    animation: rotateAround 6s linear infinite;
 
-    &:nth-child(2) {
-      transform: translate3d(0, -75px, 0);
-      transform-origin: 50% calc(50% + 75px);
+    @for $i from 1 through 7 {
+      &:nth-of-type(#{$i}) {
+        animation-delay: -#{$i}s;
+      }
     }
+
+    img {
+      animation: rotate 2s linear infinite;
+    }
+  }
+}
+
+@keyframes rotateAround {
+  0% {
+    transform: rotate(0) translateX(80px);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(80px);
   }
 }
 
 @keyframes rotate {
   0% {
-    transform: translate3d(0, -75px, 0) rotate(0);
+    transform: rotate(0);
   }
 
   100% {
-    transform: translate3d(0, -75px, 0) rotate(360deg);
+    transform: rotate(360deg);
   }
 }

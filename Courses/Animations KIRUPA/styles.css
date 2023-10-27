@@ -1,6 +1,4 @@
 .main {
-  position: relative;
-  border: 1px solid red;
   width: 250px;
   height: 250px;
   margin-left: 30px;
@@ -8,7 +6,8 @@
   justify-content: center;
   align-items: center;
 }
-.main img {
+.main .item,
+.main .smiley {
   width: 30px;
   grid-column: 1;
   grid-row: 1;
@@ -17,19 +16,46 @@
   position: relative;
 }
 .main .item {
-  animation: rotate 5s linear infinite;
-  border: 1px solid red;
+  animation: rotateAround 6s linear infinite;
 }
-.main .item:nth-child(2) {
-  transform: translate3d(0, -75px, 0);
-  transform-origin: 50% calc(50% + 75px);
+.main .item:nth-of-type(1) {
+  animation-delay: -1s;
+}
+.main .item:nth-of-type(2) {
+  animation-delay: -2s;
+}
+.main .item:nth-of-type(3) {
+  animation-delay: -3s;
+}
+.main .item:nth-of-type(4) {
+  animation-delay: -4s;
+}
+.main .item:nth-of-type(5) {
+  animation-delay: -5s;
+}
+.main .item:nth-of-type(6) {
+  animation-delay: -6s;
+}
+.main .item:nth-of-type(7) {
+  animation-delay: -7s;
+}
+.main .item img {
+  animation: rotate 2s linear infinite;
 }
 
-@keyframes rotate {
+@keyframes rotateAround {
   0% {
-    transform: translate3d(0, -75px, 0) rotate(0);
+    transform: rotate(0) translateX(80px);
   }
   100% {
-    transform: translate3d(0, -75px, 0) rotate(360deg);
+    transform: rotate(360deg) translateX(80px);
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }/*# sourceMappingURL=styles.css.map */
