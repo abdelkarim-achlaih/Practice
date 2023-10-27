@@ -1,39 +1,14 @@
-body {
-  background-color: #FFF;
-  margin: 30px;
-  margin-top: 10px;
-}
-body .box {
-  width: 550px;
-  height: 350px;
-  border: 5px black solid;
-  overflow: hidden;
-  background-color: #F2F2F2;
-  margin: auto auto;
-  background-image: url("//www.kirupa.com/images/gray_background.png");
-}
-body .box .content-container {
-  position: relative;
-}
-body .box .content-container .circle {
-  background-color: #2693FF;
-  border-radius: 75px 75px 75px 75px;
+.pictureContainer {
   height: 150px;
-  margin: 100px auto auto;
   width: 150px;
-  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
-}
-body .box .content-container .circle.state-one {
-  opacity: 1;
-  transform: scale(1, 1);
-}
-body .box .content-container .circle.state-two {
-  opacity: 0.5;
-  transform: scale(1.9, 1.9);
+  overflow: hidden;
 }
 
-p {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  font-size: medium;
-  color: #006699;
+.pictureContainer img {
+  transform: translate3d(0px, 0px, 0px);
+  transition: transform 0.6s cubic-bezier(0.17, 0.67, 0.67, 1.43);
+}
+
+.pictureContainer img:hover {
+  transform: translate3d(0px, -150px, 0px);
 }/*# sourceMappingURL=styles.css.map */

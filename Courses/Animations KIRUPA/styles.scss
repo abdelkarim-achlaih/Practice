@@ -181,47 +181,64 @@
 
 // ------------------------------------------- Looping a CSS Transition ------------------------
 
-body {
-  background-color: #FFF;
-  margin: 30px;
-  margin-top: 10px;
+// body {
+//   background-color: #FFF;
+//   margin: 30px;
+//   margin-top: 10px;
 
-  .box {
-    width: 550px;
-    height: 350px;
-    border: 5px black solid;
-    overflow: hidden;
-    background-color: #F2F2F2;
-    margin: auto auto;
-    background-image: url('//www.kirupa.com/images/gray_background.png');
+//   .box {
+//     width: 550px;
+//     height: 350px;
+//     border: 5px black solid;
+//     overflow: hidden;
+//     background-color: #F2F2F2;
+//     margin: auto auto;
+//     background-image: url('//www.kirupa.com/images/gray_background.png');
 
-    .content-container {
-      position: relative;
+//     .content-container {
+//       position: relative;
 
-      .circle {
-        background-color: #2693FF;
-        border-radius: 75px 75px 75px 75px;
-        height: 150px;
-        margin: 100px auto auto;
-        width: 150px;
-        transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+//       .circle {
+//         background-color: #2693FF;
+//         border-radius: 75px 75px 75px 75px;
+//         height: 150px;
+//         margin: 100px auto auto;
+//         width: 150px;
+//         transition: transform .2s ease-in-out, opacity .2s ease-in-out;
 
-        &.state-one {
-          opacity: 1;
-          transform: scale(1, 1);
-        }
+//         &.state-one {
+//           opacity: 1;
+//           transform: scale(1, 1);
+//         }
 
-        &.state-two {
-          opacity: .5;
-          transform: scale(1.9, 1.9);
-        }
-      }
-    }
-  }
+//         &.state-two {
+//           opacity: .5;
+//           transform: scale(1.9, 1.9);
+//         }
+//       }
+//     }
+//   }
+// }
+
+// p {
+//   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+//   font-size: medium;
+//   color: #006699;
+// }
+
+// ------------------------------------------- Slide Image on Hover ------------------------
+
+.pictureContainer {
+  height: 150px;
+  width: 150px;
+  overflow: hidden;
 }
 
-p {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  font-size: medium;
-  color: #006699;
+.pictureContainer img {
+  transform: translate3d(0px, 0px, 0px);
+  transition: transform .6s cubic-bezier(.17, .67, .67, 1.43);
+}
+
+.pictureContainer img:hover {
+  transform: translate3d(0px, -150px, 0px);
 }

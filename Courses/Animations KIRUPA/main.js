@@ -55,16 +55,16 @@
 
 // ------------------------------------------- Looping a CSS Transition ------------------------
 
-let circle = document.querySelector(".circle");
-circle.addEventListener("mouseover", toggleClassesOnSetup, false);
-circle.addEventListener("transitionend", toggleClassesOnEnd, false);
-function toggleClassesOnSetup(e) {
-	circle.classList.toggle("state-one");
-	circle.classList.toggle("state-two");
-}
-function toggleClassesOnEnd(e) {
-	if (e.propertyName === "opacity") {
-		circle.classList.toggle("state-one");
-		circle.classList.toggle("state-two");
-	}
-}
+// let circle = document.querySelector(".circle");
+// circle.addEventListener("mouseover", toggleClassesOnSetup, false);
+// circle.addEventListener("transitionend", toggleClassesOnEnd, false);
+// function toggleClassesOnSetup(e) {
+// 	circle.classList.toggle("state-one");
+// 	circle.classList.toggle("state-two");
+// }
+// function toggleClassesOnEnd(e) {
+// 	if (e.propertyName === "opacity") {
+// 		circle.classList.toggle("state-one");
+// 		circle.classList.toggle("state-two");
+// 	}
+// }
