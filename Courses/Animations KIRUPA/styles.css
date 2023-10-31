@@ -1,27 +1,37 @@
 body {
-  background-color: #FFF;
-  margin: 30px;
-  margin-top: 10px;
+  margin: 40px;
+  background-color: #FFEA4C;
 }
-
-.box {
-  width: 550px;
-  height: 350px;
-  border: 5px black solid;
-  overflow: hidden;
-  background-color: #F2F2F2;
+body h1 {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 2.5em;
+  text-decoration: underline;
+  color: #272838;
 }
-
-.container {
-  position: relative;
+body ul {
+  padding: 0;
 }
-
-.circle {
-  transition-timing-function: ease-in-out;
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: #0066CC;
-  opacity: 0.5;
+body ul li {
+  list-style: none;
+}
+body ul li a {
+  font-family: sans-serif;
+  font-size: 1.5em;
+  font-weight: bolder;
+  line-height: 3em;
+  padding: 10px;
+  text-decoration: none;
+}
+body ul li a.bg-slider {
+  background-size: 400% 100%;
+  background-image: linear-gradient(to right, #FFF 0%, #FFF 25%, #272838 25%, #272838 50%, #2738d0 50%, #2738d0 75%, #b1e452 75%, #b1e452 100%);
+  background-position: 0 0;
+  transition: background-position 0.4s linear, color 0.2s linear;
+  transition-delay: 0s, 0.15s;
+  color: #272838;
+}
+body ul li a.bg-slider:hover {
+  color: #FFF;
+  background-position: 100% 0;
 }/*# sourceMappingURL=styles.css.map */
