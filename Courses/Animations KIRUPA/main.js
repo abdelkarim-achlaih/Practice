@@ -68,3 +68,53 @@
 // 		circle.classList.toggle("state-two");
 // 	}
 // }
+
+// ------------------------------------------- Animating Many Elements Using a Transition ------------------------
+
+let container = document.querySelector(".container");
+
+for (let i = 0; i < 10; i++) {
+	let circle = document.createElement("div");
+	circle.classList.add("circle");
+	container.append(circle);
+}
+
+let circles = document.querySelectorAll(".circle");
+
+initialStyles();
+
+function initialStyles() {
+	circles.forEach((circle) => {
+		circle.style.transitionDuration = `${getRandomNumber(1, 5)}s`;
+		randomStyles(circle);
+	});
+}
+
+window.addEventListener("load", setup, false);
+
+function setup() {
+	circles.forEach((circle) => {
+		randomStyles(circle);
+		circle.addEventListener("transitionend", randomStyles, false);
+	});
+}
+
+function randomStyles(circle) {
+	circle = circle.target || circle;
+	circle.coordinates = {
+		x: getRandomNumber(0, 450),
+		y: getRandomNumber(0, 250),
+		radius: getRandomNumber(50, 200),
+		opacity: Math.trunc(Math.random() * 100) / 100,
+	};
+	changeStyles(circle);
+}
+function changeStyles(circle) {
+	circle.style.opacity = `${circle.coordinates.opacity}`;
+	circle.style.height = `${circle.coordinates.radius}px`;
+	circle.style.width = `${circle.coordinates.radius}px`;
+	circle.style.transform = `translate3d(${circle.coordinates.x}px,${circle.coordinates.y}px,0)`;
+}
+function getRandomNumber(n, m) {
+	return Math.floor(Math.random() * (m - n + 1)) + n;
+}
