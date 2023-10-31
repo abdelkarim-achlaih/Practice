@@ -272,53 +272,78 @@
 //   background-color: #0066CC;
 //   opacity: .5;
 // }
+
 // ------------------------------------------- Sliding Background Effect on Link Hover ------------------------
 
+// body {
+//   margin: 40px;
+//   background-color: #FFEA4C;
+
+//   h1 {
+//     font-family: sans-serif;
+//     font-weight: bold;
+//     font-size: 2.5em;
+//     text-decoration: underline;
+//     color: #272838;
+//   }
+
+//   ul {
+//     padding: 0;
+
+//     li {
+//       list-style: none;
+
+//       a {
+//         font-family: sans-serif;
+//         font-size: 1.5em;
+//         font-weight: bolder;
+//         line-height: 3em;
+//         padding: 10px;
+//         text-decoration: none;
+
+//         &.bg-slider {
+//           background-size: 400% 100%;
+//           background-image: linear-gradient(to right, #FFF 0%, #FFF 25%, #272838 25%, #272838 50%,
+//               #2738d0 50%,
+//               #2738d0 75%,
+//               #b1e452 75%,
+//               #b1e452 100%);
+//           background-position: 0 0;
+//           transition: background-position .4s linear, color .2s linear;
+//           transition-delay: 0.0s, 0.15s;
+//           color: #272838;
+
+//           &:hover {
+//             color: #FFF;
+//             background-position: 100% 0;
+//           }
+//         }
+//       }
+
+//     }
+//   }
+// }
+
+// ------------------------------------------- The Falling Snow Effect ------------------------
 body {
-  margin: 40px;
-  background-color: #FFEA4C;
+  background-color: rgb(96, 125, 126);
+}
 
-  h1 {
-    font-family: sans-serif;
-    font-weight: bold;
-    font-size: 2.5em;
-    text-decoration: underline;
-    color: #272838;
-  }
+.container {
+  position: relative;
+  background-color: #1a243f;
+  width: 500px;
+  height: 450px;
+  // overflow: hidden;
+  margin: 200px;
 
-  ul {
-    padding: 0;
-
-    li {
-      list-style: none;
-
-      a {
-        font-family: sans-serif;
-        font-size: 1.5em;
-        font-weight: bolder;
-        line-height: 3em;
-        padding: 10px;
-        text-decoration: none;
-
-        &.bg-slider {
-          background-size: 400% 100%;
-          background-image: linear-gradient(to right, #FFF 0%, #FFF 25%, #272838 25%, #272838 50%,
-              #2738d0 50%,
-              #2738d0 75%,
-              #b1e452 75%,
-              #b1e452 100%);
-          background-position: 0 0;
-          transition: background-position .4s linear, color .2s linear;
-          transition-delay: 0.0s, 0.15s;
-          color: #272838;
-
-          &:hover {
-            color: #FFF;
-            background-position: 100% 0;
-          }
-        }
-      }
-
-    }
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    user-select: none;
+    z-index: 1000;
+    pointer-events: none;
+    width: 30px;
   }
 }
