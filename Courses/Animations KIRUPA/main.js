@@ -121,88 +121,104 @@
 
 // ------------------------------------------- The Falling Snow Effect ------------------------
 
-let container = document.querySelector(".container");
+// let container = document.querySelector(".container");
 
-for (let i = 0; i < 20; i++) {
-	let newSnowflake = container.firstElementChild.cloneNode();
-	container.append(newSnowflake);
-}
+// for (let i = 0; i < 20; i++) {
+// 	let newSnowflake = container.firstElementChild.cloneNode();
+// 	container.append(newSnowflake);
+// }
 
-let snowFlakes = container.querySelectorAll("img");
+// let snowFlakes = container.querySelectorAll("img");
 
-initialStyles();
+// initialStyles();
 
-function initialStyles() {
-	snowFlakes.forEach((snowFlake) => {
-		snowFlake.styles = {};
-		randomStyles(snowFlake);
-		changeStyles(snowFlake);
-	});
-}
+// function initialStyles() {
+// 	snowFlakes.forEach((snowFlake) => {
+// 		snowFlake.styles = {};
+// 		randomStyles(snowFlake);
+// 		changeStyles(snowFlake);
+// 	});
+// }
 
-function randomStyles(snowFlake) {
-	snowFlake.styles.width = getRandomNumber(20, 50);
-	snowFlake.styles.opacity = Math.trunc(Math.random() * 100) / 100;
-	randomCoordinates(snowFlake);
-}
+// function randomStyles(snowFlake) {
+// 	snowFlake.styles.width = getRandomNumber(20, 50);
+// 	snowFlake.styles.opacity = Math.trunc(Math.random() * 100) / 100;
+// 	randomCoordinates(snowFlake);
+// }
 
-function randomCoordinates(snowFlake) {
-	snowFlake.styles.x = getRandomNumber(0, 450);
-	snowFlake.styles.y = -51;
-}
+// function randomCoordinates(snowFlake) {
+// 	snowFlake.styles.x = getRandomNumber(0, 450);
+// 	snowFlake.styles.y = -51;
+// }
 
-function changeStyles(snowFlake) {
-	snowFlake.style.opacity = `${snowFlake.styles.opacity}`;
-	snowFlake.style.width = `${snowFlake.styles.width}px`;
-	snowFlake.style.transform = `translate3d(${snowFlake.styles.x}px,${snowFlake.styles.y}px,0)`;
-}
+// function changeStyles(snowFlake) {
+// 	snowFlake.style.opacity = `${snowFlake.styles.opacity}`;
+// 	snowFlake.style.width = `${snowFlake.styles.width}px`;
+// 	snowFlake.style.transform = `translate3d(${snowFlake.styles.x}px,${snowFlake.styles.y}px,0)`;
+// }
 
-function getRandomNumber(n, m) {
-	return Math.floor(Math.random() * (m - n + 1)) + n;
-}
+// function getRandomNumber(n, m) {
+// 	return Math.floor(Math.random() * (m - n + 1)) + n;
+// }
 
-function randomDestinationCoordinates(snowFlake) {
-	snowFlake.styles.destinationX = getRandomNumber(0, 500);
-	snowFlake.styles.destinationY = 501;
-}
+// function randomDestinationCoordinates(snowFlake) {
+// 	snowFlake.styles.destinationX = getRandomNumber(0, 500);
+// 	snowFlake.styles.destinationY = 501;
+// }
 
-let speed = 0;
-let direction = 0;
+// let speed = 0;
+// let direction = 0;
 
-window.addEventListener("load", setup, false);
+// window.addEventListener("load", setup, false);
 
-function setup() {
-	snowFlakes.forEach((snowFlake) => {
-		animate(snowFlake);
+// function setup() {
+// 	snowFlakes.forEach((snowFlake) => {
+// 		animate(snowFlake);
 
-		function animate(snowFlake) {
-			randomDestinationCoordinates(snowFlake);
+// 		function animate(snowFlake) {
+// 			randomDestinationCoordinates(snowFlake);
 
-			snowFlake.styles.speed = 5 + 40 * Math.random();
-			snowFlake.styles.direction = Math.random() < 0.5 ? 1 : -1;
-			snowFlake.styles.counter = 0;
+// 			snowFlake.styles.speed = 5 + 40 * Math.random();
+// 			snowFlake.styles.direction = Math.random() < 0.5 ? 1 : -1;
+// 			snowFlake.styles.counter = 0;
 
-			move();
+// 			move();
 
-			function move() {
-				if (snowFlake.styles.y < container.clientHeight + 1) {
-					snowFlake.styles.counter += snowFlake.styles.speed / 5000;
-					snowFlake.styles.x +=
-						(snowFlake.styles.direction *
-							snowFlake.styles.speed *
-							Math.cos(snowFlake.styles.counter)) /
-						40;
-					snowFlake.styles.y +=
-						Math.sin(snowFlake.styles.counter) / 40 +
-						snowFlake.styles.speed / 30;
-					changeStyles(snowFlake);
-					requestAnimationFrame(move);
-				} else {
-					randomCoordinates(snowFlake);
-					changeStyles(snowFlake);
-					animate(snowFlake);
-				}
-			}
+// 			function move() {
+// 				if (snowFlake.styles.y < container.clientHeight + 1) {
+// 					snowFlake.styles.counter += snowFlake.styles.speed / 5000;
+// 					snowFlake.styles.x +=
+// 						(snowFlake.styles.direction *
+// 							snowFlake.styles.speed *
+// 							Math.cos(snowFlake.styles.counter)) /
+// 						40;
+// 					snowFlake.styles.y +=
+// 						Math.sin(snowFlake.styles.counter) / 40 +
+// 						snowFlake.styles.speed / 30;
+// 					changeStyles(snowFlake);
+// 					requestAnimationFrame(move);
+// 				} else {
+// 					randomCoordinates(snowFlake);
+// 					changeStyles(snowFlake);
+// 					animate(snowFlake);
+// 				}
+// 			}
+// 		}
+// 	});
+// }
+
+// ------------------------------------------- Zooming Concentric (Striped) Circles ------------------------
+
+let circle = document.querySelector(".radialStripes");
+let offset = -20;
+function animateCircle() {
+	setTimeout(() => {
+		circle.style.setProperty("--offset", `${offset}px`);
+		offset++;
+		if (offset > 20) {
+			offset = -20;
 		}
-	});
+		requestAnimationFrame(animateCircle);
+	}, 20);
 }
+animateCircle();

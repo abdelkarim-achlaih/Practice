@@ -325,25 +325,77 @@
 // }
 
 // ------------------------------------------- The Falling Snow Effect ------------------------
+// body {
+//   background-color: rgb(96, 125, 126);
+
+//   .container {
+//     position: relative;
+//     background-color: #1a243f;
+//     width: 500px;
+//     height: 450px;
+//     overflow: hidden;
+//     margin: 200px;
+
+//     img {
+//       position: absolute;
+//       top: 0;
+//       left: 0;
+//       user-select: none;
+//       z-index: 1000;
+//       pointer-events: none;
+//       width: 30px;
+//     }
+//   }
+// }
+
+// ------------------------------------------- Zooming Concentric (Striped) Circles ------------------------
+
 body {
-  background-color: rgb(96, 125, 126);
-}
+  padding: 25px;
 
-.container {
-  position: relative;
-  background-color: #1a243f;
-  width: 500px;
-  height: 450px;
-  overflow: hidden;
-  margin: 200px;
+  #outerContainer {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-gap: 40px;
 
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    user-select: none;
-    z-index: 1000;
-    pointer-events: none;
-    width: 30px;
+    .container {
+      width: 300px;
+      height: 300px;
+      background-color: #3891A6;
+      transform: translateZ(0);
+      border-radius: 50%;
+      border: #A93F55 solid 10px;
+      --color1: #F2545B;
+      --color2: #F3F7F0;
+
+
+      &.radialStripes {
+        background-image: radial-gradient(circle,
+            var(--color1) 0px,
+            var(--color1) calc(var(--offset) + 0px),
+            var(--color2) calc(var(--offset) + 0px),
+            var(--color2) calc(var(--offset) + 20px),
+            var(--color1) calc(var(--offset) + 20px),
+            var(--color1) calc(var(--offset) + 40px),
+            var(--color2) calc(var(--offset) + 40px),
+            var(--color2) calc(var(--offset) + 60px),
+            var(--color1) calc(var(--offset) + 60px),
+            var(--color1) calc(var(--offset) + 80px),
+            var(--color2) calc(var(--offset) + 80px),
+            var(--color2) calc(var(--offset) + 100px),
+            var(--color1) calc(var(--offset) + 100px),
+            var(--color1) calc(var(--offset) + 120px),
+            var(--color2) calc(var(--offset) + 120px),
+            var(--color2) calc(var(--offset) + 140px),
+            var(--color1) calc(var(--offset) + 140px),
+            var(--color1) calc(var(--offset) + 160px),
+            var(--color2) calc(var(--offset) + 160px),
+            var(--color2) calc(var(--offset) + 180px),
+            var(--color1) calc(var(--offset) + 180px),
+            var(--color1) calc(var(--offset) + 200px),
+            var(--color2) calc(var(--offset) + 200px),
+            var(--color2) calc(var(--offset) + 220px));
+      }
+    }
   }
 }
