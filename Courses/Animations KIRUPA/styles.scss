@@ -402,44 +402,82 @@
 
 // ------------------------------------------- Creating a Pulsing Circle Animation ------------------------
 
-#container {
-  width: 600px;
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
+// #container {
+//   width: 600px;
+//   height: 400px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   overflow: hidden;
+//   position: relative;
 
-  .circle {
-    border-radius: 50%;
-    background-color: deepskyblue;
-    width: 150px;
-    height: 150px;
-    position: absolute;
-    opacity: 0;
-    animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+//   .circle {
+//     border-radius: 50%;
+//     background-color: deepskyblue;
+//     width: 150px;
+//     height: 150px;
+//     position: absolute;
+//     opacity: 0;
+//     animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+
+//   }
+
+//   .item {
+//     z-index: 100;
+//     padding: 5px;
+
+//     img {
+//       width: 150px;
+//     }
+//   }
+// }
+
+// @keyframes scaleIn {
+//   from {
+//     transform: scale(.5, .5);
+//     opacity: .5;
+//   }
+
+//   to {
+//     transform: scale(2.5, 2.5);
+//     opacity: 0;
+//   }
+// }
+
+// ------------------------------------------- The iOS Icon Jiggle / Wobble Effect ------------------------
+
+div {
+  width: 100px;
+  height: 100px;
+  background-color: cornflowerblue;
+  border-radius: 10px;
+  animation: wobble infinite .25s alternate;
+  display: inline-block;
+  overflow: hidden;
+
+  &:first-of-type {
+    --start: -1deg;
+    --end: 1.5deg;
+    transform-origin: 50% 10%;
 
   }
 
-  .item {
-    z-index: 100;
-    padding: 5px;
-
-    img {
-      width: 150px;
-    }
+  &:last-of-type {
+    --start: 1.5deg;
+    --end: -1deg;
+    animation-delay: -.2s;
+    transform-origin: 30% 5%;
   }
 }
 
-@keyframes scaleIn {
-  from {
-    transform: scale(.5, .5);
-    opacity: .5;
+@keyframes wobble {
+  0% {
+    transform: rotate(var(--start));
+    animation-timing-function: ease-in;
   }
 
-  to {
-    transform: scale(2.5, 2.5);
-    opacity: 0;
+  100% {
+    transform: rotate(var(--end));
+    animation-timing-function: ease-out;
   }
 }
