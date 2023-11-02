@@ -350,52 +350,96 @@
 
 // ------------------------------------------- Zooming Concentric (Striped) Circles ------------------------
 
-body {
-  padding: 25px;
+// body {
+//   padding: 25px;
 
-  #outerContainer {
-    display: grid;
-    grid-template-columns: 200px 200px;
-    grid-gap: 40px;
+//   #outerContainer {
+//     display: grid;
+//     grid-template-columns: 200px 200px;
+//     grid-gap: 40px;
 
-    .container {
-      width: 300px;
-      height: 300px;
-      background-color: #3891A6;
-      transform: translateZ(0);
-      border-radius: 50%;
-      border: #A93F55 solid 10px;
-      --color1: #F2545B;
-      --color2: #F3F7F0;
+//     .container {
+//       width: 300px;
+//       height: 300px;
+//       background-color: #3891A6;
+//       transform: translateZ(0);
+//       border-radius: 50%;
+//       border: #A93F55 solid 10px;
+//       --color1: #F2545B;
+//       --color2: #F3F7F0;
 
 
-      &.radialStripes {
-        background-image: radial-gradient(circle,
-            var(--color1) 0px,
-            var(--color1) calc(var(--offset) + 0px),
-            var(--color2) calc(var(--offset) + 0px),
-            var(--color2) calc(var(--offset) + 20px),
-            var(--color1) calc(var(--offset) + 20px),
-            var(--color1) calc(var(--offset) + 40px),
-            var(--color2) calc(var(--offset) + 40px),
-            var(--color2) calc(var(--offset) + 60px),
-            var(--color1) calc(var(--offset) + 60px),
-            var(--color1) calc(var(--offset) + 80px),
-            var(--color2) calc(var(--offset) + 80px),
-            var(--color2) calc(var(--offset) + 100px),
-            var(--color1) calc(var(--offset) + 100px),
-            var(--color1) calc(var(--offset) + 120px),
-            var(--color2) calc(var(--offset) + 120px),
-            var(--color2) calc(var(--offset) + 140px),
-            var(--color1) calc(var(--offset) + 140px),
-            var(--color1) calc(var(--offset) + 160px),
-            var(--color2) calc(var(--offset) + 160px),
-            var(--color2) calc(var(--offset) + 180px),
-            var(--color1) calc(var(--offset) + 180px),
-            var(--color1) calc(var(--offset) + 200px),
-            var(--color2) calc(var(--offset) + 200px),
-            var(--color2) calc(var(--offset) + 220px));
-      }
+//       &.radialStripes {
+//         background-image: radial-gradient(circle,
+//             var(--color1) 0px,
+//             var(--color1) calc(var(--offset) + 0px),
+//             var(--color2) calc(var(--offset) + 0px),
+//             var(--color2) calc(var(--offset) + 20px),
+//             var(--color1) calc(var(--offset) + 20px),
+//             var(--color1) calc(var(--offset) + 40px),
+//             var(--color2) calc(var(--offset) + 40px),
+//             var(--color2) calc(var(--offset) + 60px),
+//             var(--color1) calc(var(--offset) + 60px),
+//             var(--color1) calc(var(--offset) + 80px),
+//             var(--color2) calc(var(--offset) + 80px),
+//             var(--color2) calc(var(--offset) + 100px),
+//             var(--color1) calc(var(--offset) + 100px),
+//             var(--color1) calc(var(--offset) + 120px),
+//             var(--color2) calc(var(--offset) + 120px),
+//             var(--color2) calc(var(--offset) + 140px),
+//             var(--color1) calc(var(--offset) + 140px),
+//             var(--color1) calc(var(--offset) + 160px),
+//             var(--color2) calc(var(--offset) + 160px),
+//             var(--color2) calc(var(--offset) + 180px),
+//             var(--color1) calc(var(--offset) + 180px),
+//             var(--color1) calc(var(--offset) + 200px),
+//             var(--color2) calc(var(--offset) + 200px),
+//             var(--color2) calc(var(--offset) + 220px));
+//       }
+//     }
+//   }
+// }
+
+// ------------------------------------------- Creating a Pulsing Circle Animation ------------------------
+
+#container {
+  width: 600px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+
+  .circle {
+    border-radius: 50%;
+    background-color: deepskyblue;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    opacity: 0;
+    animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+
+  }
+
+  .item {
+    z-index: 100;
+    padding: 5px;
+
+    img {
+      width: 150px;
     }
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(.5, .5);
+    opacity: .5;
+  }
+
+  to {
+    transform: scale(2.5, 2.5);
+    opacity: 0;
   }
 }
