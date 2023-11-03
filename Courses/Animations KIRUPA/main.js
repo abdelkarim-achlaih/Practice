@@ -209,16 +209,16 @@
 
 // ------------------------------------------- Zooming Concentric (Striped) Circles ------------------------
 
-let circle = document.querySelector(".radialStripes");
-let offset = -20;
-function animateCircle() {
-	setTimeout(() => {
-		circle.style.setProperty("--offset", `${offset}px`);
-		offset++;
-		if (offset > 20) {
-			offset = -20;
-		}
-		requestAnimationFrame(animateCircle);
-	}, 20);
-}
-animateCircle();
+// let circle = document.querySelector(".radialStripes");
+// let offset = -20;
+// function animateCircle() {
+// 	setTimeout(() => {
+// 		circle.style.setProperty("--offset", `${offset}px`);
+// 		offset++;
+// 		if (offset > 20) {
+// 			offset = -20;
+// 		}
+// 		requestAnimationFrame(animateCircle);
+// 	}, 20);
+// }
+// animateCircle();
