@@ -1,26 +1,19 @@
-.main {
-  display: grid;
-  align-items: center;
-  justify-items: center;
-}
-.main .text {
-  font-weight: 600;
-  letter-spacing: 1.7px;
-  text-transform: uppercase;
-  font-family: "Kanit";
-  font-size: 17px;
-  fill: #111;
-  text-shadow: 2px 0px #ccc;
-}
-.main #rotatingText {
-  animation-name: rotate-circle;
-  animation-duration: 10s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+.blink {
+  animation: 1s infinite blink;
+  font-size: 200px;
 }
 
-@keyframes rotate-circle {
-  to {
-    transform: rotate(1turn);
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  76% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
   }
 }/*# sourceMappingURL=styles.css.map */
