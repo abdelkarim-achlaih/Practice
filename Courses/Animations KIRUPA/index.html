@@ -157,7 +157,29 @@
 
   <!-- ------------------------------------------- Rounded Image Links with a Sweet Hover Effect ------------------------ -->
 
-  <div><img src="//www.kirupa.com/mini_icons/entypo/large_book.png" alt=""></div>
+  <!-- <div><img src="//www.kirupa.com/mini_icons/entypo/large_book.png" alt=""></div> -->
+
+  <!-- ------------------------------------------- Spinning Circular Text ------------------------ -->
+
+  <div class="main">
+    <svg id="rotatingText" viewBox="0 0 200 200" width="200" height="200">
+      <defs>
+        <path id="circle" d="M 100, 100
+                m -75, 0
+                a 75, 75 0 1, 0 150, 0
+                a 75, 75 0 1, 0 -150, 0
+                ">
+        </path>
+      </defs>
+      <text width="400">
+        <textPath alignment-baseline="top" xlink:href="#circle" class="text">
+          Part of a heart-healthy breakfast...sorta! -
+        </textPath>
+      </text>
+    </svg>
+  </div>
+
+
 
   <script src="easing.js"></script>
   <script src="main.js"></script>
