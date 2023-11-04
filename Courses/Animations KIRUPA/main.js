@@ -222,3 +222,53 @@
 // 	}, 20);
 // }
 // animateCircle();
+
+// ------------------------------------------- Exercise: Move Element to Click Position ------------------------
+
+let container = document.querySelector(".container");
+let circle = document.querySelector(".circle");
+circle.x = 25;
+circle.y = 25;
+
+container.addEventListener("click", direction, false);
+let xPos = 0;
+let yPos = 0;
+function direction(e) {
+	xPos = e.clientX - getDimensions(container).x;
+	yPos = e.clientY - getDimensions(container).y;
+	currentIteration = 0;
+	startValueX = circle.x;
+	startValueY = circle.y;
+	move();
+}
+let currentIteration = 0,
+	startValueX = 0,
+	startValueY = 0,
+	totalIterations = 60; // fps * duration (60 * 5)`
+function move() {
+	circle.x = xPos;
+	circle.y = yPos;
+	circle.style.transform = `translate3d(${
+		easeInOutExpo(
+			currentIteration,
+			startValueX,
+			xPos - startValueX,
+			totalIterations
+		) - 25
+	}px,${
+		easeInOutExpo(
+			currentIteration,
+			startValueY,
+			yPos - startValueY,
+			totalIterations
+		) - 25
+	}px, 0)`;
+	currentIteration++;
+	if (currentIteration < totalIterations) requestAnimationFrame(move);
+}
+function getDimensions(node) {
+	return {
+		x: node.getBoundingClientRect().left,
+		y: node.getBoundingClientRect().top,
+	};
+}
