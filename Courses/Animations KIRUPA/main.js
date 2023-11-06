@@ -225,50 +225,85 @@
 
 // ------------------------------------------- Exercise: Move Element to Click Position ------------------------
 
-let container = document.querySelector(".container");
-let circle = document.querySelector(".circle");
-circle.x = 25;
-circle.y = 25;
+// let container = document.querySelector(".container");
+// let circle = document.querySelector(".circle");
+// circle.x = 25;
+// circle.y = 25;
 
-container.addEventListener("click", direction, false);
-let xPos = 0;
-let yPos = 0;
-function direction(e) {
-	xPos = e.clientX - getDimensions(container).x;
-	yPos = e.clientY - getDimensions(container).y;
-	currentIteration = 0;
-	startValueX = circle.x;
-	startValueY = circle.y;
-	move();
+// container.addEventListener("click", direction, false);
+// let xPos = 0;
+// let yPos = 0;
+// function direction(e) {
+// 	xPos = e.clientX - getDimensions(container).x;
+// 	yPos = e.clientY - getDimensions(container).y;
+// 	currentIteration = 0;
+// 	startValueX = circle.x;
+// 	startValueY = circle.y;
+// 	move();
+// }
+// let currentIteration = 0,
+// 	startValueX = 0,
+// 	startValueY = 0,
+// 	totalIterations = 60; // fps * duration (60 * 5)`
+// function move() {
+// 	circle.x = xPos;
+// 	circle.y = yPos;
+// 	circle.style.transform = `translate3d(${
+// 		easeInOutExpo(
+// 			currentIteration,
+// 			startValueX,
+// 			xPos - startValueX,
+// 			totalIterations
+// 		) - 25
+// 	}px,${
+// 		easeInOutExpo(
+// 			currentIteration,
+// 			startValueY,
+// 			yPos - startValueY,
+// 			totalIterations
+// 		) - 25
+// 	}px, 0)`;
+// 	currentIteration++;
+// 	if (currentIteration < totalIterations) requestAnimationFrame(move);
+// }
+// function getDimensions(node) {
+// 	return {
+// 		x: node.getBoundingClientRect().left,
+// 		y: node.getBoundingClientRect().top,
+// 	};
+// }
+
+// ------------------------------------------- Cool Content Carousel ------------------------
+
+let container = document.querySelector(".slideContainer");
+let items = container.querySelectorAll(".slideItem");
+window.addEventListener("keydown", slide, false);
+window.addEventListener("load", setup, false);
+function setup(e) {
+	items.forEach((item) => {
+		item.style.transform = `rotate(${randomDegrees()}deg)`;
+	});
 }
-let currentIteration = 0,
-	startValueX = 0,
-	startValueY = 0,
-	totalIterations = 60; // fps * duration (60 * 5)`
-function move() {
-	circle.x = xPos;
-	circle.y = yPos;
-	circle.style.transform = `translate3d(${
-		easeInOutExpo(
-			currentIteration,
-			startValueX,
-			xPos - startValueX,
-			totalIterations
-		) - 25
-	}px,${
-		easeInOutExpo(
-			currentIteration,
-			startValueY,
-			yPos - startValueY,
-			totalIterations
-		) - 25
-	}px, 0)`;
-	currentIteration++;
-	if (currentIteration < totalIterations) requestAnimationFrame(move);
+function slide(e) {
+	if (e.code === "ArrowDown" || e.code === "ArrowLeft") {
+		let index = parseInt(container.getAttribute("tabindex"));
+		if (index > 0) {
+			items[index].classList.toggle("hide");
+			container.setAttribute("tabindex", index - 1);
+		}
+	}
+	if (e.code === "ArrowUp" || e.code === "ArrowRight") {
+		let index = parseInt(container.getAttribute("tabindex"));
+		if (items[index + 1]) {
+			items[index + 1].classList.toggle("hide");
+			container.setAttribute("tabindex", index + 1);
+		}
+	}
 }
-function getDimensions(node) {
-	return {
-		x: node.getBoundingClientRect().left,
-		y: node.getBoundingClientRect().top,
-	};
+function randomDegrees() {
+	let degrees = Math.round(Math.random() * 4 * 100) / 100;
+	let tmp = 0;
+	Math.random() > 0.5 ? (tmp = 1) : (tmp = -1);
+	degrees *= tmp;
+	return degrees;
 }
