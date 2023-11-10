@@ -9,35 +9,35 @@
 	},
 	{
 		"title": "Which tag is used to define an unordered list in HTML?",
-		"right_answer": "<ul>",
-		"answer_1": "<ol>",
-		"answer_2": "<list>",
-		"answer_3": "<ul>",
-		"answer_4": "<li>"
+		"right_answer": "&lt;ul&gt;",
+		"answer_1": "&lt;ol&gt;",
+		"answer_2": "&lt;list&gt;",
+		"answer_3": "&lt;ul&gt;",
+		"answer_4": "&lt;li&gt;"
 	},
 	{
 		"title": "Which tag is used to insert a line break in HTML?",
-		"right_answer": "<br>",
-		"answer_1": "<break>",
-		"answer_2": "<lb>",
-		"answer_3": "<newline>",
-		"answer_4": "<brk>"
+		"right_answer": "&lt;br&gt;",
+		"answer_1": "&lt;break&gt;",
+		"answer_2": "&lt;lb&gt;",
+		"answer_3": "&lt;newline&gt;",
+		"answer_4": "&lt;brk&gt;"
 	},
 	{
 		"title": "What is the correct HTML for creating a hyperlink?",
-		"right_answer": "<a href='url'>Link Text</a>",
-		"answer_1": "<link src='url'>Link Text</link>",
-		"answer_2": "<a url='url'>Link Text</a>",
-		"answer_3": "<hyperlink>Link Text</hyperlink>",
-		"answer_4": "<a href='url'>Link</a>"
+		"right_answer": "&lt;a href='url'&gt;Link Text&lt;/a&gt;",
+		"answer_1": "&lt;link src='url'&gt;Link Text&lt;/link&gt;",
+		"answer_2": "&lt;a url='url'&gt;Link Text&lt;/a&gt;",
+		"answer_3": "&lt;hyperlink&gt;Link Text&lt;/hyperlink&gt;",
+		"answer_4": "&lt;a href='url'&gt;Link&lt;/a&gt;"
 	},
 	{
 		"title": "Which tag is used to define a clickable button in HTML?",
-		"right_answer": "<button>",
-		"answer_1": "<clickable>",
-		"answer_2": "<input>",
-		"answer_3": "<btn>",
-		"answer_4": "<buttonize>"
+		"right_answer": "&lt;button&gt;",
+		"answer_1": "&lt;clickable&gt;",
+		"answer_2": "&lt;input&gt;",
+		"answer_3": "&lt;btn&gt;",
+		"answer_4": "&lt;buttonize&gt;"
 	},
 	{
 		"title": "In HTML, which attribute is used to specify a unique identifier for an element?",
@@ -48,7 +48,7 @@
 		"answer_4": "key"
 	},
 	{
-		"title": "What does the HTML <img> tag stand for?",
+		"title": "What does the HTML &lt;img&gt; tag stand for?",
 		"right_answer": "Image",
 		"answer_1": "Link",
 		"answer_2": "Picture",
@@ -57,11 +57,11 @@
 	},
 	{
 		"title": "Which tag is used to define a table in HTML?",
-		"right_answer": "<table>",
-		"answer_1": "<tab>",
-		"answer_2": "<tbl>",
-		"answer_3": "<t>",
-		"answer_4": "<table>"
+		"right_answer": "&lt;table&gt;",
+		"answer_1": "&lt;tab&gt;",
+		"answer_2": "&lt;tbl&gt;",
+		"answer_3": "&lt;t&gt;",
+		"answer_4": "&lt;table&gt;"
 	},
 	{
 		"title": "Which attribute is used to provide an advisory text about an element or its contents in HTML?",
@@ -73,10 +73,10 @@
 	},
 	{
 		"title": "In HTML, which tag is used to define the document type?",
-		"right_answer": "<!DOCTYPE html>",
-		"answer_1": "<doctype>",
-		"answer_2": "<type>",
-		"answer_3": "<doc>",
-		"answer_4": "<!DOCTYPE>"
+		"right_answer": "&lt;!DOCTYPE html&gt;",
+		"answer_1": "&lt;doctype&gt;",
+		"answer_2": "&lt;type&gt;",
+		"answer_3": "&lt;doc&gt;",
+		"answer_4": "&lt;!DOCTYPE&gt;"
 	}
 ]
