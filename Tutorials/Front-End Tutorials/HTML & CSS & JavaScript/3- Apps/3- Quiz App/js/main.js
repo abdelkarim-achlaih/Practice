@@ -15,10 +15,10 @@ let first = true;
 
 let currentQuestIndex = 0;
 let theRightAnswer = "";
-
+let data = "";
 async function loadQuests() {
 	let req = await fetch("../questions.json");
-	let data = await req.json();
+	data = await req.json();
 	setup(data);
 }
 loadQuests();
@@ -47,6 +47,8 @@ function writeQuest(quest) {
 	title.innerHTML = quest.title;
 	let keys = Object.keys(quest);
 	let writtenKeys = [];
+	answersArea.innerHTML = "";
+	first = true;
 	while (writtenKeys.length < keys.length - 1) {
 		let index = getRandomNumber(1, keys.length - 1);
 		if (!writtenKeys.includes(index)) {
@@ -90,15 +92,16 @@ function getRandomNumber(n, m) {
 }
 submitBtn.addEventListener("click", checkAnswer, false);
 function checkAnswer() {
-	currentQuestIndex++;
 	let submittedAnswer = document.querySelector(
 		'.answer input[type="Radio"]:checked'
 	).answer;
-	console.log(submittedAnswer);
-	console.log(theRightAnswer);
 	if (submittedAnswer === theRightAnswer) {
-		console.log("true");
+		console.log(true);
 	} else {
 		console.log("false");
 	}
+	currentQuestIndex++;
+	writeQuest(data[currentQuestIndex]);
+	theRightAnswer = data[currentQuestIndex].right_answer;
+	writeBullets(data, "update");
 }
