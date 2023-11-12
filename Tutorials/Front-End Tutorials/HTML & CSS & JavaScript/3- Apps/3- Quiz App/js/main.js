@@ -11,6 +11,8 @@ let bulletsSpans = document.querySelector(".bullets .spans");
 
 let countdown = document.querySelector(".countdown");
 
+let first = true;
+
 async function loadQuests() {
 	let req = await fetch("../questions.json");
 	let data = await req.json();
@@ -45,10 +47,23 @@ function writeQuest(quest) {
 	while (writtenKeys.length < keys.length - 1) {
 		let index = getRandomNumber(1, keys.length - 1);
 		if (!writtenKeys.includes(index)) {
+			if (writtenKeys.length !== 0) first = false;
 			writtenKeys.push(index);
 			writeAnswer(quest, index);
 		}
 	}
+}
+function writeAnswer(quest, index) {
+	let keys = Object.keys(quest);
+	let answer = document.createElement("div");
+
+	answer.innerHTML = `
+	<input type="radio" name="answers" id="answer_${index}" data-answer=${
+		quest[keys[index]]
+	} ${first ? "checked" : ""}>
+	<label for="answer_${index}">${quest[keys[index]]}</label>`;
+	answer.classList.add("answer");
+	answersArea.append(answer);
 }
 function randomAllQuests(data) {
 	let tmpData = data;
@@ -64,13 +79,4 @@ function randomAllQuests(data) {
 function getRandomNumber(n, m) {
 	let tmp = Math.floor(Math.random() * (m - n + 1)) + n;
 	return tmp;
-}
-function writeAnswer(quest, index) {
-	let keys = Object.keys(quest);
-	let answer = document.createElement("div");
-	answer.innerHTML = `
-					<input type="radio" name="answers" id="answer_${index}">
-					<label for="answer_${index}">${quest[keys[index]]}</label>`;
-	answer.classList.add("answer");
-	answersArea.append(answer);
 }
