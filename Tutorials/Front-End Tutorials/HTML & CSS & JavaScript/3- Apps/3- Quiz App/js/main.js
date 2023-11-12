@@ -13,6 +13,9 @@ let countdown = document.querySelector(".countdown");
 
 let first = true;
 
+let currentQuestIndex = 0;
+let theRightAnswer = "";
+
 async function loadQuests() {
 	let req = await fetch("../questions.json");
 	let data = await req.json();
@@ -23,8 +26,8 @@ function setup(data) {
 	data = randomAllQuests(data);
 	cat.innerHTML = "HTML";
 	count.innerHTML = data.length;
-	let quest = data[0];
-	writeQuest(quest);
+	writeQuest(data[currentQuestIndex]);
+	theRightAnswer = data[currentQuestIndex].right_answer;
 	writeBullets(data, "setup");
 }
 function writeBullets(data, when) {
@@ -55,14 +58,19 @@ function writeQuest(quest) {
 }
 function writeAnswer(quest, index) {
 	let keys = Object.keys(quest);
+	let input = document.createElement("input");
+	input.type = "radio";
+	input.name = "answers";
+	input.id = `answer_${index}`;
+	input.answer = `${quest[keys[index]]}`;
+	first ? (input.checked = true) : "";
+	let label = document.createElement("label");
+	label.htmlFor = `answer_${index}`;
+	label.innerHTML = quest[keys[index]];
 	let answer = document.createElement("div");
-
-	answer.innerHTML = `
-	<input type="radio" name="answers" id="answer_${index}" data-answer=${
-		quest[keys[index]]
-	} ${first ? "checked" : ""}>
-	<label for="answer_${index}">${quest[keys[index]]}</label>`;
 	answer.classList.add("answer");
+	answer.appendChild(input);
+	answer.appendChild(label);
 	answersArea.append(answer);
 }
 function randomAllQuests(data) {
@@ -79,4 +87,18 @@ function randomAllQuests(data) {
 function getRandomNumber(n, m) {
 	let tmp = Math.floor(Math.random() * (m - n + 1)) + n;
 	return tmp;
+}
+submitBtn.addEventListener("click", checkAnswer, false);
+function checkAnswer() {
+	currentQuestIndex++;
+	let submittedAnswer = document.querySelector(
+		'.answer input[type="Radio"]:checked'
+	).answer;
+	console.log(submittedAnswer);
+	console.log(theRightAnswer);
+	if (submittedAnswer === theRightAnswer) {
+		console.log("true");
+	} else {
+		console.log("false");
+	}
 }
