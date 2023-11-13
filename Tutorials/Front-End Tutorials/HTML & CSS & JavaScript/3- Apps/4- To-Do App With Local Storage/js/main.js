@@ -14,7 +14,17 @@ function addTask(e) {
 		input.placeholder = "Enter a valid task";
 	}
 }
-let arrayOfTasks = [];
+let arrayOfTasks;
+getData();
+function getData() {
+	let data = window.localStorage.getItem("tasks");
+	if (data) {
+		arrayOfTasks = JSON.parse(data);
+		writeTasks(arrayOfTasks);
+	} else {
+		arrayOfTasks = [];
+	}
+}
 function structureTask(taskText) {
 	const taskObj = {
 		id: Date.now(),
@@ -22,14 +32,23 @@ function structureTask(taskText) {
 		title: taskText,
 	};
 	arrayOfTasks.push(taskObj);
+	storeTask(arrayOfTasks);
 }
 function writeTasks(arrayOfTasks) {
 	tasks.innerHTML = "";
 	arrayOfTasks.forEach((task) => {
 		let taskEle = document.createElement("div");
 		taskEle.classList.add("task");
+		taskEle.setAttribute("data-id", task.id);
+		task.completed ? taskEle.classList.add("done") : "";
 		taskEle.innerHTML = task.title;
+		let span = document.createElement("span");
+		span.innerHTML = "Delete";
+		span.addEventListener("click", (e) => {}, false);
+		taskEle.appendChild(span);
 		tasks.appendChild(taskEle);
 	});
 }
-function storeTask(taskText) {}
+function storeTask(arrayOfTasks) {
+	window.localStorage.setItem("tasks", JSON.stringify(arrayOfTasks));
+}
