@@ -11,6 +11,8 @@ let bulletsSpans = document.querySelector(".bullets .spans");
 
 let countdown = document.querySelector(".countdown");
 
+let results = document.querySelector(".results");
+
 let first = true;
 
 let currentQuestIndex = 0;
@@ -41,6 +43,12 @@ function writeBullets(data, when) {
 		}
 	}
 	if (when === "update") {
+		document
+			.querySelector(`.bullets .spans span:nth-child(${currentQuestIndex})`)
+			.classList.remove("on");
+		document
+			.querySelector(`.bullets .spans span:nth-child(${currentQuestIndex + 1})`)
+			.classList.add("on");
 	}
 }
 function writeQuest(quest) {
@@ -91,17 +99,36 @@ function getRandomNumber(n, m) {
 	return tmp;
 }
 submitBtn.addEventListener("click", checkAnswer, false);
+let result = 0;
 function checkAnswer() {
-	let submittedAnswer = document.querySelector(
-		'.answer input[type="Radio"]:checked'
-	).answer;
-	if (submittedAnswer === theRightAnswer) {
-		console.log(true);
+	if (currentQuestIndex < data.length - 1) {
+		let submittedAnswer = document.querySelector(
+			'.answer input[type="Radio"]:checked'
+		).answer;
+		if (submittedAnswer === theRightAnswer) {
+			result++;
+		}
+		console.log("quest: ", currentQuestIndex);
+		currentQuestIndex++;
+		writeQuest(data[currentQuestIndex]);
+		theRightAnswer = data[currentQuestIndex].right_answer;
+		writeBullets(data, "update");
 	} else {
-		console.log("false");
+		let span1 = document.createElement("span");
+		let span2 = document.createElement("span");
+		if (result === 10) {
+			span1.innerHTML = "Perfect";
+			span1.classList.add("perfect");
+		} else if (result < 10 && result > 5) {
+			span1.innerHTML = "Good";
+			span1.classList.add("good");
+		} else {
+			span1.innerHTML = "Bad";
+			span1.classList.add("bad");
+		}
+		span2.innerHTML = ` You answered ${result} from ${data.length}`;
+		results.appendChild(span1);
+		results.appendChild(span2);
+		submitBtn.removeEventListener("click", checkAnswer);
 	}
-	currentQuestIndex++;
-	writeQuest(data[currentQuestIndex]);
-	theRightAnswer = data[currentQuestIndex].right_answer;
-	writeBullets(data, "update");
 }
