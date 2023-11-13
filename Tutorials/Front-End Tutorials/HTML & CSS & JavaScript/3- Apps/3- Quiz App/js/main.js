@@ -99,6 +99,7 @@ submitBtn.addEventListener("click", checkAnswer, false);
 let result = 0;
 function checkAnswer() {
 	if (currentQuestIndex < data.length - 1) {
+		countS = duration;
 		let submittedAnswer = document.querySelector(
 			'.answer input[type="Radio"]:checked'
 		).answer;
