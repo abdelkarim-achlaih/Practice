@@ -42,6 +42,7 @@ function writeTasks(arrayOfTasks) {
 		taskEle.setAttribute("data-id", task.id);
 		task.completed ? taskEle.classList.add("done") : "";
 		taskEle.innerHTML = task.title;
+		taskEle.addEventListener("click", update, false);
 		let span = document.createElement("span");
 		span.innerHTML = "Delete";
 		span.addEventListener("click", del, false);
@@ -57,5 +58,16 @@ function del(e) {
 	arrayOfTasks = arrayOfTasks.filter(
 		(task) => task.id != e.target.parentElement.dataset.id
 	);
+	storeTasks(arrayOfTasks);
+}
+function update(e) {
+	e.target.classList.toggle("done");
+	arrayOfTasks.forEach((task) => {
+		if (task.id == e.target.dataset.id) {
+			task.completed == true
+				? (task.completed = false)
+				: (task.completed = true);
+		}
+	});
 	storeTasks(arrayOfTasks);
 }
