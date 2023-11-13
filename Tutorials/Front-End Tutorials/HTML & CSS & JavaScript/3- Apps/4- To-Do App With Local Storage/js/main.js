@@ -32,7 +32,7 @@ function structureTask(taskText) {
 		title: taskText,
 	};
 	arrayOfTasks.push(taskObj);
-	storeTask(arrayOfTasks);
+	storeTasks(arrayOfTasks);
 }
 function writeTasks(arrayOfTasks) {
 	tasks.innerHTML = "";
@@ -44,11 +44,18 @@ function writeTasks(arrayOfTasks) {
 		taskEle.innerHTML = task.title;
 		let span = document.createElement("span");
 		span.innerHTML = "Delete";
-		span.addEventListener("click", (e) => {}, false);
+		span.addEventListener("click", del, false);
 		taskEle.appendChild(span);
 		tasks.appendChild(taskEle);
 	});
 }
-function storeTask(arrayOfTasks) {
+function storeTasks(arrayOfTasks) {
 	window.localStorage.setItem("tasks", JSON.stringify(arrayOfTasks));
+}
+function del(e) {
+	e.target.parentElement.remove();
+	arrayOfTasks = arrayOfTasks.filter(
+		(task) => task.id != e.target.parentElement.dataset.id
+	);
+	storeTasks(arrayOfTasks);
 }
