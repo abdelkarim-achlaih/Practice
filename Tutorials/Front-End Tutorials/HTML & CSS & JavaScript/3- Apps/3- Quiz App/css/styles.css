@@ -70,6 +70,9 @@ body {
   cursor: pointer;
   border-radius: 6px;
   margin: 20px auto;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .quiz-app .submit-button:focus {
   outline: none;
@@ -93,6 +96,9 @@ body {
 }
 .quiz-app .spans span.on {
   background-color: #0075ff;
+}
+.quiz-app .results {
+  text-align: center;
 }
 .quiz-app .results span {
   font-weight: bold;

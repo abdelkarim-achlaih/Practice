@@ -78,6 +78,7 @@ body {
     cursor: pointer;
     border-radius: 6px;
     margin: 20px auto;
+    user-select: none;
 
     &:focus {
       outline: none;
@@ -109,21 +110,23 @@ body {
     }
   }
 
-  .results span {
-    font-weight: bold;
+  .results {
+    text-align: center;
 
-    &.bad {
-      color: #dc0a0a;
-    }
+    span {
+      font-weight: bold;
 
-    &.good {
-      color: #009688;
-    }
+      &.bad {
+        color: #dc0a0a;
+      }
 
-    &.perfect {
-      color: #0075ff;
+      &.good {
+        color: #009688;
+      }
+
+      &.perfect {
+        color: #0075ff;
+      }
     }
   }
-
-
 }

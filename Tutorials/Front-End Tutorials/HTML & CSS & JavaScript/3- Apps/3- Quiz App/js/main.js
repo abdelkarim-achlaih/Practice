@@ -129,5 +129,9 @@ function showResults() {
 	span2.innerHTML = ` You answered ${result} from ${data.length}`;
 	results.appendChild(span1);
 	results.appendChild(span2);
-	submitBtn.removeEventListener("click", checkAnswer);
+	results.style.padding = "20px";
+	submitBtn.remove();
+	answersArea.remove();
+	title.parentElement.remove();
+	bulletsSpans.parentElement.remove();
 }
