@@ -137,13 +137,12 @@ function showResults() {
 	bulletsSpans.parentElement.remove();
 	clearInterval(timer);
 }
-let duration = 60;
+let duration = 80;
 let countS = duration;
 let timer = "";
 function countDown() {
 	timer = setInterval(() => {
 		countdown.children[0].innerText = `0${Math.floor(countS / 60)}`;
-		countdown.children[1].innerText = countS % 60;
 		countdown.children[1].innerText =
 			countS % 60 < 10 ? `0${countS % 60}` : countS % 60;
 		if (countS > 0) {
