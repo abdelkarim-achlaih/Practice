@@ -44,9 +44,6 @@ function writeBullets(data, when) {
 	}
 	if (when === "update") {
 		document
-			.querySelector(`.bullets .spans span:nth-child(${currentQuestIndex})`)
-			.classList.remove("on");
-		document
 			.querySelector(`.bullets .spans span:nth-child(${currentQuestIndex + 1})`)
 			.classList.add("on");
 	}
@@ -108,27 +105,29 @@ function checkAnswer() {
 		if (submittedAnswer === theRightAnswer) {
 			result++;
 		}
-		console.log("quest: ", currentQuestIndex);
 		currentQuestIndex++;
 		writeQuest(data[currentQuestIndex]);
 		theRightAnswer = data[currentQuestIndex].right_answer;
 		writeBullets(data, "update");
 	} else {
-		let span1 = document.createElement("span");
-		let span2 = document.createElement("span");
-		if (result === 10) {
-			span1.innerHTML = "Perfect";
-			span1.classList.add("perfect");
-		} else if (result < 10 && result > 5) {
-			span1.innerHTML = "Good";
-			span1.classList.add("good");
-		} else {
-			span1.innerHTML = "Bad";
-			span1.classList.add("bad");
-		}
-		span2.innerHTML = ` You answered ${result} from ${data.length}`;
-		results.appendChild(span1);
-		results.appendChild(span2);
-		submitBtn.removeEventListener("click", checkAnswer);
+		showResults();
 	}
+}
+function showResults() {
+	let span1 = document.createElement("span");
+	let span2 = document.createElement("span");
+	if (result === 10) {
+		span1.innerHTML = "Perfect";
+		span1.classList.add("perfect");
+	} else if (result < 10 && result > 5) {
+		span1.innerHTML = "Good";
+		span1.classList.add("good");
+	} else {
+		span1.innerHTML = "Bad";
+		span1.classList.add("bad");
+	}
+	span2.innerHTML = ` You answered ${result} from ${data.length}`;
+	results.appendChild(span1);
+	results.appendChild(span2);
+	submitBtn.removeEventListener("click", checkAnswer);
 }
