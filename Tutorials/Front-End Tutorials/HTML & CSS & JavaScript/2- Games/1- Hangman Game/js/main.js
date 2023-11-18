@@ -53,6 +53,7 @@ document.querySelector(".category span").innerText = word;
 let letterGuess = document.querySelector(".letters-guess");
 Array.from(word).forEach((letter) => {
 	let span = document.createElement("span");
+	letter == " " ? span.classList.add("with-space") : "";
 	letterGuess.append(span);
 });
 let correct = 0;
