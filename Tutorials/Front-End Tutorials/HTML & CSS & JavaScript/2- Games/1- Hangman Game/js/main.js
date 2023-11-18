@@ -48,7 +48,7 @@ function getRandomNumber(n, m) {
 let wordsKeys = Object.keys(words);
 let randomKey = wordsKeys[getRandomNumber(0, wordsKeys.length - 1)];
 let word = words[randomKey][getRandomNumber(0, words[randomKey].length - 1)];
-document.querySelector(".category span").innerText = word;
+document.querySelector(".category span").innerText = randomKey;
 
 let letterGuess = document.querySelector(".letters-guess");
 Array.from(word).forEach((letter) => {
@@ -56,28 +56,42 @@ Array.from(word).forEach((letter) => {
 	letter == " " ? span.classList.add("with-space") : "";
 	letterGuess.append(span);
 });
+
 let correct;
+let failed = 0;
+let draws = document.querySelectorAll(".failed");
 word.includes(" ") ? (correct = 1) : (correct = 0);
+
 function check(e) {
-	if (correct < word.length) {
+	if (failed < draws.length - 1) {
 		e.target.classList.add("clicked");
 		let ele = e.target.innerText.toLowerCase();
-		word = word.toLowerCase();
-		console.log(word.length);
-		if (word.includes(ele)) {
-			let indexes = getAllIndexesOf(word, ele);
+		let wordL = word.toLowerCase();
+		if (wordL.includes(ele)) {
+			let indexes = getAllIndexesOf(wordL, ele);
 			indexes.forEach((index) => {
 				letterGuess.querySelector(`span:nth-child(${index + 1})`).innerText =
 					ele;
+				document.querySelector(".good").play();
 				correct++;
-				console.log(correct);
+				if (correct == word.length) {
+					displayPopup(true);
+				}
 			});
-			displayPopup();
 		} else {
+			draws[failed].style.display = `block`;
+			document.querySelector(".fail").play();
+			failed++;
 			console.log("no");
 		}
+	} else {
+		draws.forEach((draw) => {
+			draw.style.display = `block`;
+		});
+		displayPopup(false);
 	}
 }
+
 function getAllIndexesOf(str, search) {
 	let tmp = [];
 	Array.from(str).forEach((letter, index) => {
@@ -85,4 +99,21 @@ function getAllIndexesOf(str, search) {
 	});
 	return tmp;
 }
-function displayPopup() {}
+
+function displayPopup(status) {
+	document.querySelectorAll(".letter-box").forEach((div) => {
+		div.removeEventListener("click", check);
+	});
+	let div = document.createElement("div");
+	div.classList.add("pop");
+	if (status) {
+		div.classList.add("good");
+		div.innerText = "Good";
+		document.querySelector(".congrats").play();
+	} else {
+		div.classList.add("bad");
+		div.innerText = `The right word is: ${word}`;
+		document.querySelector(".hradluck").play();
+	}
+	document.body.append(div);
+}

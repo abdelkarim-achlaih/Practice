@@ -46,6 +46,7 @@ body {
         border-bottom: 5px solid black;
         position: relative;
         height: 284px;
+        display: none;
 
         .the-stand {
           position: absolute;
@@ -54,6 +55,7 @@ body {
           height: 100%;
           transform: translateX(-2.5px);
           border-left: 5px solid black;
+          display: none;
         }
 
         .the-hang {
@@ -63,6 +65,7 @@ body {
           width: 120px;
           left: 50%;
           top: 15px;
+          display: none;
 
           &::after {
             position: absolute;
@@ -85,6 +88,7 @@ body {
           left: 100px;
           top: 35px;
           transform: translateX(50%);
+          display: none;
         }
 
         .the-man {
@@ -96,6 +100,7 @@ body {
             position: absolute;
             left: 145px;
             top: 45px;
+            display: none;
           }
 
           .body {
@@ -105,9 +110,12 @@ body {
             height: 110px;
             top: 91px;
             left: 167px;
+            display: none;
           }
 
-          .hands {}
+          .hands {
+            display: none;
+          }
 
           .hands:before {
             left: 122px;
@@ -129,7 +137,9 @@ body {
             top: 140px;
           }
 
-          .legs {}
+          .legs {
+            display: none;
+          }
 
           .legs:before {
             left: 122px;
@@ -177,6 +187,7 @@ body {
         font-weight: bold;
         cursor: pointer;
         margin-bottom: 10px;
+        user-select: none;
 
         &.clicked {
           background-color: #222;
@@ -211,7 +222,7 @@ body {
       background-color: #FDFDFD;
       border-bottom: 3px solid #222;
       transition: .3s;
-      div
+
       &.with-space {
         background: none;
         border-bottom: none;
@@ -229,5 +240,35 @@ body {
         }
       }
     }
+  }
+
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.pop {
+  width: 80%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  &.good {
+    background-color: #03DAC6;
+  }
+
+  &.bad {
+    background-color: #B00020;
   }
 }
