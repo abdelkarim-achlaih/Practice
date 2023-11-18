@@ -2,8 +2,25 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Samurai";
+  src: url("../assets/SamuraiBlast.otf");
+}
 body {
-  font-family: Tahoma, Arial;
+  font-family: "Roboto Slab", serif;
+}
+
+.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.65;
+  content: "";
+  background-size: cover;
+  background-image: url(../assets/graveyard.png);
+  z-index: -1;
 }
 
 .container {
@@ -30,7 +47,6 @@ body {
 }
 .container .row .hangman-draw {
   flex: 1;
-  background-color: #F8F8F8;
   padding: 20px;
   height: 324px;
 }
@@ -39,7 +55,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
   height: 5px;
-  border-bottom: 5px solid black;
+  border-bottom: 5px solid #f3d611;
   position: relative;
   height: 284px;
   display: none;
@@ -50,13 +66,13 @@ body {
   left: 50%;
   height: 100%;
   transform: translateX(-2.5px);
-  border-left: 5px solid black;
+  border-left: 5px solid #f3d611;
   display: none;
 }
 .container .row .hangman-draw .the-draw .the-hang {
   position: absolute;
   height: 5px;
-  background-color: black;
+  background-color: #f3d611;
   width: 120px;
   left: 50%;
   top: 15px;
@@ -69,13 +85,13 @@ body {
   top: 50%;
   width: 5px;
   height: 20px;
-  background-color: black;
+  background-color: #f3d611;
 }
 .container .row .hangman-draw .the-draw .the-rope {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  border: 5px dashed black;
+  border: 5px dashed #f3d611;
   position: absolute;
   left: 100px;
   top: 35px;
@@ -86,7 +102,7 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 4px solid #222;
+  border: 4px solid #f3d611;
   position: absolute;
   left: 145px;
   top: 45px;
@@ -94,7 +110,7 @@ body {
 }
 .container .row .hangman-draw .the-draw .the-man .body {
   position: absolute;
-  background-color: #222;
+  background-color: #f3d611;
   width: 4px;
   height: 110px;
   top: 91px;
@@ -118,7 +134,7 @@ body {
   width: 50px;
   position: absolute;
   height: 4px;
-  background-color: #222;
+  background-color: #f3d611;
   top: 140px;
 }
 .container .row .hangman-draw .the-draw .the-man .legs {
@@ -150,14 +166,17 @@ body {
   pointer-events: none;
 }
 .container .row .letters .letter-box {
+  font-family: "Samurai";
   width: 55px;
   height: 55px;
   display: inline-block;
-  background-color: #009688;
-  color: #FFF;
+  background-color: #f3d611;
+  border: #fa4a05 solid 5px;
+  border-radius: 20px;
+  color: #222;
   font-size: 24px;
+  line-height: 45px;
   margin-right: 10px;
-  line-height: 55px;
   text-transform: uppercase;
   font-weight: bold;
   cursor: pointer;
@@ -176,7 +195,6 @@ body {
 }
 .container .letters-guess {
   margin: 10px auto;
-  background-color: #F8F8F8;
   padding: 20px;
   display: flex;
   justify-content: center;
@@ -191,9 +209,10 @@ body {
   line-height: 60px;
   text-transform: uppercase;
   font-weight: bold;
-  background-color: #FDFDFD;
-  border-bottom: 3px solid #222;
+  border-bottom: 3px solid #f3d611;
   transition: 0.3s;
+  color: orange;
+  text-shadow: 1px 1px black;
 }
 .container .letters-guess span.with-space {
   background: none;
