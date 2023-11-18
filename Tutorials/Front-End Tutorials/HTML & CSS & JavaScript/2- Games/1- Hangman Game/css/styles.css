@@ -29,6 +29,7 @@ body {
 }
 .container .game-info {
   display: flex;
+  color: white;
 }
 .container .game-info .game-name {
   flex: 1;
@@ -39,7 +40,7 @@ body {
 }
 .container .game-info .category span {
   text-transform: capitalize;
-  color: #E91E63;
+  color: #fa4a05;
   font-weight: bold;
 }
 .container .row {
@@ -154,7 +155,7 @@ body {
   width: 50px;
   position: absolute;
   height: 4px;
-  background-color: #222;
+  background-color: #f3d611;
   top: 210px;
 }
 .container .row .letters {

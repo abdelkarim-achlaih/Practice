@@ -34,6 +34,7 @@ body {
 
   .game-info {
     display: flex;
+    color: white;
 
     .game-name {
       flex: 1;
@@ -45,7 +46,7 @@ body {
 
       span {
         text-transform: capitalize;
-        color: #E91E63;
+        color: $orange;
         font-weight: bold;
       }
     }
@@ -178,7 +179,7 @@ body {
             width: 50px;
             position: absolute;
             height: 4px;
-            background-color: #222;
+            background-color: $yello;
             top: 210px;
           }
         }
