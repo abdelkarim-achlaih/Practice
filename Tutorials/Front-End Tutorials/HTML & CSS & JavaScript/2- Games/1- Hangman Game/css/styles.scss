@@ -12,7 +12,10 @@ $orange: #fa4a05;
 
 body {
   font-family: 'Roboto Slab', serif;
-
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .back {
@@ -215,8 +218,9 @@ body {
         user-select: none;
 
         &.clicked {
-          background-color: #222;
-          opacity: .2;
+          background-color: $orange;
+          border-color: $yello;
+          opacity: .3;
           pointer-events: none;
         }
       }
@@ -259,7 +263,7 @@ body {
           content: '';
           width: 20px;
           height: 4px;
-          background-color: #222;
+          background-color: $orange;
           position: absolute;
           left: 50%;
           top: 50%;
@@ -271,12 +275,7 @@ body {
 
 }
 
-body {
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
+
 
 .pop {
   width: 80%;

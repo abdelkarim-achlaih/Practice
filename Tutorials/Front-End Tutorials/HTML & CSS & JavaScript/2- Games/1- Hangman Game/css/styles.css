@@ -8,6 +8,10 @@
 }
 body {
   font-family: "Roboto Slab", serif;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .back {
@@ -187,8 +191,9 @@ body {
           user-select: none;
 }
 .container .row .letters .letter-box.clicked {
-  background-color: #222;
-  opacity: 0.2;
+  background-color: #fa4a05;
+  border-color: #f3d611;
+  opacity: 0.3;
   pointer-events: none;
 }
 .container hr {
@@ -224,18 +229,11 @@ body {
   content: "";
   width: 20px;
   height: 4px;
-  background-color: #222;
+  background-color: #fa4a05;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-}
-
-body {
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
 }
 
 .pop {

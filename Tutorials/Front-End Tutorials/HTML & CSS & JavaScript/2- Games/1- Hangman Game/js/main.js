@@ -72,10 +72,11 @@ function check(e) {
 			indexes.forEach((index) => {
 				letterGuess.querySelector(`span:nth-child(${index + 1})`).innerText =
 					ele;
-				document.querySelector(".good").play();
 				correct++;
 				if (correct == word.length) {
 					displayPopup(true);
+				} else {
+					document.querySelector(".good").play();
 				}
 			});
 		} else {
