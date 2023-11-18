@@ -58,6 +58,7 @@ Array.from(word).forEach((letter) => {
 });
 let correct = 0;
 function check(e) {
+	e.target.classList.add("clicked");
 	let ele = e.target.innerText.toLowerCase();
 	word = word.toLowerCase();
 	if (correct < word.length) {
