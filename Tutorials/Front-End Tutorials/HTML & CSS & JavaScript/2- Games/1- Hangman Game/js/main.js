@@ -56,18 +56,21 @@ Array.from(word).forEach((letter) => {
 	letter == " " ? span.classList.add("with-space") : "";
 	letterGuess.append(span);
 });
-let correct = 0;
+let correct;
+word.includes(" ") ? (correct = 1) : (correct = 0);
 function check(e) {
-	e.target.classList.add("clicked");
-	let ele = e.target.innerText.toLowerCase();
-	word = word.toLowerCase();
 	if (correct < word.length) {
+		e.target.classList.add("clicked");
+		let ele = e.target.innerText.toLowerCase();
+		word = word.toLowerCase();
+		console.log(word.length);
 		if (word.includes(ele)) {
 			let indexes = getAllIndexesOf(word, ele);
 			indexes.forEach((index) => {
 				letterGuess.querySelector(`span:nth-child(${index + 1})`).innerText =
 					ele;
 				correct++;
+				console.log(correct);
 			});
 			displayPopup();
 		} else {
