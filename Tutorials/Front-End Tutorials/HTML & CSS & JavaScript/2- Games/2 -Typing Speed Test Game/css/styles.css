@@ -40,11 +40,9 @@ body {
   font-weight: bold;
   color: #009688;
 }
-
 .message span::before {
   content: "[ ";
 }
-
 .message span::after {
   content: " ]";
 }
@@ -81,7 +79,6 @@ body {
   border-radius: 6px;
   caret-color: var(--main-color);
 }
-
 .input:focus {
   outline: none;
 }
@@ -94,7 +91,6 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 }
-
 .upcoming-words div {
   background-color: var(--main-color);
   color: white;
@@ -110,7 +106,6 @@ body {
   background-color: white;
   padding: 15px;
 }
-
 .control span {
   font-weight: bold;
   color: #009688;
@@ -122,11 +117,9 @@ body {
   text-align: center;
   padding: 15px;
 }
-
 .finish .good {
   color: var(--main-color);
 }
-
 .finish .bad {
   color: red;
 }/*# sourceMappingURL=styles.css.map */
