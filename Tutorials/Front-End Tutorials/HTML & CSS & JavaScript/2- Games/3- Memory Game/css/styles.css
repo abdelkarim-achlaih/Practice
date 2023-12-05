@@ -78,13 +78,15 @@ body {
   font-weight: bold;
 }
 .memory-game-blocks .game-block .back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #607D8B;
   transform: rotateY(180deg);
 }
-.memory-game-blocks .game-block .back img {
-  width: 140px;
-  height: 140px;
-  margin-top: 30px;
+.memory-game-blocks .game-block .back svg {
+  font-size: 150px;
+  color: tomato;
 }
 .memory-game-blocks .game-block .face {
   position: absolute;
