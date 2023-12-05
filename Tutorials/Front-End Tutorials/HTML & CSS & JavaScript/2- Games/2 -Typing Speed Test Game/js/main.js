@@ -51,3 +51,9 @@ secondsSpan.innerHTML = time;
 timeLeftSpan.innerHTML = time;
 scoreGot.innerHTML = 0;
 scoreTotal.innerHTML = words.length;
+
+//Disable input paste event
+
+input.onpaste = (_) => {
+	return false;
+};
