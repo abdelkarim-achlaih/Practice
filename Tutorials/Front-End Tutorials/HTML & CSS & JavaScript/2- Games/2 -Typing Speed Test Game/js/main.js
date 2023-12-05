@@ -31,7 +31,7 @@ const words = [
 	"Playing",
 ];
 
-let time = 5;
+let time = 3;
 
 // Catch Selectors
 let startButton = document.querySelector(".start");
@@ -44,3 +44,10 @@ let timeLeftSpan = document.querySelector(".time span");
 let scoreGot = document.querySelector(".score .got");
 let scoreTotal = document.querySelector(".score .total");
 let finishMessage = document.querySelector(".finish");
+
+// Defaults
+lvlNameSpan.innerHTML = "Normal";
+secondsSpan.innerHTML = time;
+timeLeftSpan.innerHTML = time;
+scoreGot.innerHTML = 0;
+scoreTotal.innerHTML = words.length;
