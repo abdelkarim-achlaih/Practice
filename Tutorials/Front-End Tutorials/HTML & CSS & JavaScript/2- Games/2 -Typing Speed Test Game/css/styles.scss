@@ -127,11 +127,11 @@ body {
   text-align: center;
   padding: 15px;
 
-  .good {
+  &.good {
     color: var(--main-color);
   }
 
-  .bad {
+  &.bad {
     color: red;
   }
 }

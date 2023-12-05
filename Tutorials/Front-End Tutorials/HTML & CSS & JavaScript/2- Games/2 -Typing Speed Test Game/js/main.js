@@ -72,4 +72,30 @@ function genWords() {
 		div.innerHTML = word;
 		upcomingWords.appendChild(div);
 	});
+	startPlay();
+}
+function startPlay() {
+	timeLeftSpan.innerHTML = time;
+	let start = setInterval(() => {
+		timeLeftSpan.innerHTML--;
+		if (timeLeftSpan.innerHTML === "0") {
+			clearInterval(start);
+			if (input.value === theWord.innerHTML.toLowerCase()) {
+				input.value = "";
+				scoreGot.innerHTML++;
+				if (words.length > 0) {
+					theWord.innerHTML = "";
+					upcomingWords.innerHTML = "";
+					genWords();
+				} else {
+					finishMessage.innerHTML = "Congratulations";
+					finishMessage.classList.add("good");
+					upcomingWords.remove();
+				}
+			} else {
+				finishMessage.innerHTML = "Game Over";
+				finishMessage.classList.add("bad");
+			}
+		}
+	}, 1000);
 }
