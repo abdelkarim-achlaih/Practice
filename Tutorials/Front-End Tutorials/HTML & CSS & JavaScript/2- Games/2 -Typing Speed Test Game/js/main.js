@@ -52,8 +52,24 @@ timeLeftSpan.innerHTML = time;
 scoreGot.innerHTML = 0;
 scoreTotal.innerHTML = words.length;
 
-//Disable input paste event
+// Disable input paste event
 
 input.onpaste = (_) => {
 	return false;
 };
+startButton.onclick = function () {
+	this.remove();
+	input.focus();
+	genWords();
+};
+function genWords() {
+	let randomIndex = Math.floor(Math.random() * words.length);
+	let randomWord = words[randomIndex];
+	theWord.innerHTML = randomWord;
+	words.splice(randomIndex, 1);
+	words.forEach((word) => {
+		let div = document.createElement("div");
+		div.innerHTML = word;
+		upcomingWords.appendChild(div);
+	});
+}
