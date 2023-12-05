@@ -28,3 +28,15 @@ function setup() {
 	});
 }
 setup();
+
+let startSpan = document.querySelector(".control-buttons span");
+let nameSpan = document.querySelector(".name span");
+startSpan.onclick = function () {
+	let name = prompt("What is your name ?");
+	if (name == null || name == "") {
+		nameSpan.innerHTML = "Unknown";
+	} else {
+		nameSpan.innerHTML = name;
+	}
+	startSpan.parentNode.remove();
+};
