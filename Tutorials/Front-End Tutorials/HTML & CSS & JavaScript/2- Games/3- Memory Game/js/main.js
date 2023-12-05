@@ -1,5 +1,5 @@
 function setup() {
-	let blocks = document.querySelector(".memory-game-blocks");
+	let blocksConta = document.querySelector(".memory-game-blocks");
 	let techs = [
 		"fa-brands fa-html5",
 		"fa-brands fa-css3-alt",
@@ -23,12 +23,27 @@ function setup() {
 		</div>
     `;
 		let div2 = div.cloneNode(true);
-		blocks.append(div);
-		blocks.append(div2);
+		blocksConta.append(div);
+		blocksConta.append(div2);
+	});
+	let blocks = Array.from(document.querySelectorAll(".game-block"));
+	let indexes = [...Array.from(Array(blocks.length).keys())];
+	indexes = shuffle(indexes);
+	console.log(indexes);
+	blocks.forEach((block, index) => {
+		block.style.order = indexes[index];
 	});
 }
 setup();
-
+function shuffle(array) {
+	let tmp = [];
+	while (array.length > 0) {
+		let rand = Math.floor(Math.random() * array.length);
+		tmp.push(array[rand]);
+		array.splice(rand, 1);
+	}
+	return tmp;
+}
 let startSpan = document.querySelector(".control-buttons span");
 let nameSpan = document.querySelector(".name span");
 startSpan.onclick = function () {
