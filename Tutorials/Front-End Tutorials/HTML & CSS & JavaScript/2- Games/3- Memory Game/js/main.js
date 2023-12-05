@@ -23,18 +23,29 @@ function setup() {
 		</div>
     `;
 		let div2 = div.cloneNode(true);
+		div.addEventListener("click", flipBlock);
+		div2.addEventListener("click", flipBlock);
 		blocksConta.append(div);
 		blocksConta.append(div2);
 	});
-	let blocks = Array.from(document.querySelectorAll(".game-block"));
-	let indexes = [...Array.from(Array(blocks.length).keys())];
-	indexes = shuffle(indexes);
-	console.log(indexes);
+	blocks = Array.from(document.querySelectorAll(".game-block"));
+	let indexes = shuffle([...Array.from(Array(blocks.length).keys())]);
 	blocks.forEach((block, index) => {
 		block.style.order = indexes[index];
 	});
 }
+let blocks;
 setup();
+function flipBlock(e) {
+	let block = e.target.parentNode;
+	block.classList.add("is-flipped");
+	let flippedBlocks = blocks.filter((block) => {
+		return block.classList.contains("is-flipped");
+	});
+	if (flippedBlocks.length == 2) {
+		console.log(2);
+	}
+}
 function shuffle(array) {
 	let tmp = [];
 	while (array.length > 0) {
@@ -44,14 +55,14 @@ function shuffle(array) {
 	}
 	return tmp;
 }
-let startSpan = document.querySelector(".control-buttons span");
-let nameSpan = document.querySelector(".name span");
-startSpan.onclick = function () {
-	let name = prompt("What is your name ?");
-	if (name == null || name == "") {
-		nameSpan.innerHTML = "Unknown";
-	} else {
-		nameSpan.innerHTML = name;
-	}
-	startSpan.parentNode.remove();
-};
+// let startSpan = document.querySelector(".control-buttons span");
+// let nameSpan = document.querySelector(".name span");
+// startSpan.onclick = function () {
+// 	let name = prompt("What is your name ?");
+// 	if (name == null || name == "") {
+// 		nameSpan.innerHTML = "Unknown";
+// 	} else {
+// 		nameSpan.innerHTML = name;
+// 	}
+// 	startSpan.parentNode.remove();
+// };
