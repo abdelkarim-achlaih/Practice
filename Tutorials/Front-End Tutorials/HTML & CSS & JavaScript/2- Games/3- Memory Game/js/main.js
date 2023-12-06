@@ -1,5 +1,7 @@
 let blocksConta = document.querySelector(".memory-game-blocks");
 let triesSpan = document.querySelector(".tries span");
+let aFail = document.querySelector(".a-fail");
+let aGood = document.querySelector(".a-good");
 let duration = 1000;
 function setup() {
 	let techs = [
@@ -50,12 +52,14 @@ function flipBlock(e) {
 			flippedBlocks[0].dataset.technology ===
 			flippedBlocks[1].dataset.technology
 		) {
+			aGood.play();
 			setTimeout(() => {
 				flippedBlocks[0].classList.add("has-match");
 				flippedBlocks[1].classList.add("has-match");
 			}, duration);
 		} else {
 			triesSpan.innerHTML++;
+			aFail.play();
 		}
 		setTimeout(() => {
 			flippedBlocks[0].classList.remove("is-flipped");

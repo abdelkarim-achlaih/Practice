@@ -13,20 +13,22 @@
 	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400&display=swap"
 		rel="stylesheet">
 </head>
-<div class="control-buttons">
-	<span>Start Game</span>
-</div>
-<div class="info-container">
-	<div class="name">
-		Hello: <span></span>
-	</div>
-	<div class="tries">
-		Wrong Tries: <span>0</span>
-	</div>
-</div>
-<div class="memory-game-blocks"></div>
 
 <body>
+	<div class="control-buttons">
+		<span>Start Game</span>
+	</div>
+	<div class="info-container">
+		<div class="name">
+			Hello: <span></span>
+		</div>
+		<div class="tries">
+			Wrong Tries: <span>0</span>
+		</div>
+	</div>
+	<div class="memory-game-blocks"></div>
+	<audio src="audios/fail.mp3" class="a-fail"></audio>
+	<audio src="audios/good.mp3" class="a-good"></audio>
 	<script src="js/main.js"></script>
 	<script src="js/all.min.js"></script>
 </body>
