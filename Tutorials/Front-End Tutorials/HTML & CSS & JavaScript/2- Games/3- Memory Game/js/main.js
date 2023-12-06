@@ -1,5 +1,7 @@
+let blocksConta = document.querySelector(".memory-game-blocks");
+let triesSpan = document.querySelector(".tries span");
+let duration = 1000;
 function setup() {
-	let blocksConta = document.querySelector(".memory-game-blocks");
 	let techs = [
 		"fa-brands fa-html5",
 		"fa-brands fa-css3-alt",
@@ -43,7 +45,23 @@ function flipBlock(e) {
 		return block.classList.contains("is-flipped");
 	});
 	if (flippedBlocks.length == 2) {
-		console.log(2);
+		blocksConta.classList.add("no-clicking");
+		if (
+			flippedBlocks[0].dataset.technology ===
+			flippedBlocks[1].dataset.technology
+		) {
+			setTimeout(() => {
+				flippedBlocks[0].classList.add("has-match");
+				flippedBlocks[1].classList.add("has-match");
+			}, duration);
+		} else {
+			triesSpan.innerHTML++;
+		}
+		setTimeout(() => {
+			flippedBlocks[0].classList.remove("is-flipped");
+			flippedBlocks[1].classList.remove("is-flipped");
+			blocksConta.classList.remove("no-clicking");
+		}, duration);
 	}
 }
 function shuffle(array) {
@@ -55,14 +73,14 @@ function shuffle(array) {
 	}
 	return tmp;
 }
-// let startSpan = document.querySelector(".control-buttons span");
-// let nameSpan = document.querySelector(".name span");
-// startSpan.onclick = function () {
-// 	let name = prompt("What is your name ?");
-// 	if (name == null || name == "") {
-// 		nameSpan.innerHTML = "Unknown";
-// 	} else {
-// 		nameSpan.innerHTML = name;
-// 	}
-// 	startSpan.parentNode.remove();
-// };
+let startSpan = document.querySelector(".control-buttons span");
+let nameSpan = document.querySelector(".name span");
+startSpan.onclick = function () {
+	let name = prompt("What is your name ?");
+	if (name == null || name == "") {
+		nameSpan.innerHTML = "Unknown";
+	} else {
+		nameSpan.innerHTML = name;
+	}
+	startSpan.parentNode.remove();
+};
