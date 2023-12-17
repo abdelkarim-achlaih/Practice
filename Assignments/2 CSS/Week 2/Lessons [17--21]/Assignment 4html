@@ -7,12 +7,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Week 2</title>
   <style>
-
+    a {
+      display: block;
+      margin: auto;
+      max-width: fit-content;
+      padding: 10px 20px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      background-color: #009688;
+      border-bottom: 5px solid #00514a;
+      text-transform: capitalize;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+    }
   </style>
 </head>
 
 <body>
-
+  <a href="https://elzero.org">elzero</a>
 </body>
 
 </html>
