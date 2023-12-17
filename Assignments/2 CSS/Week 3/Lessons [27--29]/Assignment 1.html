@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 1</title>
+  <style>
+    .parent {
+      width: 800px;
+      padding: 0;
+      margin: auto;
+      background-color: #eeeeee;
+    }
+
+    .parent div {
+      float: left;
+      background-color: #dddddd;
+      margin: 15px;
+      text-align: center;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .full {
+      width: calc(100% - 30px);
+    }
+
+    .three {
+      width: calc((100% - 90px)/3);
+    }
+
+    .two {
+      width: calc((100% - 60px)/2);
+    }
+
+    .four {
+      width: calc((100% - 120px)/4);
+    }
+
+    .clear {
+      clear: both;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="parent">
+    <div class="full">Full Width</div>
+    <div class="three">1/3</div>
+    <div class="three">1/3</div>
+    <div class="three">1/3</div>
+    <div class="two">1/2</div>
+    <div class="two">1/2</div>
+    <div class="four">1/4</div>
+    <div class="four">1/4</div>
+    <div class="four">1/4</div>
+    <div class="four">1/4</div>
+    <p class="clear"></p>
+  </div>
+</body>
+
+</html>
