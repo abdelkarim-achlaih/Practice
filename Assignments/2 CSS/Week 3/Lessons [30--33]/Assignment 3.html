@@ -7,12 +7,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Week 3</title>
   <style>
+    .parent {
+      list-style: none;
+      padding: 0;
+      margin: auto;
+      width: 400px;
 
+    }
+
+    .parent .child {
+      background-color: #eeeeee;
+      margin: 20px;
+      padding: 5px;
+    }
+
+    .parent .child ol {
+      padding-left: 25px;
+    }
+
+    .parent .child ol li,
+    .parent .child ul li {
+      background-color: white;
+      margin: 5px;
+      padding: 5px;
+    }
+
+    .rom {
+      list-style-type: upper-roman;
+    }
+
+    .inside {
+      list-style-position: inside;
+      padding: 0;
+    }
   </style>
 </head>
 
 <body>
-
+  <ul class="parent">
+    <li class="child">
+      HTML
+      <ol start="10">
+        <li>Slim</li>
+        <li>Pugjs</li>
+        <li>HAML</li>
+      </ol>
+    </li>
+    <li class="child">
+      CSS
+      <ol class="rom" start="10">
+        <li>SASS</li>
+        <li>LESS</li>
+        <li>PostCSS</li>
+      </ol>
+    </li>
+    <li class="child">
+      JavaScript
+      <ul class="inside">
+        <li>Vuejs</li>
+        <li>Sveltejs</li>
+      </ul>
+    </li>
+  </ul>
 </body>
 
 </html>
