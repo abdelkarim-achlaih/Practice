@@ -7,12 +7,89 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Week 1</title>
   <style>
+    .cards {
+      width: 550px;
+      margin: auto;
+      position: relative;
+    }
 
+    .cards::before {
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: 100%;
+      left: calc(50% - 1px);
+      top: 0;
+      background-color: #03a9f4;
+    }
+
+    .cards::after {
+      content: "Or";
+      background-color: #03a9f4;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: calc(50% - 10px);
+      left: calc(50% - 10px);
+      color: white;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background-color: #eeeeee;
+      width: 240px;
+      text-align: center;
+      float: left;
+    }
+
+    .one {
+      margin-right: 70px;
+    }
+
+    .card-type {
+      background-color: #03a9f4;
+      width: 200px;
+      margin: 20px auto;
+      color: white;
+      border-radius: 5px;
+      font-size: 20px;
+      padding: 5px;
+    }
+
+    .card-price {
+      background-color: #dddddd;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      font-size: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .clear {
+      clear: both;
+    }
   </style>
 </head>
 
 <body>
-
+  <div class="cards">
+    <div class="card one">
+      <div class="card-type">Basic</div>
+      <div class="card-price">Free</div>
+    </div>
+    <div class="card">
+      <div class="card-type">Pro</div>
+      <div class="card-price">$30</div>
+    </div>
+    <p class="clear"></p>
+  </div>
 </body>
 
 </html>
