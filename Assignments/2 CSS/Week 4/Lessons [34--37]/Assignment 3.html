@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 1</title>
+  <style>
+    p {
+      background-color: #efefef;
+      border-left: solid #e91e63 4px;
+      width: 350px;
+      margin: 30px auto;
+      padding: 10px;
+      position: relative;
+    }
+
+    p::before {
+      content: attr(data-person);
+      background-color: #efefef;
+      position: absolute;
+      left: -75px;
+      top: calc(20px - 15px);
+      padding: 5px;
+    }
+
+    p::after {
+      content: '';
+      border-width: 6px;
+      border-style: solid;
+      border-color: transparent #e91e63 transparent transparent;
+      height: 0;
+      width: 0;
+      position: absolute;
+      top: calc(20px - 6px);
+      left: -16px;
+    }
+  </style>
+</head>
+
+<body>
+  <p data-person="Osama">This Is Very Very Long Comment Number One</p>
+  <p data-person="Ahmed">This Is Very Very Long Comment Number Two</p>
+  <p data-person="Sayed">This Is Very Very Long Comment Number Three</p>
+</body>
+
+</html>
