@@ -7,12 +7,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Week 5</title>
   <style>
+    .parent {
+      width: 600px;
+      height: 300px;
+      margin: auto;
+      padding: 5px;
+      background-color: #eeeeee;
+      display: flex;
+      justify-content: space-between;
+    }
 
+    .parent div {
+      color: white;
+      padding: 5px;
+      height: 50%;
+      flex-basis: calc(70% / 4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .one {
+      order: 2;
+      align-self: flex-start;
+      background-color: #ff9800;
+    }
+
+    .two {
+      order: 3;
+      align-self: flex-end;
+      background-color: #8bc34a;
+    }
+
+    .three {
+      order: 4;
+      align-self: flex-start;
+      background-color: #795548;
+    }
+
+    .four {
+      order: 1;
+      align-self: flex-end;
+      background-color: #673ab7;
+    }
   </style>
 </head>
 
 <body>
-
+  <div class="parent">
+    <div class="one">1</div>
+    <div class="two">2</div>
+    <div class="three">3</div>
+    <div class="four">4</div>
+  </div>
 </body>
 
 </html>
