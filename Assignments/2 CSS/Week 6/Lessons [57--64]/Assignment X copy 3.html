@@ -5,14 +5,76 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Week 1</title>
+  <title>Week 6</title>
   <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
 
+    .layout {
+      height: 100vh;
+      display: grid;
+      grid-template-areas: "h h h h h" "s s s s a" "f f f f f";
+      grid-template-rows: 60px 1fr 60px;
+    }
+
+    .layout>* {
+      position: relative;
+    }
+
+    .layout>*::after {
+      position: absolute;
+      color: white;
+      top: 20px;
+      left: 20px;
+    }
+
+    .layout header {
+      background-color: #03a9f4;
+      grid-area: h;
+    }
+
+    .layout header:after {
+      content: "Header";
+    }
+
+    .layout section {
+      background-color: #ff5722;
+      grid-area: s;
+    }
+
+    .layout section:after {
+      content: "Section";
+    }
+
+    .layout aside {
+      background-color: #607d8b;
+      grid-area: a;
+    }
+
+    .layout aside:after {
+      content: "Aside";
+    }
+
+    .layout footer {
+      background-color: #009688;
+      grid-area: f;
+    }
+
+    .layout footer:after {
+      content: "Footer";
+    }
   </style>
 </head>
 
 <body>
-
+  <div class="layout">
+    <header></header>
+    <section></section>
+    <aside></aside>
+    <footer></footer>
+  </div>
 </body>
 
 </html>
