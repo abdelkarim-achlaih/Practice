@@ -7,12 +7,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Week 7</title>
   <style>
+    div {
+      width: 300px;
+      height: 200px;
+      margin: 20px auto;
+      color: #03a9f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background-color: #eeeeee;
+      font-size: 60px;
+    }
 
+    div::before,
+    div::after {
+      content: "";
+      width: 300px;
+      height: 200px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    div::before {
+      background-color: #e91e63;
+      transform: rotate(5deg);
+      z-index: -1;
+    }
+
+    div::after {
+      background-color: #03a9f4;
+      transform: rotate(-5deg);
+      z-index: -1;
+    }
   </style>
 </head>
 
 <body>
-
+  <div>Elzero</div>
 </body>
 
 </html>
