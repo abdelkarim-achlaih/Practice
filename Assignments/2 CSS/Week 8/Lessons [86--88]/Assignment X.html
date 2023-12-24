@@ -7,12 +7,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Week 8</title>
   <style>
+    div {
+      background-color: #dddddd;
+      padding: 20px;
+      width: 500px;
+      margin: 40px auto;
+      position: relative;
+    }
 
+    div.arrow::before {
+      position: absolute;
+      border-width: 10px;
+      border-style: solid;
+      border-color: transparent;
+      top: 0;
+      left: 0;
+    }
+
+    div.arrow.top::before {
+      content: "";
+      position: absolute;
+      border-bottom-color: #dddddd;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    div.arrow.right::before {
+      content: "";
+      position: absolute;
+      border-left-color: #dddddd;
+      top: 50%;
+      left: 100%;
+      transform: translateY(-50%);
+    }
+
+    div.arrow.bottom::before {
+      content: "";
+      position: absolute;
+      border-top-color: #dddddd;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    div.arrow.left::before {
+      content: "";
+      position: absolute;
+      border-right-color: #dddddd;
+      top: 50%;
+      left: -20px;
+      transform: translateY(-50%);
+    }
   </style>
 </head>
 
 <body>
-
+  <div class="arrow top">Elzero</div>
+  <div class="arrow right">Elzero</div>
+  <div class="arrow bottom">Elzero</div>
+  <div class="arrow left">Elzero</div>
 </body>
 
 </html>
