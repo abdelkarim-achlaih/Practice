@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 8</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+    }
+
+    .container .product {
+      background-color: #eeeeee;
+      text-align: center;
+      padding: 20px;
+      transition: .5s;
+    }
+
+    @media (max-width:767px) {
+      .container .product {
+        width: calc(100% - 10px);
+        margin-bottom: 5px;
+      }
+
+      .container .product h3 {
+        color: black;
+      }
+    }
+
+    @media (min-width:768px) and (max-width:1199px) {
+      .container .product {
+        width: calc((100% / 3) - 10px);
+        margin-bottom: 5px;
+      }
+
+      .container .product:nth-child(1) {
+        width: calc(100% - 10px);
+        margin-bottom: 5px;
+      }
+
+      .container .product h3 {
+        color: red;
+      }
+    }
+
+    @media (min-width:1200px) {
+      .container .product {
+        width: calc((100% / 2) - 10px);
+        margin-bottom: 5px;
+      }
+
+      .container .product:nth-child(1),
+      .container .product:nth-child(4) {
+        width: calc(100% - 10px);
+        margin-bottom: 5px;
+      }
+
+      .container .product h3 {
+        color: #2ca69b;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="product">
+      <h3>Product one</h3>
+      <p>This is a product</p>
+    </div>
+    <div class="product">
+      <h3>Product two</h3>
+      <p>This is a product</p>
+    </div>
+    <div class="product">
+      <h3>Product three</h3>
+      <p>This is a product</p>
+    </div>
+    <div class="product">
+      <h3>Product four</h3>
+      <p>This is a product</p>
+    </div>
+  </div>
+</body>
+
+</html>
