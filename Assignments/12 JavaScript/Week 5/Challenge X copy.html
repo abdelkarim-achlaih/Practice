@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Week 1</title>
+  <title>Week 5</title>
   <style>
 
   </style>
@@ -13,7 +13,37 @@
 
 <body>
   <script>
+    let a = 10;
 
+    a < 10
+      ? console.log("< 10")
+      : a >= 10 && a <= 40
+        ? console.log("10 to 40")
+        : a > 40
+          ? console.log("> 40")
+          : console.log("Unknown");
+
+    let st = "Elzero Web School";
+
+    if (st.repeat(2).length.toString() === "34") {
+      console.log("1 Good");
+    }
+
+    if (st[st.indexOf("W")].toLowerCase() === "w") {
+      console.log("2 Good");
+    }
+
+    if (st.length !== "string") {
+      console.log("3 Good");
+    }
+
+    if (typeof st.length === "number") {
+      console.log("4 Good");
+    }
+
+    if (st.split(" ", 1)[0].repeat(2) === "ElzeroElzero") {
+      console.log("5 Good");
+    }
   </script>
 </body>
 
