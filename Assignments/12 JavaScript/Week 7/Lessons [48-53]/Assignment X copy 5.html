@@ -13,7 +13,22 @@
 
 <body>
   <script>
+    let index = 10;
+    let jump = 2;
+    let end = 0;
 
+    for (; ;) {
+      if (index > end) {
+        if (index === jump) {
+          index = index - jump;
+          continue;
+        }
+        console.log(index);
+        index = index - jump;
+      } else {
+        break;
+      }
+    }
   </script>
 </body>
 

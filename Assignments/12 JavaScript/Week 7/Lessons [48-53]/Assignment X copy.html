@@ -13,7 +13,21 @@
 
 <body>
   <script>
+    let start = 0;
+    let swappedName = "elZerO";
 
+    // Output
+    let newString = [];
+    for (let i = start; i < swappedName.length; i++) {
+      if (swappedName.toLowerCase()[i] === swappedName[i]) {
+        newString[i] = swappedName[i].toUpperCase();
+      }
+      else {
+        newString[i] = swappedName[i].toLowerCase();
+      }
+    }
+    newString = newString.join("");
+    console.log(newString);
   </script>
 </body>
 

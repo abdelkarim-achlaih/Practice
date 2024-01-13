@@ -13,7 +13,18 @@
 
 <body>
   <script>
+    let friends = ["Ahmed", "Sayed", "Eman", "Mahmoud", "Ameer", "Osama", "Sameh"];
+    let letter = "a";
 
+    // Output
+    let j = +false;
+    for (let i = +false; i < friends.length; i++) {
+      if (friends[i].startsWith(letter.toUpperCase())) {
+        continue;
+      } else {
+        console.log(`${++j} => ${friends[i]}`);
+      }
+    }
   </script>
 </body>
 
