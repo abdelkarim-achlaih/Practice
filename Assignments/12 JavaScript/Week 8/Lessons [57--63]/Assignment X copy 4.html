@@ -13,7 +13,23 @@
 
 <body>
   <script>
+    function ageInTime(theAge) {
+      if (theAge < 10 || theAge > 100) {
+        console.log("Age Out Of Range");
+      } else {
+        console.log(
+          `${theAge * 12} Months
+${theAge * 12 * 51} Weeks
+${theAge * 12 * 51 * 7} Days
+${theAge * 12 * 51 * 7 * 24} Hours
+${theAge * 12 * 51 * 7 * 24 * 3600} Seconds`
+        );
+      }
+    }
 
+    // Needed Output
+    ageInTime(110); // Age Out Of Range
+    ageInTime(38); // Months Example => 456 Months
   </script>
 </body>
 
