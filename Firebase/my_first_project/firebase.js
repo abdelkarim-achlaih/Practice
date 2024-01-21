@@ -24,7 +24,10 @@ applications without worrying about the infrastructure management. It's features
 --Collections and Documents: Firestore organizes data into collections: containers for documents
 Each document is a set of key-value pairs, and documents within a collection can have different fields.
 
-Firestore => collections => documents => key-value pairs
+Firestore
+=> collections: collection(db, "books")
+=> documents: getDocs(colRef).then((snapshot) => snapshot.docs)
+=> key-value pairs: call data() on each doc a.k.a each element of snapshot.docs
 
 ---------------  */
 
@@ -38,6 +41,12 @@ basically connect to firebase and initialize different services
 
 ---------------  */
 
+import {
+	getFirestore, // this kind of functions: get***, are used to initialize a service, to init all we nedd to call getAll
+	collection,
+	getDocs,
+} from "firebase/firestore"; // The service we're using
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
 	apiKey: "AIzaSyCCYIu5HZoobTWJkiIMa6YvSFg_XSpOtG4",
@@ -49,4 +58,21 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase App
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig); // Initialize Firebase App based on the Firebase configuration object
+
+// Initialize services: Firestore service for this project
+const db = getFirestore(); // Database
+
+// Get collection ref
+const colRef = collection(db, "books"); // ref to a specific collection in our database (database, CollectionName)
+
+// Get collection data
+getDocs(colRef) //Return a Promise that will resolves on the docs that contains the collection
+	.then((snapshot) => {
+		let books = [];
+		snapshot.docs.forEach((doc) => {
+			// get All docs of the firestore collection
+			books.push({ ...doc.data(), id: doc.id });
+		});
+		console.log(books);
+	});
