@@ -52,6 +52,7 @@ import {
 	query,
 	where,
 	orderBy,
+	serverTimestamp, // Creates a timestamp, use it instead of Time()
 } from "firebase/firestore"; // The service we're using
 
 // Your web app's Firebase configuration
@@ -85,11 +86,7 @@ const colRef = collection(db, "books"); // ref to a specific collection in our d
 // 	});
 
 // Queries
-const q = query(
-	colRef,
-	where("author", "==", "habits"),
-	orderBy("title", "desc")
-);
+const q = query(colRef, orderBy("createdAt"));
 
 // Realtime collection data: runs on init + everytime there is a change in colRef
 // onSnapshot(colRef, (snapshot) => { // Pass colRef if we want to get all records
@@ -110,6 +107,7 @@ addBookForm.addEventListener("submit", (e) => {
 	addDoc(colRef, {
 		title: addBookForm.title.value,
 		author: addBookForm.author.value,
+		createdAt: serverTimestamp(),
 	}).then((_) => addBookForm.reset());
 });
 
