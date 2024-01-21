@@ -53,6 +53,7 @@ import {
 	where,
 	orderBy,
 	serverTimestamp, // Creates a timestamp, use it instead of Time()
+	getDoc,
 } from "firebase/firestore"; // The service we're using
 
 // Your web app's Firebase configuration
@@ -89,7 +90,8 @@ const colRef = collection(db, "books"); // ref to a specific collection in our d
 const q = query(colRef, orderBy("createdAt"));
 
 // Realtime collection data: runs on init + everytime there is a change in colRef
-// onSnapshot(colRef, (snapshot) => { // Pass colRef if we want to get all records
+
+// onSnapshot(colRef, (snapshot) => { // Pass colRef if we want to get all docs in that collection, also pass docRef to listen to changes on this doc
 onSnapshot(q, (snapshot) => {
 	// Pass q if we want to get all records based on a query filter
 	let books = [];
@@ -115,6 +117,10 @@ addBookForm.addEventListener("submit", (e) => {
 const deleteBookForm = document.querySelector(".delete");
 deleteBookForm.addEventListener("submit", (e) => {
 	e.preventDefault();
-	const docRef = deleteBookForm.id.value;
+	const docRef = doc(db, "books", deleteBookForm.id.value);
 	deleteDoc(docRef).then((_) => deleteBookForm.reset());
 });
+
+//Get a single document
+const docRef = doc(db, "books", "Z3PrggKkZZNk0meRcfvx");
+getDoc(docRef).then((doc) => console.log(doc.data(), doc.id));
