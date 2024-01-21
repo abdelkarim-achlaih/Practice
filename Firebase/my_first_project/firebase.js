@@ -77,3 +77,11 @@ getDocs(colRef) //Return a Promise that will resolves on the docs that contains 
 		});
 		console.log(books);
 	});
+const addBookForm = document.querySelector(".add");
+addBookForm.addEventListener("submit", (e) => {
+	e.preventDefault();
+	addDoc(colRef, {
+		title: addBookForm.title.value,
+		author: addBookForm.author.value,
+	}).then((_) => addBookForm.reset());
+});
