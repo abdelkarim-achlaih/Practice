@@ -49,6 +49,9 @@ import {
 	doc, // ref to a specific doc in our collection (database, CollectionName, doc id)
 	deleteDoc, // (docRef)
 	onSnapshot, // Realtime listener (colRef, CalbackFnc): CalbackFnc runs when init + everytime there is a change in colRef
+	query,
+	where,
+	orderBy,
 } from "firebase/firestore"; // The service we're using
 
 // Your web app's Firebase configuration
@@ -81,8 +84,17 @@ const colRef = collection(db, "books"); // ref to a specific collection in our d
 // 		console.log(books);
 // 	});
 
+// Queries
+const q = query(
+	colRef,
+	where("author", "==", "habits"),
+	orderBy("title", "desc")
+);
+
 // Realtime collection data: runs on init + everytime there is a change in colRef
-onSnapshot(colRef, (snapshot) => {
+// onSnapshot(colRef, (snapshot) => { // Pass colRef if we want to get all records
+onSnapshot(q, (snapshot) => {
+	// Pass q if we want to get all records based on a query filter
 	let books = [];
 	snapshot.docs.forEach((doc) => {
 		// get All docs of the firestore collection
