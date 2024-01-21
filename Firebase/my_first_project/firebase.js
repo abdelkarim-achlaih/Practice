@@ -43,9 +43,11 @@ basically connect to firebase and initialize different services
 
 import {
 	getFirestore, // this kind of functions: get***, are used to initialize a service, to init all we nedd to call getAll
-	collection,
+	collection, // ref to a specific collection in our database (database, CollectionName)
 	getDocs,
-	addDoc,
+	addDoc, // (colRef, Object to add)
+	doc, // ref to a specific doc in our collection (database, CollectionName, doc id)
+	deleteDoc, // (docRef)
 } from "firebase/firestore"; // The service we're using
 
 // Your web app's Firebase configuration
@@ -77,6 +79,8 @@ getDocs(colRef) //Return a Promise that will resolves on the docs that contains 
 		});
 		console.log(books);
 	});
+
+//Adding a new doc
 const addBookForm = document.querySelector(".add");
 addBookForm.addEventListener("submit", (e) => {
 	e.preventDefault();
@@ -84,4 +88,12 @@ addBookForm.addEventListener("submit", (e) => {
 		title: addBookForm.title.value,
 		author: addBookForm.author.value,
 	}).then((_) => addBookForm.reset());
+});
+
+//Deleting a specific doc
+const deleteBookForm = document.querySelector(".delete");
+deleteBookForm.addEventListener("submit", (e) => {
+	e.preventDefault();
+	const docRef = deleteBookForm.id.value;
+	deleteDoc(docRef).then((_) => deleteBookForm.reset());
 });
