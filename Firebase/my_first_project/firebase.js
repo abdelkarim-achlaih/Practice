@@ -45,6 +45,7 @@ import {
 	getFirestore, // this kind of functions: get***, are used to initialize a service, to init all we nedd to call getAll
 	collection,
 	getDocs,
+	addDoc,
 } from "firebase/firestore"; // The service we're using
 
 // Your web app's Firebase configuration
