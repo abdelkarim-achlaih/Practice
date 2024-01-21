@@ -54,6 +54,7 @@ import {
 	orderBy,
 	serverTimestamp, // Creates a timestamp, use it instead of Time()
 	getDoc,
+	updateDoc,
 } from "firebase/firestore"; // The service we're using
 
 // Your web app's Firebase configuration
@@ -124,3 +125,13 @@ deleteBookForm.addEventListener("submit", (e) => {
 //Get a single document
 const docRef = doc(db, "books", "Z3PrggKkZZNk0meRcfvx");
 getDoc(docRef).then((doc) => console.log(doc.data(), doc.id));
+
+//Updating a specific doc
+const updateBookForm = document.querySelector(".update");
+updateBookForm.addEventListener("submit", (e) => {
+	e.preventDefault();
+	const docRef = doc(db, "books", updateBookForm.id.value);
+	updateDoc(docRef, {
+		title: "updated",
+	}).then((_) => updateBookForm.reset());
+});
