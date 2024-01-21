@@ -48,6 +48,7 @@ import {
 	addDoc, // (colRef, Object to add)
 	doc, // ref to a specific doc in our collection (database, CollectionName, doc id)
 	deleteDoc, // (docRef)
+	onSnapshot, // Realtime listener (colRef, CalbackFnc): CalbackFnc runs when init + everytime there is a change in colRef
 } from "firebase/firestore"; // The service we're using
 
 // Your web app's Firebase configuration
@@ -69,16 +70,26 @@ const db = getFirestore(); // Database
 // Get collection ref
 const colRef = collection(db, "books"); // ref to a specific collection in our database (database, CollectionName)
 
-// Get collection data
-getDocs(colRef) //Return a Promise that will resolves on the docs that contains the collection
-	.then((snapshot) => {
-		let books = [];
-		snapshot.docs.forEach((doc) => {
-			// get All docs of the firestore collection
-			books.push({ ...doc.data(), id: doc.id });
-		});
-		console.log(books);
+// Get collection data: just runs once
+// getDocs(colRef) //Return a Promise that will resolves on the docs that contains the collection
+// 	.then((snapshot) => {
+// 		let books = [];
+// 		snapshot.docs.forEach((doc) => {
+// 			// get All docs of the firestore collection
+// 			books.push({ ...doc.data(), id: doc.id });
+// 		});
+// 		console.log(books);
+// 	});
+
+// Realtime collection data: runs on init + everytime there is a change in colRef
+onSnapshot(colRef, (snapshot) => {
+	let books = [];
+	snapshot.docs.forEach((doc) => {
+		// get All docs of the firestore collection
+		books.push({ ...doc.data(), id: doc.id });
 	});
+	console.log(books);
+});
 
 //Adding a new doc
 const addBookForm = document.querySelector(".add");
