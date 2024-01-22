@@ -13,7 +13,19 @@
 
 <body>
   <script>
-
+    let myNumbers = [20, 50, 10, 60];
+    let calc = (one, two, ...nums) => {
+      for (let i = +false; i < nums.length; i++) {
+        one += nums[i];
+      }
+      return one + two;
+    };
+    let calc = function (one, two, ...nums) {
+      for (let i = +false; i < nums.length; i++) {
+        one += nums[i];
+      }
+      return one + two;
+    };
   </script>
 </body>
 
