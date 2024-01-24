@@ -13,7 +13,18 @@
 
 <body>
   <script>
+    let myArray = ["E", "l", "z", ["e", "r"], "o"];
 
+    let newAray = myArray.reduce(function (call, element, index) {
+      return Array.isArray(element)
+        ? call +
+        myArray[index].reduce(function (call, element) {
+          return call + element;
+        })
+        : call + element;
+    });
+
+    console.log(newAray); // Elzero
   </script>
 </body>
 
