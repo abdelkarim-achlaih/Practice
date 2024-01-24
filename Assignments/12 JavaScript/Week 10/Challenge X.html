@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 10</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <script>
+    let myString = "1,2,3,EE,l,z,e,r,o,_,W,e,b,_S,c,h,o,o,l,2,0,Z";
+
+    let solution = myString
+      .split("", myString.lastIndexOf(","))
+      .filter(function (ele) {
+        return isNaN(parseInt(ele));
+      }).map(function (ele) {
+        return ele === "," ? "" : ele === "_" ? " " : ele
+      }).reduce(function (acc, ele) {
+        return acc + ele;
+      }).slice(true);
+
+    console.log(solution);
+  </script>
+</body>
+
+</html>
