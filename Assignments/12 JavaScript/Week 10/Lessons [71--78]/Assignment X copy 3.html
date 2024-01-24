@@ -13,7 +13,13 @@
 
 <body>
   <script>
+    let myString = "EElllzzzzzzzeroo";
 
+    let filtredString = myString.split("").filter(function (ele, index, arr) {
+      return !arr.includes(ele, index + 1)
+    }).join("");
+
+    console.log(filtredString); // Elzero
   </script>
 </body>
 
