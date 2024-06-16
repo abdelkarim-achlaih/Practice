@@ -30,8 +30,13 @@ const ProgressSection = styled.div`
 `;
 
 const ProgressBar = styled.div`
-	width: ${({ progress }) => (progress ? progress.value : "0")};
-	background-color: ${({ progress }) => (progress ? progress.color : "red")};
+	width: ${({ progress }) => (progress ? `${progress}%` : "0")};
+	background-color: ${({ progress }) => {
+		if (progress >= 80) return "red";
+		else if (progress >= 60) return "orange";
+		else if (progress >= 40) return "yellow";
+		else return "green";
+	}};
 	height: 100%;
 `;
 
