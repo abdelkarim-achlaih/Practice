@@ -11,13 +11,13 @@ export default function App() {
 		<>
 			<Title>Progress Tracker</Title>
 			<div>
-				<Section text="M" />
-				<Section text="T" />
-				<Section text="W" />
-				<Section text="T" />
-				<Section text="F" />
-				<Section text="S" />
-				<Section text="S" />
+				<Section text="M" progress={{ value: "100%", color: "tomato" }} />
+				<Section text="T" progress={{ value: "80%", color: "tomato" }} />
+				<Section text="W" progress={{ value: "60%", color: "tomato" }} />
+				<Section text="T" progress={{ value: "40%", color: "tomato" }} />
+				<Section text="F" progress={{ value: "20%", color: "tomato" }} />
+				<Section text="S" progress={{ value: "10%", color: "tomato" }} />
+				<Section text="S" progress={{ value: "5%", color: "tomato" }} />
 			</div>
 		</>
 	);

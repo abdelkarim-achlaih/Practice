@@ -25,7 +25,17 @@ const WeekendTitle = styled(WeekdayTitle)`
 	background-color: lightgrey;
 `;
 
-export default function Section({ text }) {
+const ProgressSection = styled.div`
+	width: 250px;
+`;
+
+const ProgressBar = styled.div`
+	width: ${({ progress }) => (progress ? progress.value : "0")};
+	background-color: ${({ progress }) => (progress ? progress.color : "red")};
+	height: 100%;
+`;
+
+export default function Section({ text, progress }) {
 	return (
 		<StyledSection>
 			{text === "S" ? (
@@ -33,6 +43,10 @@ export default function Section({ text }) {
 			) : (
 				<WeekdayTitle>{text}</WeekdayTitle>
 			)}
+
+			<ProgressSection>
+				<ProgressBar progress={progress} />
+			</ProgressSection>
 		</StyledSection>
 	);
 }
