@@ -11,13 +11,13 @@ export default function App() {
 		<>
 			<Title>Progress Tracker</Title>
 			<div>
-				<Section text="M" progress={100} />
-				<Section text="T" progress={80} />
-				<Section text="W" progress={60} />
-				<Section text="T" progress={40} />
-				<Section text="F" progress={20} />
-				<Section text="S" progress={10} />
-				<Section text="S" progress={5} />
+				<Section text="M" day={1} progress={100} />
+				<Section text="T" day={2} progress={80} />
+				<Section text="W" day={3} progress={60} />
+				<Section text="T" day={4} progress={40} />
+				<Section text="F" day={5} progress={20} />
+				<Section text="S" day={6} progress={10} />
+				<Section text="S" day={7} progress={5} />
 			</div>
 		</>
 	);

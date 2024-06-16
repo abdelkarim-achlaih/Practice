@@ -32,15 +32,19 @@ const ProgressSection = styled.div`
 const ProgressBar = styled.div`
 	width: ${({ progress }) => (progress ? `${progress}%` : "0")};
 	background-color: ${({ progress }) => {
-		if (progress >= 80) return "red";
-		else if (progress >= 60) return "orange";
-		else if (progress >= 40) return "yellow";
-		else return "green";
+		if (progress >= 80) return "#FFB3BA";
+		else if (progress >= 60) return "#FFDFBA";
+		else if (progress >= 40) return "#FFFFBA";
+		else return "#BAFFC9";
 	}};
 	height: 100%;
 `;
 
-export default function Section({ text, progress }) {
+const TodayProgressBar = styled(ProgressBar)`
+	background-color: purple;
+`;
+
+export default function Section({ text, progress, day }) {
 	return (
 		<StyledSection>
 			{text === "S" ? (
@@ -50,7 +54,11 @@ export default function Section({ text, progress }) {
 			)}
 
 			<ProgressSection>
-				<ProgressBar progress={progress} />
+				{day === new Date().getDay() ? (
+					<TodayProgressBar progress={progress} />
+				) : (
+					<ProgressBar progress={progress} />
+				)}
 			</ProgressSection>
 		</StyledSection>
 	);
