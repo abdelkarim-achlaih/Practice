@@ -12,6 +12,7 @@ const StyledSection = styled.section`
 	justify-content: left;
 	font-size: 40px;
 	color: #ff6961;
+	overflow: hidden;
 `;
 const WeekdayTitle = styled.div`
 	display: flex;
@@ -20,10 +21,18 @@ const WeekdayTitle = styled.div`
 	border-right: solid 3px lightgrey;
 `;
 
+const WeekendTitle = styled(WeekdayTitle)`
+	background-color: lightgrey;
+`;
+
 export default function Section({ text }) {
 	return (
 		<StyledSection>
-			<WeekdayTitle>{text}</WeekdayTitle>
+			{text === "S" ? (
+				<WeekendTitle>{text}</WeekendTitle>
+			) : (
+				<WeekdayTitle>{text}</WeekdayTitle>
+			)}
 		</StyledSection>
 	);
 }
